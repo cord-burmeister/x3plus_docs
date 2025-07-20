@@ -1,4 +1,5 @@
 site_name: X3Plus Documentation
+site_url: https://cord-burmeister.github.io/x3plus_docs/
 theme:
   name: material
   palette:
