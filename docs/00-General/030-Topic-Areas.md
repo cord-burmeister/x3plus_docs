@@ -63,13 +63,13 @@ This section provides an overview of the topics that are relevant to the Level 0
 
 +[#azure]  Level 0 - Manual
 ++[#lightblue] Base
-+++[#lightblue] ROS
-++++[#lightgreen] Transformation
-++++[#lightgreen] URDF Model
-+++[#lightgreen] Simulation
-++++[#lightgreen] Add Objects
-++++[#lightblue] Handling Worlds
-+++[#lightblue] Hardware
++++[#FFBBCC] ROS
+++++[#FFBBCC] Transformation
+++++[#FFBBCC] URDF Model
++++[#FFBBCC] Simulation
+++++[#FFBBCC] Add Objects
+++++[#FFBBCC] Handling Worlds
++++[#FFBBCC] Hardware
 ++[#lightgreen] Teleoperations 
 
 @endmindmap
@@ -90,16 +90,16 @@ This section provides an overview of the topics that are relevant to the Level 1
 
 +[#azure] Level 1 - Hands Off
 ++[#lightblue] Base
-+++[#lightblue] ROS
-+++[#lightgreen] Simulation
-+++[#lightblue] Hardware
-+++[#lightblue] Sensor
-++++[#lightblue] IMU
-++++[#lightblue] LIDAR
-++[#lightblue] Localization
-++[#lightblue] Navigation
-+++[#lightblue] SLAM
-+++[#lightblue] Exploration
++++[#FFBBCC] ROS
++++[#FFBBCC] Simulation
++++[#FFBBCC] Hardware
++++[#FFBBCC] Sensor
+++++[#FFBBCC] IMU
+++++[#FFBBCC] LIDAR
+++[#FFBBCC] Localization
+++[#FFBBCC] Navigation
++++[#FFBBCC] SLAM
++++[#FFBBCC] Exploration
 
 @endmindmap
 ```
@@ -118,12 +118,12 @@ This section provides an overview of the topics that are relevant to the Level 2
 @startmindmap images/level2_topics
 
 +[#azure] Level 2 - Eyes Off
-++[#lightblue] Base
-+++[#lightblue] ROS
-+++[#lightgreen] Simulation
-+++[#lightblue] Hardware
-+++[#lightblue] Sensor
-++++[#lightblue] Depth Camera
+++[#FFBBCC] Base
++++[#FFBBCC] ROS
++++[#FFBBCC] Simulation
++++[#FFBBCC] Hardware
++++[#FFBBCC] Sensor
+++++[#FFBBCC] Depth Camera
 ++++[#FFBBCC] Camera
 
 @endmindmap
