@@ -23,11 +23,13 @@ In this model, all ROS nodes and computation run directly on the robot’s onboa
 
 Here, the robot runs a subset of ROS nodes locally (e.g., for sensor data acquisition and basic control), while offloading heavy computation (such as SLAM, object recognition, or planning) to a remote backend server, often over a network. This allows for more complex processing than the robot could handle alone.
 
-**Pros:**  
+**Pros:**
+
 - Access to greater computational resources  
 - Easier to update and monitor backend algorithms
 
-**Cons:**  
+**Cons:**
+
 - Dependent on network connectivity and bandwidth  
 - Potential for increased latency
 
@@ -35,12 +37,14 @@ Here, the robot runs a subset of ROS nodes locally (e.g., for sensor data acquis
 
 In this model, the robot operates autonomously for most tasks but allows a human operator to intervene or take control remotely when needed. Teleoperation can be used for supervision, troubleshooting, or handling complex situations that the robot cannot resolve on its own. Communication is typically established over a network, enabling real-time or near-real-time control and feedback.
 
-**Pros:**  
+**Pros:**
+
 - Combines autonomy with human oversight  
 - Increases safety and flexibility  
 - Enables remote troubleshooting and support
 
-**Cons:**  
+**Cons:**
+
 - Requires reliable network connectivity for teleoperation  
 - May introduce latency during manual control  
 - Human intervention may be needed in unexpected scenarios
@@ -60,4 +64,3 @@ In simulation deployment, all ROS nodes run on a desktop or server, often using 
 - Performance may differ from real hardware
 
 These models can be combined or adapted depending on the application requirements and available resources.
-
