@@ -117,7 +117,6 @@ This section provides an overview of the topics that are relevant to the Level 2
 
 @startmindmap images/level2_topics
 
-
 +[#azure] Level 2 - Eyes Off
 ++[#lightblue] Base
 +++[#lightblue] ROS

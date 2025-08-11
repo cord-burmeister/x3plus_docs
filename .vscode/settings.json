@@ -4,5 +4,10 @@
         "eisvogel",
         "miktex",
         "pandoc"
+        "endmindmap",
+        "startmindmap",
+        "Teleoperation",
+        "Teleoperations",
+        "URDF"
     ]
 }

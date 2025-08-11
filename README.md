@@ -1,5 +1,7 @@
 # x3plus_docs
 
+This is the project documentation for the x3plus project.
+
 ## Introduction
 
 This is the source for a collection of booklets which describe the journey exploring the robot space.
@@ -26,3 +28,7 @@ Use the powershell script to generate the PDFs
 ``` CMD
 GenerateBooks.ps1
 ```
+
+## Github Pages
+
+[Github Pages](https://cord-burmeister.github.io/x3plus_docs/)
