@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+         <loc>https://cord-burmeister.github.io/x3plus_docs/</loc>
+         <lastmod>2025-08-13</lastmod>
+    </url>
+    <url>
+         <loc>https://cord-burmeister.github.io/x3plus_docs/00-General/000-Introduction/</loc>
+         <lastmod>2025-08-13</lastmod>
+    </url>
+    <url>
+         <loc>https://cord-burmeister.github.io/x3plus_docs/00-General/010-Motivation/</loc>
+         <lastmod>2025-08-13</lastmod>
+    </url>
+    <url>
+         <loc>https://cord-burmeister.github.io/x3plus_docs/00-General/020-Levels-of-Autonomy-for-Robots/</loc>
+         <lastmod>2025-08-13</lastmod>
+    </url>
+    <url>
+         <loc>https://cord-burmeister.github.io/x3plus_docs/00-General/030-Topic-Areas/</loc>
+         <lastmod>2025-08-13</lastmod>
+    </url>
+    <url>
+         <loc>https://cord-burmeister.github.io/x3plus_docs/00-General/100-Repository-Structure/</loc>
+         <lastmod>2025-08-13</lastmod>
+    </url>
+    <url>
+         <loc>https://cord-burmeister.github.io/x3plus_docs/00-General/200-Deployment-Models/</loc>
+         <lastmod>2025-08-13</lastmod>
+    </url>
+</urlset>
