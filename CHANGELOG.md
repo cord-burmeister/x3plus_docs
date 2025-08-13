@@ -10,7 +10,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Adding book simple structure to generate PDF.
-- Starting with the simulation
+- Starting with the general layout and structure.
+- Adding initial content for the general introduction chapter.
+- Adding initial content for the level 0 chapter.
 
 ### Changed
 
