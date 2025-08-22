@@ -1,0 +1,41 @@
+---
+# https://github.com/enhuiz/eisvogel
+# This template defines some new variables to control the appearance of the resulting PDF document. The existing template variables from pandoc 
+# are all supported and their documentation can be found in the pandoc manual
+# https://pandoc.org/MANUAL.html#variables-for-latex
+title:  'MARVIN - The Project'
+subtitle: "A journey to explore robots"
+date: "2017-02-20"
+author: ["Cord Burmeister", "Community"]
+keywords: [ROS Robot development]
+book: true
+toc: true
+toc-own-page: true
+# turns on the title page when true
+titlepage: true
+# the background color of the title page. The color value must be given as an HTML hex color like D8DE2C without the leading number sign (#). 
+# When specifying the color in YAML, it is advisable to enclose it in quotes like so titlepage-color: "D8DE2C" 
+# to avoid the truncation of the color (e.g. 000000 becoming 0).
+titlepage-color: "FF7F7F"
+# the text color of the title page
+titlepage-text-color: "FFFFFF"
+# the color of the rule on the top of the title page
+titlepage-rule-color: "FFFFFF"
+# the height of the rule on the top of the title page (in points)
+titlepage-rule-height: 2
+#document class: usually one of the standard classes, article, book, and report; 
+# the KOMA-Script equivalents, scrartcl, scrbook, and scrreprt, which default to smaller margins;
+titlepage-background: "title-background.png"
+documentclass: scrbook
+# option for document class, e.g. oneside; repeat for multiple options:
+classoption:
+- 12pt
+# control \pagestyle{}: the default article class supports plain (default), 
+# empty (no running heads or page numbers), and headings (section titles in running heads)
+pagestyle: headings
+# abstract: |
+#   This is the abstract.
+
+#   It consists of two paragraphs.
+ 
+---
