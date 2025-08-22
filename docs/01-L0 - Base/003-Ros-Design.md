@@ -56,7 +56,7 @@ By examining this communication graph, we gain insights into the system’s stru
 
 Let’s delve into the terminology associated with the ball-chasing robot example and explore how the ROS communication graph operates:
 
-## Publish-Subscribe Messaging (Pub-Sub):
+## Publish-Subscribe Messaging (Pub-Sub)
 
 The ROS communication graph follows a well-known pattern called pub-sub.
 
