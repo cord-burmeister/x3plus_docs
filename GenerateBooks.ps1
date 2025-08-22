@@ -48,7 +48,7 @@ function Convert-Book {
 Write-Host $OutputFolder\$bookName.pdf
 Write-Host $BookDefinitionFile
 
-&pandoc --toc --standalone `
+&pandoc --toc --standalone --listings `
 --template $PSScriptRoot\templates\eisvogel.tex `
 -o $OutputFolder\$bookName.pdf `
 $BookDefinitionFile `
