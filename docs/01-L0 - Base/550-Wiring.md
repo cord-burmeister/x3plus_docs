@@ -1,3 +1,0 @@
-# Wiring
-
-![](images/Wiring.png)
