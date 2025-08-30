@@ -34,21 +34,24 @@ function Convert-Book {
         [string]$BookDefinitionFile 
     )
 
-    $start = Get-Date
-    $location = Get-Location
+$start = Get-Date
+$location = Get-Location
+$printDate = Get-Date -Format "yyyy-MM-dd"
 
-    Set-Location $FolderName
+Set-Location $FolderName
 
-    $bookName = $BookDefinitionFile
-    $bookName = $bookName.Replace(".yaml", "").Replace("latex-metadata-", "")
-    $bookName = Split-Path -Path $bookName -Leaf
+$bookName = $BookDefinitionFile
+$bookName = $bookName.Replace(".yaml", "").Replace("latex-metadata-", "")
+$bookName = Split-Path -Path $bookName -Leaf
 
-    # Get files and filter those starting with a number
-    $filteredFiles = Get-ChildItem -Path $FolderName -Filter *.md | Where-Object { $_.Name -match "^\d" } | Sort-Object Name
+# Get files and filter those starting with a number
+$filteredFiles = Get-ChildItem -Path $FolderName -Filter *.md | Where-Object { $_.Name -match "^\d" } | Sort-Object Name
 Write-Host $OutputFolder\$bookName.pdf
 Write-Host $BookDefinitionFile
+Write-Host "Print Date = " $printDate
 
 &pandoc --toc --standalone `
+--metadata date=$printDate `
 --template $PSScriptRoot\templates\eisvogel.tex `
 -o $OutputFolder\$bookName.pdf `
 $BookDefinitionFile `
