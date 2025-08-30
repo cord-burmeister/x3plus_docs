@@ -29,6 +29,23 @@ Use the powershell script to generate the PDFs
 GenerateBooks.ps1
 ```
 
+## Build the Mkdocs web site
+
+### Install required tools on Ubuntu
+
+To run the Website generation locally install the following tools.
+
+``` bash
+sudo apt install mkdocs python3-pip
+pip3 install mkdocs-material
+```
+
+Then the website can run locally with
+
+``` bash
+mkdocs serve
+```
+
 ## Github Pages
 
 [Github Pages](https://cord-burmeister.github.io/x3plus_docs/)
