@@ -47,11 +47,11 @@ This will turn on the Jetson dev kit in Force Recovery Mode .
 
 Launch SDK Manger
 
-![](images/Jetson-Selection.png)
+![Jetson-Selection](images/Jetson-Selection.png)
 
 When asked select the target model of the Jetson model
 
-![](images/sdkmanager-step1.png)
+![sdkmanager-step1](images/sdkmanager-step1.png)
 
 On the Step 01 Development Environment window;
 
@@ -60,7 +60,7 @@ On the Step 01 Development Environment window;
 
 Click **CONTINUE** button.
 
-![](images/sdkmanager-step2.png)
+![sdkmanager-step2](images/sdkmanager-step2.png)
 
 * From the Target Components panel, just select " Jetson OS " to install the base L4T BSP, and deselect "Jetson SDK Components".
 * Review the license.
@@ -72,7 +72,7 @@ On the Step 02 Details and License window;
 
 * Before the installation begins, SDK Manager prompts you to enter your sudo password.
 
-![](images/sdkmanager-step2-flash.png)
+![sdkmanager-step2-flash](images/sdkmanager-step2-flash.png)
 
 Click **FLASH** button.
 
@@ -186,7 +186,7 @@ Comes in the same package as nm-applet (the default top bar icon thing) and nm-c
 
 Screenshot:
 
-![](images/ntmui.png)
+![ntmui](images/ntmui.png)
 
 ### Check ip address from host
 
@@ -205,7 +205,7 @@ Now we can use the sdk manager on the host to install the missing SDKs.
 
 Launch SDK Manger again
 
-![](images/sdkmanager-step1-1.png)
+![sdkmanager-step1-1](images/sdkmanager-step1-1.png)
 
 On the Step 01 Development Environment window;
 
@@ -216,7 +216,7 @@ On the Step 01 Development Environment window;
 
 Click **CONTINUE** button.
 
-![](images/sdkmanager-step1-2.png)
+![sdkmanager-step1-2](images/sdkmanager-step1-2.png)
 
 
 On the Step 02 Details and License window;
@@ -225,7 +225,7 @@ On the Step 02 Details and License window;
 
 Click **CONTINUE** button.
 
-![](images/sdkmanager-step1-2b.png)
+![sdkmanager-step1-2b](images/sdkmanager-step1-2b.png)
 
 
 After the Step 02 Details how to connect to the Jetson are required. 
@@ -234,15 +234,15 @@ After the Step 02 Details how to connect to the Jetson are required.
 
 Click **FLASH** button.
 
-![](images/sdkmanager-step1-3.png)
+![sdkmanager-step1-3](images/sdkmanager-step1-3.png)
 
 While installation of downloading and installing the SDKs on the Jetson device you can see the current status. 
 
-![](images/sdkmanager-step1-3-terminal.png)
+![sdkmanager-step1-3-terminal](images/sdkmanager-step1-3-terminal.png)
 
 While installation of downloading and installing the SDKs on the Jetson device you can see in ter terminal view the current detailed status.
 
-![](images/sdkmanager-step1-4.png)
+![sdkmanager-step1-4](images/sdkmanager-step1-4.png)
 
 The last step is the acknowledgement of the successful installation.
 
@@ -267,6 +267,8 @@ Build cuda_12.6.r12.6/compiler.34714021_0
 
 [Jetson Orin Nano Developer Kit User Guide - Software Setup](https://developer.nvidia.com/embedded/learn/jetson-orin-nano-devkit-user-guide/software_setup.html)
 
+[Tips - SSD + Docker](https://www.jetson-ai-lab.com/tips_ssd-docker.html)
+
 ------------------------------
 <!-- 
 ## Backup
@@ -283,8 +285,6 @@ If you have a monitor with HDMI input, you can connect it directly to your Jetso
 4. **Boot and Configure**: On first boot, you'll be prompted to set up the system.
 
 🔧 For a full walkthrough, the [NVIDIA Jetson Orin Nano Super COMPLETE Setup Guide ...](https://www.youtube.com/watch?v=-PjMC0gyH9s) walks you through everything from flashing the OS to first boot and running AI models. -->
-
-
 
 <!-- 
 #### Option 1: **Serial Console via USB**
@@ -314,4 +314,3 @@ If you have a monitor with HDMI input, you can connect it directly to your Jetso
 ### Bonus: First-Time Setup Tips
 
 If you're just getting started, [Nvidia Jetson Nano Tutorial | First look with Artificial ...](https://www.youtube.com/watch?v=JOxXQ-3U8Zs) gives a great overview of hardware setup, SD card flashing, and running basic AI demos. -->
-
