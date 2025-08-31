@@ -12,3 +12,11 @@ In this section, we will guide you through the essential concepts and components
 
 This hardware project is a playground for exploring the capabilities of various hardware components and their integration into a cohesive system.
 Due to the fact tht this is a private project, the focus is on the hardware and software that is affordable and accessible to the general public.
+
+## Overview
+
+* ROS 2 Overview
+* Very basic concepts of ROS 2
+* Describe the logical structure of the robot
+* Describe the hardware structure
+* Install the controller

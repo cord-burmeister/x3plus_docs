@@ -34,6 +34,11 @@ ROS 2 components are distributed through package repositories and can be install
 
 * **ROS 2 Base Distribution**: Includes only the core components and middleware, suitable for minimal setups.
 
+## Conclusion
+
+THe project follows the distribution of the packages based on the idea of deployment cluster. This is that some deployment option does not to compile everything.
+
+<!-- 
 ## Logical distribution
 
 The concept is to structure the packages into 4 logical areas
@@ -44,6 +49,6 @@ The concept is to structure the packages into 4 logical areas
 
 * **Locale Core**: Packages which are required to run on the local robot hardware for autonomous operations.
 
-* **Locale Bot**: Packages which are required to operate local robot hardware.
+* **Locale Bot**: Packages which are required to operate local robot hardware. -->
 
 <!-- ![](images/Ros-Deployment.png) -->
