@@ -27,7 +27,6 @@ Before running the setup scripts, ensure that you have the following dependencie
 
 The `x3plus_setup` project provides several setup scripts to configure different workspaces for the X3Plus robot. Below are the instructions for running each setup script:
 
-
 ### `bash/setup-ws-bot.sh`
 
 This script sets up the workspace for the X3Plus robot controller.
