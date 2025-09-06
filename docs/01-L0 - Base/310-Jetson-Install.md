@@ -284,7 +284,7 @@ If you have a monitor with HDMI input, you can connect it directly to your Jetso
 3. **Insert the MicroSD Card**: Flash it with JetPack OS using [NVIDIA SDK Manager](https://developer.nvidia.com/embedded/jetpack) or download a pre-built image.
 4. **Boot and Configure**: On first boot, you'll be prompted to set up the system.
 
-🔧 For a full walkthrough, the [NVIDIA Jetson Orin Nano Super COMPLETE Setup Guide ...](https://www.youtube.com/watch?v=-PjMC0gyH9s) walks you through everything from flashing the OS to first boot and running AI models. -->
+For a full walkthrough, the [NVIDIA Jetson Orin Nano Super COMPLETE Setup Guide ...](https://www.youtube.com/watch?v=-PjMC0gyH9s) walks you through everything from flashing the OS to first boot and running AI models. -->
 
 <!-- 
 #### Option 1: **Serial Console via USB**
