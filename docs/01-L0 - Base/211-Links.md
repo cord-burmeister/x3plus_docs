@@ -121,7 +121,6 @@ We assume that the laser is located 0.06 meters forward of the center of the rob
 
 The command-line handling has been changed to use flags instead, and all flags except for --frame-id and --child-frame-id are optional. Thus, the above command-line can be simplified to: ros2 run tf2_ros static_transform_publisher --frame-id foo --child-frame-id bar To change just the translation x, the command-line would be:
 
-
 ros2 run tf2_ros static_transform_publisher --x 1.5 --frame-id foo --child-frame-id bar -->
 
 ## References
