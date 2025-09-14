@@ -66,14 +66,23 @@ Write-Host "Print Date = " $printDate
 # $filteredFiles.FullName `
 # $sharedFiles.FullName
 
-&pandoc --toc --standalone `
+# &pandoc --toc --standalone `
+# --metadata date=$printDate `
+# --template $PSScriptRoot\templates\eisvogel.tex `
+# -o $OutputFolder\$bookName.pdf `
+# $BookDefinitionFile `
+# $sharedFilesPre.FullName `
+# $filteredFiles.FullName `
+# $sharedFilesPost.FullName
+
+Write-Host "pandoc --toc --standalone `
 --metadata date=$printDate `
 --template $PSScriptRoot\templates\eisvogel.tex `
 -o $OutputFolder\$bookName.pdf `
 $BookDefinitionFile `
 $sharedFilesPre.FullName `
 $filteredFiles.FullName `
-$sharedFilesPost.FullName
+$sharedFilesPost.FullName"
 
     Set-Location $location
     $end = Get-Date

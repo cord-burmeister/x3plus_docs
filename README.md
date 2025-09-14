@@ -31,6 +31,17 @@ GenerateBooks.ps1
 
 ## Build the Mkdocs web site
 
+### Install required tools on Windows
+
+To run the Website generation locally install the following tools.
+
+``` CMD
+choco install mkdocs -y
+choco install python3 -y
+pip install mkdocs-material
+pip install mkdocs-literate-nav
+```
+
 ### Install required tools on Ubuntu
 
 To run the Website generation locally install the following tools.

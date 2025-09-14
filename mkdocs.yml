@@ -1,6 +1,14 @@
 site_name: X3Plus Documentation
+site_description: DIY robot projects as learning journey
+site_author: Cord Burmeister
+copyright: '2025, Cord Burmeister'
 docs_dir: docs
 site_url: https://cord-burmeister.github.io/x3plus_docs/
+repo_url: https://github.com/cord-burmeister/x3plus_docs
+plugins:
+  - literate-nav:
+      nav_file: SUMMARY.md
+  - search
 theme:
   name: material
   palette:
