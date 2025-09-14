@@ -101,7 +101,7 @@ foreach ($item in $filteredFilesAndFolders) {
 $BookDefinitionFile `
 $sharedFilesPre.FullName `
 $filteredFiles.FullName `
-$sharedFilesPost.FullName
+$sharedFilesPost.FullName"
 
     Set-Location $location
     $end = Get-Date
