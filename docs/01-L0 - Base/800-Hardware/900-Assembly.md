@@ -1,4 +1,4 @@
-# 🛠️ Mechanical Assembly 
+## Mechanical Assembly 
 
 1. **Prepare the Base Frame and Chassis**
    - Begin by assembling the aluminum alloy base plate and frame. This forms the structural foundation for the robot.
@@ -27,7 +27,7 @@
 
 ![](images/structure-exploded.png)
 
-## Tips for Efficient Assembly
+### Tips for Efficient Assembly
 
 - Use thread-locking compound on screws to prevent loosening from vibration.
 - Label wires during installation to simplify debugging later.

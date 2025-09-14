@@ -44,8 +44,13 @@ $bookName = $BookDefinitionFile
 $bookName = $bookName.Replace(".yaml", "").Replace("latex-metadata-", "")
 $bookName = Split-Path -Path $bookName -Leaf
 
+# Create an empty list
+$filteredFiles = @()
+
+
 # Get files and filter those starting with a number
-$filteredFiles = Get-ChildItem -Path $FolderName -Filter *.md | Where-Object { $_.Name -match "^\d" } | Sort-Object Name
+$filteredFilesAndFolders = Get-ChildItem -Path $FolderName | Where-Object { $_.Name -match "^\d" } | Sort-Object Name
+
 # Get files and filter those starting with a number for the shared folder
 $sharedFilesPost = Get-ChildItem -Path $PostSharedFolder -Filter *.md | Where-Object { $_.Name -match "^\d" } | Sort-Object Name
 
@@ -56,6 +61,24 @@ Write-Host $OutputFolder\$bookName.pdf
 Write-Host $BookDefinitionFile
 Write-Host "Print Date = " $printDate
 
+foreach ($item in $filteredFilesAndFolders) {
+    if ($item.PSIsContainer) {
+        $indexItems = Get-ChildItem -Path $item.FullName -Filter index.md 
+
+        if ($indexItems.Count -eq 0) {
+            Write-Warning "The sub folder $($item.FullName) does not contain an index.md file."
+        }
+        else {
+            $filteredFiles += $indexItems
+        }
+
+        $filteredFiles += Get-ChildItem -Path $item.FullName -Filter *.md | Where-Object { $_.Name -match "^\d" } | Sort-Object Name
+
+    } else {
+        $filteredFiles += $item
+    }
+}
+
 # # Generate the LaTeX output when you need to debug the LaTeX input 
 # # For example when using some illegal characters
 # &pandoc --toc --standalone `
@@ -65,6 +88,11 @@ Write-Host "Print Date = " $printDate
 # $BookDefinitionFile `
 # $filteredFiles.FullName `
 # $sharedFiles.FullName
+
+# Write-Host $BookDefinitionFile `
+# $sharedFilesPre.FullName `
+# $filteredFiles.FullName `
+# $sharedFilesPost.FullName
 
 &pandoc --toc --standalone `
 --metadata date=$printDate `
@@ -80,7 +108,32 @@ $sharedFilesPost.FullName
     Write-Host "Generating the book $bookName took " ($end - $start).
 }
 
+
 function Find-ForBooks {
+    <#
+    .SYNOPSIS
+        Recursively processes folders to generate books from markdown and YAML definitions.
+
+    .DESCRIPTION
+        Finds all subfolders and YAML book definition files in the specified folder, 
+        and calls Convert-Book for each book definition found. 
+        Also processes folders in sorted order, allowing for nested book structures.
+
+    .PARAMETER FolderName
+        The root folder to search for book folders and definitions.
+
+    .PARAMETER PreSharedFolder
+        Path to the folder containing markdown files to be included before book content.
+
+    .PARAMETER PostSharedFolder
+        Path to the folder containing markdown files to be included after book content.
+
+    .PARAMETER OutputFolder
+        The folder where the generated book outputs will be saved.
+
+    .EXAMPLE
+        Find-ForBooks -FolderName "C:\Books\docs" -PreSharedFolder "C:\Books\pre-shared" -PostSharedFolder "C:\Books\post-shared" -OutputFolder "C:\Books\output"
+    #>
     param (
         [string] $FolderName,
         [string] $PreSharedFolder,
@@ -129,15 +182,6 @@ if (-Not (Test-Path -Path $OutputFolder)) {
 Set-Location $folderPath
 
 Find-ForBooks -FolderName $folderPath -PreSharedFolder $sharedPathPre -PostSharedFolder $sharedPathPost -OutputFolder $OutputFolder
-
-# # Get files and filter those starting with a number
-# $filteredFiles = Get-ChildItem -Path $folderPath | Where-Object { $_.Name -match "^\d" } | Sort-Object Name
-
-# &pandoc --toc --standalone `
-# --template $PSScriptRoot\templates\eisvogel.tex `
-# -o $OutputFolder\marvin-Marvin.pdf `
-# $PSScriptRoot\latex-metadata-Marvin.yaml `
-# $filteredFiles.FullName
 
 Set-Location $location
 $end = Get-Date
