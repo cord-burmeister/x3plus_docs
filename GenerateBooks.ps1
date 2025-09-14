@@ -18,12 +18,7 @@
     Description for a parameter in param definition section. Each parameter requires a separate description. The name in the description and the parameter section must match. 
 #>
 
-Param
-(
-    # Param1 help description
-    [Parameter(Mandatory=$false)]
-    $Param1
-)
+
 
 function Convert-Book {
     param (
@@ -47,6 +42,9 @@ $bookName = Split-Path -Path $bookName -Leaf
 # Create an empty list
 $filteredFiles = @()
 
+# Regex pattern to match Markdown image syntax
+$imagePattern = '!\[(.*?)\]\((.*?)\)'
+$sectionPattern ='(?ms)^#{1,6}'
 
 # Get files and filter those starting with a number
 $filteredFilesAndFolders = Get-ChildItem -Path $FolderName | Where-Object { $_.Name -match "^\d" } | Sort-Object Name
@@ -60,24 +58,53 @@ $sharedFilesPre = Get-ChildItem -Path $PreSharedFolder -Filter *.md | Where-Obje
 Write-Host $OutputFolder\$bookName.pdf
 Write-Host $BookDefinitionFile
 Write-Host "Print Date = " $printDate
+$temporaryFiles = @()
 
-foreach ($item in $filteredFilesAndFolders) {
-    if ($item.PSIsContainer) {
-        $indexItems = Get-ChildItem -Path $item.FullName -Filter index.md 
+    foreach ($item in $filteredFilesAndFolders) {
+        if ($item.PSIsContainer) {
+            $indexItems = Get-ChildItem -Path $item.FullName -Filter index.md 
 
-        if ($indexItems.Count -eq 0) {
-            Write-Warning "The sub folder $($item.FullName) does not contain an index.md file."
+            if ($indexItems.Count -eq 0) {
+                Write-Warning "The sub folder $($item.FullName) does not contain an index.md file."
+            }
+            else {
+                $filteredFiles += $indexItems
+            }
+            $subSectionFiles = @()
+            $subSectionFiles = Get-ChildItem -Path $item.FullName -Filter *.md | Where-Object { $_.Name -match "^\d" } | Sort-Object Name
+            foreach ($subSectionItem in $subSectionFiles) {
+                $path = Join-Path  $item.FullName  ("." + $subSectionItem.Name).ToString()
+                $folderName = $item.FullName
+                # Some Debug here Write-Host $path
+                $content = Get-Content $subSectionItem.FullName -Raw
+                # Replace image paths
+                $updatedContent = [regex]::Replace($content, $imagePattern, {
+                    param($match)
+                    $altText = $match.Groups[1].Value
+                    $oldPath = $match.Groups[2].Value
+                    $fileName = [System.IO.Path]::GetFileName($oldPath)
+                    return "![${altText}](${folderName}/images/$fileName)"
+                })
+                $updatedContent = [regex]::Replace($updatedContent, $sectionPattern, {
+                    param($match)
+                    $newSectionLevel = "#" + $match.Value
+                    return "${newSectionLevel}"
+                })
+                # $updatedContent | ForEach-Object {
+                #     $_ -replace '^#{1,6}', '#$0'
+                # } | Set-Content $path
+                $updatedContent  | Set-Content $path
+
+            }
+
+            $processedSubSectionFiles = Get-ChildItem -Path $item.FullName -Filter *.md | Where-Object { $_.Name -match "^\.\d" } | Sort-Object Name
+            $temporaryFiles += $processedSubSectionFiles
+            $filteredFiles += $processedSubSectionFiles
+
+        } else {
+            $filteredFiles += $item
         }
-        else {
-            $filteredFiles += $indexItems
-        }
-
-        $filteredFiles += Get-ChildItem -Path $item.FullName -Filter *.md | Where-Object { $_.Name -match "^\d" } | Sort-Object Name
-
-    } else {
-        $filteredFiles += $item
     }
-}
 
 # # Generate the LaTeX output when you need to debug the LaTeX input 
 # # For example when using some illegal characters
@@ -94,19 +121,27 @@ foreach ($item in $filteredFilesAndFolders) {
 # $filteredFiles.FullName `
 # $sharedFilesPost.FullName
 
-&pandoc --toc --standalone `
---metadata date=$printDate `
---template $PSScriptRoot\templates\eisvogel.tex `
--o $OutputFolder\$bookName.pdf `
-$BookDefinitionFile `
-$sharedFilesPre.FullName `
-$filteredFiles.FullName `
-$sharedFilesPost.FullName"
+    &pandoc --toc --standalone `
+    --metadata date=$printDate `
+    --template $PSScriptRoot\templates\eisvogel.tex `
+    -o $OutputFolder\$bookName.pdf `
+    $BookDefinitionFile `
+    $sharedFilesPre.FullName `
+    $filteredFiles.FullName `
+    $sharedFilesPost.FullName
+
+    # Clean up temporary files
+    foreach ($tempFile in $temporaryFiles) {
+        if (Test-Path -Path $tempFile.FullName) {
+            Remove-Item -Path $tempFile.FullName -Force
+        }
+    }   
 
     Set-Location $location
     $end = Get-Date
     Write-Host "Generating the book $bookName took " ($end - $start).
 }
+
 
 
 function Find-ForBooks {
