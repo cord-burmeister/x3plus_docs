@@ -45,8 +45,10 @@ $filteredFiles = @()
 # Regex pattern to match Markdown image syntax
 $imagePattern = '!\[(.*?)\]\((.*?)\)'
 $sectionPattern ='(?ms)^#{1,6}'
+$admonitionPattern = '(?m)^!!!\s*(\w+)\s+(.*?)\r?\n((?:^(?!\s*$).*\r?\n)*)'
 
-# Get files and filter those starting with a number
+
+# Get files and directories and filter those starting with a number
 $filteredFilesAndFolders = Get-ChildItem -Path $FolderName | Where-Object { $_.Name -match "^\d" } | Sort-Object Name
 
 # Get files and filter those starting with a number for the shared folder
@@ -77,23 +79,32 @@ $temporaryFiles = @()
                 $folderName = $item.FullName
                 # Some Debug here Write-Host $path
                 $content = Get-Content $subSectionItem.FullName -Raw
+                $updatedContent = [regex]::Replace($content, $admonitionPattern, {
+                    param($match)
+                    $type = $match.Groups[1].Value
+                    $title = $match.Groups[2].Value
+                    $body = $match.Groups[3].Value.Trim()
+                    #Write-Host "`n::: {$type}`n**$title**`n$body`n:::`n`n"
+                    return "`n::: $type`n**$title**`n$body`n:::`n`n"
+                })
                 # Replace image paths
-                $updatedContent = [regex]::Replace($content, $imagePattern, {
+                $updatedContent2 = [regex]::Replace($updatedContent, $imagePattern, {
                     param($match)
                     $altText = $match.Groups[1].Value
                     $oldPath = $match.Groups[2].Value
                     $fileName = [System.IO.Path]::GetFileName($oldPath)
                     return "![${altText}](${folderName}/images/$fileName)"
                 })
-                $updatedContent = [regex]::Replace($updatedContent, $sectionPattern, {
+                $updatedContent3 = [regex]::Replace($updatedContent2, $sectionPattern, {
                     param($match)
                     $newSectionLevel = "#" + $match.Value
                     return "${newSectionLevel}"
                 })
+
                 # $updatedContent | ForEach-Object {
                 #     $_ -replace '^#{1,6}', '#$0'
                 # } | Set-Content $path
-                $updatedContent  | Set-Content $path
+                $updatedContent3  | Set-Content $path
 
             }
 
@@ -102,10 +113,24 @@ $temporaryFiles = @()
             $filteredFiles += $processedSubSectionFiles
 
         } else {
-            $filteredFiles += $item
+            $path = Join-Path  $item.DirectoryName  ("." + $item.Name).ToString()
+            $content = Get-Content $item.FullName -Raw
+            $updatedContent = [regex]::Replace($content, $admonitionPattern, {
+                param($match)
+                $type = $match.Groups[1].Value
+                $title = $match.Groups[2].Value
+                $body = $match.Groups[3].Value.Trim()
+                #Write-Host "`n::: {$type}`n**$title**`n$body`n:::`n`n"
+                return "`n::: $type`n**$title**`n$body`n:::`n`n"
+            })
+            $updatedContent  | Set-Content $path
+            #$filteredFiles += $item
         }
     }
 
+    $processedSectionFiles = Get-ChildItem -Path $FolderName -Filter *.md | Where-Object { $_.Name -match "^\.\d" } | Sort-Object Name
+    $temporaryFiles += $processedSectionFiles
+    $filteredFiles += $processedSectionFiles
 # # Generate the LaTeX output when you need to debug the LaTeX input 
 # # For example when using some illegal characters
 # &pandoc --toc --standalone `
@@ -123,7 +148,10 @@ $temporaryFiles = @()
 
     &pandoc --toc --standalone `
     --metadata date=$printDate `
+    --from markdown+fenced_divs `
     --template $PSScriptRoot\templates\eisvogel.tex `
+    --lua-filter $PSScriptRoot\templates\admonition.lua `
+    --pdf-engine=xelatex `
     -o $OutputFolder\$bookName.pdf `
     $BookDefinitionFile `
     $sharedFilesPre.FullName `
@@ -133,9 +161,10 @@ $temporaryFiles = @()
     # Clean up temporary files
     foreach ($tempFile in $temporaryFiles) {
         if (Test-Path -Path $tempFile.FullName) {
-            Remove-Item -Path $tempFile.FullName -Force
+            # TODO Remove-Item -Path $tempFile.FullName -Force
         }
     }   
+#    --filter pandoc-latex-environment `
 
     Set-Location $location
     $end = Get-Date
@@ -150,7 +179,7 @@ function Find-ForBooks {
         Recursively processes folders to generate books from markdown and YAML definitions.
 
     .DESCRIPTION
-        Finds all subfolders and YAML book definition files in the specified folder, 
+        Finds all sub-folders and YAML book definition files in the specified folder, 
         and calls Convert-Book for each book definition found. 
         Also processes folders in sorted order, allowing for nested book structures.
 

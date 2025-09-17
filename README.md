@@ -40,6 +40,7 @@ choco install mkdocs -y
 choco install python3 -y
 pip install mkdocs-material
 pip install mkdocs-literate-nav
+pip install mkdocs-git-revision-date-localized-plugin
 ```
 
 ### Install required tools on Ubuntu
