@@ -162,7 +162,7 @@ $temporaryFiles = @()
     # Clean up temporary files
     foreach ($tempFile in $temporaryFiles) {
         if (Test-Path -Path $tempFile.FullName) {
-            # TODO Remove-Item -Path $tempFile.FullName -Force
+            Remove-Item -Path $tempFile.FullName -Force
         }
     }   
 #    --filter pandoc-latex-environment `
