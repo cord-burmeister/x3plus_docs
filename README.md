@@ -8,7 +8,7 @@ This is the source for a collection of booklets which describe the journey explo
 
 ## Build the books
 
-### Install required tools on Windows
+### Install required tools for PDF generation on Windows
 
 To generate the books as PDF the following tools are required.
 
@@ -31,7 +31,7 @@ GenerateBooks.ps1
 
 ## Build the Mkdocs web site
 
-### Install required tools on Windows
+### Install required tools for mkdocs on Windows
 
 To run the Website generation locally install the following tools.
 
@@ -41,15 +41,6 @@ choco install python3 -y
 pip install mkdocs-material
 pip install mkdocs-literate-nav
 pip install mkdocs-git-revision-date-localized-plugin
-```
-
-### Install required tools on Ubuntu
-
-To run the Website generation locally install the following tools.
-
-``` bash
-sudo apt install mkdocs python3-pip
-pip3 install mkdocs-material
 ```
 
 Then the website can run locally with
