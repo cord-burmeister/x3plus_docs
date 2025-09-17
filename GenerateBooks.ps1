@@ -156,7 +156,8 @@ $temporaryFiles = @()
     $BookDefinitionFile `
     $sharedFilesPre.FullName `
     $filteredFiles.FullName `
-    $sharedFilesPost.FullName
+    $sharedFilesPost.FullName `
+    $PSScriptRoot\CHANGELOG.md
 
     # Clean up temporary files
     foreach ($tempFile in $temporaryFiles) {
