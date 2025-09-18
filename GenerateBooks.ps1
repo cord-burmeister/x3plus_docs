@@ -18,8 +18,6 @@
     Description for a parameter in param definition section. Each parameter requires a separate description. The name in the description and the parameter section must match. 
 #>
 
-
-
 function Convert-Book {
     param (
         [string] $FolderName,
@@ -35,6 +33,8 @@ $printDate = Get-Date -Format "yyyy-MM-dd"
 
 Set-Location $FolderName
 
+$saveFolderName = $FolderName
+
 $bookName = $BookDefinitionFile
 $bookName = $bookName.Replace(".yaml", "").Replace("latex-metadata-", "")
 $bookName = Split-Path -Path $bookName -Leaf
@@ -46,7 +46,6 @@ $filteredFiles = @()
 $imagePattern = '!\[(.*?)\]\((.*?)\)'
 $sectionPattern ='(?ms)^#{1,6}'
 $admonitionPattern = '(?m)^!!!\s*(\w+)\s+(.*?)\r?\n((?:^(?!\s*$).*\r?\n)*)'
-
 
 # Get files and directories and filter those starting with a number
 $filteredFilesAndFolders = Get-ChildItem -Path $FolderName | Where-Object { $_.Name -match "^\d" } | Sort-Object Name
@@ -128,9 +127,7 @@ $temporaryFiles = @()
         }
     }
 
-    $processedSectionFiles = Get-ChildItem -Path $FolderName -Filter *.md | Where-Object { $_.Name -match "^\.\d" } | Sort-Object Name
-    $temporaryFiles += $processedSectionFiles
-    $filteredFiles += $processedSectionFiles
+
 # # Generate the LaTeX output when you need to debug the LaTeX input 
 # # For example when using some illegal characters
 # &pandoc --toc --standalone `
@@ -159,13 +156,18 @@ $temporaryFiles = @()
     $sharedFilesPost.FullName `
     $PSScriptRoot\CHANGELOG.md
 
+    # Write-Warning "$saveFolderName : The book $bookName has been created."
+    $processedSectionFiles = Get-ChildItem -Path $saveFolderName -Filter *.md | Where-Object { $_.Name -match "^\.\d" } | Sort-Object Name
+    $temporaryFiles += $processedSectionFiles
+    $filteredFiles += $processedSectionFiles
+
     # Clean up temporary files
     foreach ($tempFile in $temporaryFiles) {
         if (Test-Path -Path $tempFile.FullName) {
+            # Write-Host "Removing temporary file: $($tempFile.FullName)"
             Remove-Item -Path $tempFile.FullName -Force
         }
     }   
-#    --filter pandoc-latex-environment `
 
     Set-Location $location
     $end = Get-Date
@@ -237,7 +239,6 @@ if (-Not (Test-Path -Path $sharedPathPost)) {
     Write-Error "The folder path '$sharedPathPost' does not exist."
     exit 1
 }
-
 
 $OutputFolder = "$PSScriptRoot\output"
 if (-Not (Test-Path -Path $OutputFolder)) {
