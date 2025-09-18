@@ -2,6 +2,9 @@
 
 In this chapter i describe the infrastructure i used during the journey.
 
+!!! note "Personal scope"
+    This chapter describe my environment which very specific, but can be a sample how suitable certain hardware is.
+
 ## Computer Hardware
 
 Desktop

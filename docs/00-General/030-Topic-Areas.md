@@ -2,6 +2,9 @@
 
 This chapter contains a list of topics that are relevant to the project. The topics are organized into autonomy categories, and each category contains a list of subtopics. The topics are not exhaustive, but they provide a good starting point for further exploration.
 
+!!! note "This journey will never end"
+    We build the project step by step and selecting topics is currently based on my experience.
+
 ## Topics overview
 
 <!--- This mindmap is generated from the code below. It is not meant to be edited directly. --->

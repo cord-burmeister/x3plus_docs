@@ -2,6 +2,10 @@
 
 This document provides a technical overview of the ROS 2 architecture, detailing its fundamental design patterns, layers, and components. It covers the high-level architectural design and the interactions between different parts of the system.
 
+!!! tip "This is only a high level introduction"
+    This chapter covers only very high level the concepts of ROS 2. There are a series of good introduction books which are a good first learning start.
+
+
 ## Architectural Principles
 
 ROS 2 represents a complete redesign of the original Robot Operating System framework, addressing limitations in the original design while incorporating modern software engineering practices. The architecture adheres to the following key principles:

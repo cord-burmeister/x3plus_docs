@@ -4,6 +4,9 @@ In recent years, the field of robotics has seen unprecedented growth, driven by 
 
 This project aims to have a environment to explore and learn in the world of robotics.
 
+!!! note "This journey will never end"
+    Be aware that robotics is an area of so many topics to discover, explore, understand, implement and integrate that you are never done.
+
 The motivation behind this project is the following:
 
 * **Education and Learning**: Robotics is an interdisciplinary field that combines engineering, computer science, and mathematics. This project provides an opportunity to explore these domains in a hands-on manner.

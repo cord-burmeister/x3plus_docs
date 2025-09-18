@@ -8,12 +8,10 @@ output:
 
 # Introduction
 
-The path wasn’t easy. 
+The path wasn’t easy.
 
 !!! note "This is a test"
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
-    nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
-    massa, nec semper lorem quam in massa.
+    Lorem ipsum dolor sit 
 
 !!! tip "This is a test"
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod

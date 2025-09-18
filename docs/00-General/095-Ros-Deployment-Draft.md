@@ -36,7 +36,7 @@ ROS 2 components are distributed through package repositories and can be install
 
 ## Conclusion
 
-THe project follows the distribution of the packages based on the idea of deployment cluster. This is that some deployment option does not to compile everything.
+The project follows the distribution of the packages based on the idea of deployment cluster. This is that some deployment option does not to compile everything.
 
 <!-- 
 ## Logical distribution
