@@ -10,7 +10,7 @@ Reasonable design, unique shape
 * The whole robot is made of green aluminum alloy material, which is safe and non-toxic, beautiful and durable.
 * Mecanum wheel and pendulum suspension chassis can make the robot adapt to uneven ground.
 
-![](images/Rosmaster-X3Plus.jpg)
+![Rosmaster](images/Rosmaster-X3Plus.jpg)
 
 ## Vision for a variant
 
@@ -41,7 +41,6 @@ skinparam componentStyle rectangle
 [pan_link] as pan_link
 [tilt_link] as tilt_link
 
-
 [pendulum_link] as pendulum_link
 
 base_footprint ..> base_link : base_joint (fixed)
@@ -66,14 +65,14 @@ tilt_link ..>  camera_link : camera_joint (fixed)
 
 ![x3plus_structure](images/x3plus_structure.png)
 
-
 ## Describe the Rosmaster 3 robot
 
 ### Copy the original files
 
 Adapting the model shall keep the structure and naming content while preparing the model description for simulation and extended description.
 
-> **Note:** Due to the fact, that the source provides an **urdf** file and a **xacro** file which are not consistent, the decision is to use the **xacro** files as the definition source. These needs adaption to integrate into the simulation.
+!!! note "URDF or XMACRO"
+    **Note:** Due to the fact, that the source provides an **urdf** file and a **xacro** file which are not consistent, the decision is to use the **xacro** files as the definition source. These needs adaption to integrate into the simulation.
 
 * Copy the files into local package master3_description
   * Using the urdf file from the urdf folder
@@ -81,19 +80,23 @@ Adapting the model shall keep the structure and naming content while preparing t
 * Adjust all internal references to the assets of the original package, especially for the meshes
 * Skip the xacro files
 
-> **Tip:** Iterating the description package is easier when only that package and dependencies are build.
+!!! tip "Build iterativly"
+    Iterating the description package is easier when only that package and dependencies are build.
 
 ``` bash
 colcon build --packages-up-to x3plus_description
 ```
 
+<!--
 ### General thoughts
 
 The xacro allows the parameterization of the robot model. Using arguments from outside the definition files allows to generate variants of the robot model. The plan is to adapt the following aspects of the robot.
 
 | Argument | Description |
 |----------|-------------|
-| mecanum | Have the ability to control if the base is using mecanum wheels or a classic diff drive behavior |
+| mecanum | Have the ability to control if the base is using mecanum wheels or a classic diff drive behavior | 
+
+-->
 
 ### New Launch file
 
@@ -113,7 +116,9 @@ Add a new declaration of an argument for the launch file
         ),
     )
 
-``` -->
+``` 
+
+-->
 
 Adjust the robot description generation with *xacro* application for the master xacro definition file considering the arguments.
 
@@ -128,7 +133,9 @@ Adjust the robot description generation with *xacro* application for the master 
 ``` python
     return LaunchDescription([
         declare_mecanum_arg,
-``` -->
+``` 
+
+-->
 <!-- 
 ### Adjusting the XACRO file
 
@@ -166,7 +173,8 @@ One major difference for the mecanum and non mecanum robot configuration is the 
             <inertial>
                 <origin xyz="1.9051E-06 -2.3183E-07 -0.00064079" rpy="0 0 0"/>
                 ....
-``` -->
+``` 
+-->
 
 ## Checking the Visual Model
 
@@ -174,10 +182,11 @@ One major difference for the mecanum and non mecanum robot configuration is the 
 
 ``` bash
 ros2 launch x3plus_description display_Xacro.launch.py
-``` -->
+``` 
+-->
 
 There is a launch file which is starting the **RViz2** application to view the urdf model.
- 
+
 ``` bash
 ros2 launch x3plus_description display_Xacro.launch.py
 ```
@@ -239,5 +248,3 @@ This will generate a gv (graphviz) and PDF file with the graph.
 [ROSMASTER X3 PLUS on Github](https://github.com/YahboomTechnology/ROSMASTERX3-PLUS)
 
 [Building a Pan-Tilt Mechanism](https://kamathsblog.com/building-a-pan-tilt-mechanism)
-
-

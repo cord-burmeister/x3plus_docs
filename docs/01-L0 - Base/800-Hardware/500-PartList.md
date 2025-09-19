@@ -2,9 +2,9 @@
 
 This is the part list of components required for the robot assembly.
 
-> ![attention](images/attention.png)
-> Be aware that the list changes when we evolve the base to further levels.
-> The list is not complete and will be updated when we add more components.
+!!! warning "Partlist is changeing over time"
+    Be aware that the list changes when we evolve the base to further levels.
+    The list is not complete and will be updated when we add more components.
 
 | Count | Item | Description | Link | Single Price |
 |-------|------|-------------|------|-------|

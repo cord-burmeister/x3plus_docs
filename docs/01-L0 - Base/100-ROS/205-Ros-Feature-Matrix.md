@@ -4,6 +4,9 @@ One of the biggest learnings in the usage of ROS and ROS 2 is to keep track of t
 
 This is the approach to keep track of the findings. Due to the fact that i am using *humble* as ROS 2 distribution and *harmonic* gazebo as simulation, some statements for other distributions are based on documentation not experience.
 
+!!! note "Experience feedback"
+    This is a collection of the experience which is collected during the exploration. This is not a nearly complete overview.
+
 ## Feature Matrix ROS
 
 The following table is a list of topis which i discovered as interesting packages or features which have  distribution dependent support.

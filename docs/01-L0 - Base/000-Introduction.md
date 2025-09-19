@@ -21,7 +21,7 @@ Due to the fact tht this is a private project, the focus is on the hardware and 
 * Describe the hardware structure
 * Install the controller
 
-
+<!-- 
 !!! note "This is a test"
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
     nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
@@ -35,4 +35,6 @@ Due to the fact tht this is a private project, the focus is on the hardware and 
 !!! warning "This is a test"
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
     nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
-    massa, nec semper lorem quam in massa.
+    massa, nec semper lorem quam in massa. 
+    
+    -->

@@ -1,5 +1,8 @@
 # Mechanical Assembly
 
+!!! note "The robot configuration deviates from the vendor version"
+This description is not the configuration of the full vendor version
+
 1. **Prepare the Base Frame and Chassis**
    - Begin by assembling the aluminum alloy base plate and frame. This forms the structural foundation for the robot.
    - [ROSMASTER X3 PLUS Installation Video](https://www.youtube.com/watch?v=JVqzgYPJW0M) walks through the initial chassis setup, including mounting brackets and alignment tips.

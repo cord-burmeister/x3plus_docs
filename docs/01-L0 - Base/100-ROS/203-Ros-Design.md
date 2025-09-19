@@ -1,5 +1,8 @@
 # ROS Concepts and Design Patterns
 
+!!! tip "This is only a high level introduction"
+    This chapter covers only very high level the concepts of ROS 2. There are a series of good introduction books which are a good first learning start.
+
 ## Overview
 
 Robot Operating System (ROS) 2 is a significant evolution from ROS 1, aiming to improve what wasn’t optimal in the original framework. Let’s delve into some key design aspects:

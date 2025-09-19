@@ -8,6 +8,9 @@ Links represent physical objects such as robot parts, sensors, or any other comp
 Each link has intrinsic properties like mass, friction coefficients, and a pose (position and orientation) relative to the world frame.
 Links are connected to each other via joints, forming a Gazebo model. A model is essentially a collection of interconnected links.
 
+!!! tip "Important concept"
+    The concept of the links and TF2 is a very basic concept which must be understood. Make you familiar with it.
+
 ## Frame IDs
 
 A frame ID (also known as a coordinate frame) defines a reference coordinate system within the simulation.
