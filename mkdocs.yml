@@ -12,6 +12,7 @@ plugins:
   - git-revision-date-localized  
 theme:
   name: material
+  logo: assets/logo.svg
   palette:
     primary: 'indigo'
     accent: 'indigo'
