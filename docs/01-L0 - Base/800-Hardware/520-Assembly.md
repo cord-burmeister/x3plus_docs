@@ -28,10 +28,17 @@ This description is not the configuration of the full vendor version
    - [15.4 [ROSMASTER X3 Plus--Robotic arm control course ...](https://www.youtube.com/watch?v=pj7kQqIleY0) demonstrates how to mechanically install and test the robotic arm.
  -->
 
-![](images/structure-exploded.png)
+![structure-exploded](images/structure-exploded.png)
 
 ## Tips for Efficient Assembly
 
 - Use thread-locking compound on screws to prevent loosening from vibration.
 - Label wires during installation to simplify debugging later.
 - Test each subsystem (motors, sensors, arm) independently before full integration.
+
+
+## Assemble the Jetson Nano
+
+Ensure that you mount the Jetson Controller in the correct orientation with the distance screws.
+
+![Mount-Jetson](images/Mount-Jetson.png)
