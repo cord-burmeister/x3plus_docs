@@ -127,21 +127,25 @@ $temporaryFiles = @()
         }
     }
 
+    # Write-Warning "$saveFolderName : The book $bookName has been created."
+    $processedSectionFiles = Get-ChildItem -Path $saveFolderName -Filter *.md | Where-Object { $_.Name -match "^\.\d" } | Sort-Object Name
+    $temporaryFiles += $processedSectionFiles
+    $filteredFiles += $processedSectionFiles
 
-# # Generate the LaTeX output when you need to debug the LaTeX input 
-# # For example when using some illegal characters
-# &pandoc --toc --standalone `
-# --metadata date=$printDate `
-# --template $PSScriptRoot\templates\eisvogel.tex `
-# -o $OutputFolder\$bookName.tex `
-# $BookDefinitionFile `
-# $filteredFiles.FullName `
-# $sharedFiles.FullName
+    # # Generate the LaTeX output when you need to debug the LaTeX input 
+    # # For example when using some illegal characters
+    # &pandoc --toc --standalone `
+    # --metadata date=$printDate `
+    # --template $PSScriptRoot\templates\eisvogel.tex `
+    # -o $OutputFolder\$bookName.tex `
+    # $BookDefinitionFile `
+    # $filteredFiles.FullName `
+    # $sharedFiles.FullName
 
-# Write-Host $BookDefinitionFile `
-# $sharedFilesPre.FullName `
-# $filteredFiles.FullName `
-# $sharedFilesPost.FullName
+    # Write-Host $BookDefinitionFile `
+    # $sharedFilesPre.FullName `
+    # $filteredFiles.FullName `
+    # $sharedFilesPost.FullName
 
     &pandoc --toc --standalone `
     --metadata date=$printDate `
@@ -156,11 +160,6 @@ $temporaryFiles = @()
     $sharedFilesPost.FullName `
     $PSScriptRoot\CHANGELOG.md
 
-    # Write-Warning "$saveFolderName : The book $bookName has been created."
-    $processedSectionFiles = Get-ChildItem -Path $saveFolderName -Filter *.md | Where-Object { $_.Name -match "^\.\d" } | Sort-Object Name
-    $temporaryFiles += $processedSectionFiles
-    $filteredFiles += $processedSectionFiles
-
     # Clean up temporary files
     foreach ($tempFile in $temporaryFiles) {
         if (Test-Path -Path $tempFile.FullName) {
@@ -173,8 +172,6 @@ $temporaryFiles = @()
     $end = Get-Date
     Write-Host "Generating the book $bookName took " ($end - $start).
 }
-
-
 
 function Find-ForBooks {
     <#
