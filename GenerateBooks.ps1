@@ -136,7 +136,7 @@ $temporaryFiles = @()
 
     &pandoc --toc --standalone `
     --metadata date=$printDate `
-    --from markdown+fenced_divs `
+    --from markdown+fenced_divs+header_attributes `
     --citeproc `
     --bibliography $PSScriptRoot\refs.bib `
     --csl $PSScriptRoot\templates\apa.csl `
@@ -144,6 +144,7 @@ $temporaryFiles = @()
     --lua-filter $PSScriptRoot\templates\admonition.lua `
     --pdf-engine=xelatex `
     --top-level-division=chapter `
+    --metadata link-citations=true `
     -o $OutputFolder\$bookName.pdf `
     $BookDefinitionFile `
     $sharedFilesPre.FullName `
