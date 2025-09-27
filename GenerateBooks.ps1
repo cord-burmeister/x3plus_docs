@@ -112,6 +112,7 @@ $temporaryFiles = @()
             $filteredFiles += $processedSubSectionFiles
 
         } else {
+            $fileName = ("." + $item.Name).ToString()
             $path = Join-Path  $item.DirectoryName  ("." + $item.Name).ToString()
             $content = Get-Content $item.FullName -Raw
             $updatedContent = [regex]::Replace($content, $admonitionPattern, {
@@ -124,41 +125,32 @@ $temporaryFiles = @()
             })
             $updatedContent  | Set-Content $path
             #$filteredFiles += $item
+
+            
+            # Write-Warning "$saveFolderName : The book $bookName has been created."
+            $processedSectionFiles = Get-ChildItem -Path $saveFolderName -Filter $fileName|  Sort-Object Name
+            $temporaryFiles += $processedSectionFiles
+            $filteredFiles += $processedSectionFiles
         }
     }
-
-    # Write-Warning "$saveFolderName : The book $bookName has been created."
-    $processedSectionFiles = Get-ChildItem -Path $saveFolderName -Filter *.md | Where-Object { $_.Name -match "^\.\d" } | Sort-Object Name
-    $temporaryFiles += $processedSectionFiles
-    $filteredFiles += $processedSectionFiles
-
-    # # Generate the LaTeX output when you need to debug the LaTeX input 
-    # # For example when using some illegal characters
-    # &pandoc --toc --standalone `
-    # --metadata date=$printDate `
-    # --template $PSScriptRoot\templates\eisvogel.tex `
-    # -o $OutputFolder\$bookName.tex `
-    # $BookDefinitionFile `
-    # $filteredFiles.FullName `
-    # $sharedFiles.FullName
-
-    # Write-Host $BookDefinitionFile `
-    # $sharedFilesPre.FullName `
-    # $filteredFiles.FullName `
-    # $sharedFilesPost.FullName
 
     &pandoc --toc --standalone `
     --metadata date=$printDate `
     --from markdown+fenced_divs `
+    --citeproc `
+    --bibliography $PSScriptRoot\refs.bib `
+    --csl $PSScriptRoot\templates\apa.csl `
     --template $PSScriptRoot\templates\eisvogel.tex `
     --lua-filter $PSScriptRoot\templates\admonition.lua `
     --pdf-engine=xelatex `
+    --top-level-division=chapter `
     -o $OutputFolder\$bookName.pdf `
     $BookDefinitionFile `
     $sharedFilesPre.FullName `
+    $PSScriptRoot\CHANGELOG.md `
     $filteredFiles.FullName `
-    $sharedFilesPost.FullName `
-    $PSScriptRoot\CHANGELOG.md
+    $sharedFilesPost.FullName
+    
 
     # Clean up temporary files
     foreach ($tempFile in $temporaryFiles) {

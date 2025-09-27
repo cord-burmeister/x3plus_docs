@@ -10,6 +10,10 @@ plugins:
       nav_file: SUMMARY.md
   - search
   - git-revision-date-localized  
+  - bibtex:
+      bib_file: "refs.bib"
+      csl_file: "templates/apa.csl"
+
 theme:
   name: material
   logo: assets/logo.svg
@@ -23,4 +27,5 @@ markdown_extensions:
 - admonition
 - pymdownx.details
 - pymdownx.superfences
+- footnotes  
 

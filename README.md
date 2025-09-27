@@ -41,6 +41,7 @@ choco install python3 -y
 pip install mkdocs-material
 pip install mkdocs-literate-nav
 pip install mkdocs-git-revision-date-localized-plugin
+pip install mkdocs-bibtex
 ```
 
 Then the website can run locally with
