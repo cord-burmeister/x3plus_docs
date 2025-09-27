@@ -82,6 +82,13 @@ In our example, the blob finder subscribes to image messages and publishes ball 
 
 Remember to choose message types that align with your application’s semantics when building real systems
 
+## Books
+
+Here are some good introduction books for a ROS 2 introduction.
+
+* This book will help you understand why you should use Robot Operating System (ROS), clarifying what ROS is and isn’t. It focuses on applied learning  [@renard2024ros2]
+* This edition was published in June 2025 and includes updated content for ROS 2 Jazzy, Rolling, and Kilted distributions [@rico2025ros2]
+
 ## References
 
 [ROS Concepts and Design Patterns](https://osrf.github.io/ros2multirobotbook/ros2_design_patterns.html)

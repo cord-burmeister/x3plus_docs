@@ -11,13 +11,10 @@ and this project adheres to [Calendar Versioning](https://calver.org/).
 
 - Adding book structure and powershell script to generate PDF.
 - Adding support for mkdocs and github pages
-- Starting with the general layout and 2 level structure.
+- Starting with the general layout and 2 level structure of chapters.
 - Adding initial content for the general introduction chapter.
 - Adding initial content for the level 0 chapter.
-
 
 ### Changed
 
 ### Removed
-
- 

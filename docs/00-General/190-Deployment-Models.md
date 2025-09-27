@@ -67,9 +67,8 @@ These models can be combined or adapted depending on the application requirement
 
 ## Mapping of repositories to deployment models
 
-|Name | Hardware | Environment | Role | Deployment Models |  Repos |
+|Name | Hardware | Environment | Role | Deployment |  Repos |
 |-----|----------|-------------|------|----|---|
-|autonomous robot | ma3jet | Native Ubuntu | Robot Controller | Totally Autonomous| x3plus </br> x3plus_bot </br> x3plus_driver |
-| | small-laptop | Native Ubuntu | Remote Cockpit | Autonomous with Teleoperation | x3plus  |
+| robot | ma3jet | Native Ubuntu | Robot Controller | Totally Autonomous| x3plus </br> x3plus_bot </br> x3plus_driver |
+| cockpit | small-laptop | Native Ubuntu | Remote Cockpit | Teleoperation | x3plus_pit  |
 |simulation desktop | B760 | Native Ubuntu | Development Machine | Simulation | x3plus </br> x3plus_gz  |
-

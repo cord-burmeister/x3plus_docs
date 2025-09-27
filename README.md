@@ -4,7 +4,7 @@ This is the project documentation for the x3plus project.
 
 ## Introduction
 
-This is the source for a collection of booklets which describe the journey exploring the robot space.
+This is the source for a collection of booklets or alternatively a web site which describe the journey exploring the robot space.
 
 ## Build the books
 
@@ -51,5 +51,7 @@ mkdocs serve
 ```
 
 ## Github Pages
+
+The web site of the project can be found under
 
 [Github Pages](https://cord-burmeister.github.io/x3plus_docs/)

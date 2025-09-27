@@ -14,6 +14,7 @@ The project is structured in the following repositories
 |------|-------|-------------|
 | [x3plus_setup](https://github.com/cord-burmeister/x3plus_setup) | Setup Scripts | This repository contains the scripts to setup workspace for the different deployment roles |
 | [x3plus](https://github.com/cord-burmeister/x3plus) | Core Logic | This repository contains the packages of the control logic of the robot |
+| [x3plus_pit](https://github.com/cord-burmeister/x3plus_pit) | Cockpit Logic | eleoperations cockpit packages for the robot project |
 | [x3plus_driver](https://github.com/cord-burmeister/x3plus_driver) | Hardware driver | This repository contains the driver for the robot |
 | [x3plus_bot](https://github.com/cord-burmeister/x3plus_bot) | Hardware wrapper | This repository contains the ROS nodes to wrap the hardware components to the ROS system |
 | [x3plus_gz](https://github.com/cord-burmeister/x3plus_gz) | Gazebo Simulation | This repository contains the ROS and Gazebo simulation nodes to the ROS system |
@@ -35,6 +36,10 @@ skinparam rectangle {
   BackgroundColor<<Simulation>> #FADBD8
   BackgroundColor<<Hardware>> #D5F5E3
   BorderColor black
+}
+
+rectangle "Cockpit" <<Application>> {
+  [x3plus_pit]
 }
 
 rectangle "Application Layer" <<Application>> {
@@ -64,11 +69,11 @@ rectangle "Setup" <<Setup>> {
 
 ' Connections between layers
 [x3plus] -down-> [ROS topics / interfaces]
+[x3plus_pit] -down-> [ROS topics / interfaces]
 
 [ROS topics / interfaces] -down-> [x3plus_gz]
 [ROS topics / interfaces] -down-> [x3plus_bot]
 [x3plus_bot] -down-> [x3plus_driver]
- 
 
 @enduml
 ```
