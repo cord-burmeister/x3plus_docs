@@ -175,9 +175,9 @@ We focus there on the objects which are part of a navigation use case.
 
 One possibility to reduce computer load is not to start the Client UI. This is archived by starting the simulation headless with the following launch switch modifying the argument for the simulation in the launch file.
 
-``` python
- gz_args = f"--headless-rendering -s -v 4 -r {world}" if eval(headless) else f"-r {world}"
- ```
+``` bash
+ gz_args = "--headless-rendering -s -v 4 -r {world}" if eval(headless) else "-r {world}"
+```
 
 ### Results
 
