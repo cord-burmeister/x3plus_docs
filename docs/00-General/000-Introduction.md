@@ -10,22 +10,6 @@ output:
 
 The path wasn’t easy.
 
-<!-- 
-!!! note "This is a test"
-    Lorem ipsum dolor sit 
-
-!!! tip "This is a test"
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
-    nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
-    massa, nec semper lorem quam in massa.
-
-!!! warning "This is a test"
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
-    nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
-    massa, nec semper lorem quam in massa. 
-    -->
-
-
 Robots have a great fascination, but turning that fascination into a reality was a journey filled with challenges, learning curves, and moments of triumph. This book is a chronicle of that journey—a guide through the world of robotics, from the first spark of an idea to the intricate dance of hardware and software.
 
 ## The Collective Spark – From ROS Community to Living Hardware
