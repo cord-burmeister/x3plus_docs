@@ -151,3 +151,9 @@ The `x3plus_setup` project consists of the following components:
 
 - The setup scripts are designed to work on Ubuntu 22.04 or later. Compatibility with other operating systems is not guaranteed.
 - Some dependencies may require manual installation if they are not available through the package manager.
+
+## References
+
+[Organizing Files and Folders Inside a ROS 2 Package](https://automaticaddison.com/organizing-files-and-folders-inside-a-ros-2-package/)
+
+[Naming and Organizing Packages in Large ROS 2 Projects](https://automaticaddison.com/naming-and-organizing-packages-in-large-ros-2-projects/)

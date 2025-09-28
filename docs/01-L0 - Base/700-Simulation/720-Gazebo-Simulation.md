@@ -99,12 +99,16 @@ This project is implementing the guide [ros_gz_project_template](https://github.
 !!! warning **Note:** 
     We are using a specific and unsupported Gazebo version with ROS 2, you  need to set the GZ_VERSION environment variable, like:
 
-``` bash
+``` bash 
 export GZ_VERSION=harmonic
 ```
 
-!!! note **Note:** 
+!!! note **Note:**
     Best you add this statement in the .bashrc file.
+
+### Map ROS 2 and Gazebo topics/ messages using a bridge
+
+![gz-ros-bridge](images/gz-ros-bridge.png)
 
 ### Accessing Simulation Assets
 
@@ -139,3 +143,7 @@ The installation is well documented in the web portal.
 [Why Ignition Gazebo — gym-ignition documentation - GitHub Pages.](https://robotology.github.io/gym-ignition/master/why/why_ignition_gazebo.html)
 
 [Open Source Robotics: Getting Started with Gazebo and ROS 2](https://www.infoq.com/articles/ros-2-gazebo-tutorial/)
+
+[ROS 2 and Gazebo Integration Best Practices](http://download.ros.org/downloads/roscon/2022/ROS%202%20and%20Gazebo%20Integration%20Best%20Practices.pdf)
+
+[Video RosCon23: ROS 2 and Gazebo Integration Best Practices](https://vimeo.com/showcase/9954564/video/767127300)
