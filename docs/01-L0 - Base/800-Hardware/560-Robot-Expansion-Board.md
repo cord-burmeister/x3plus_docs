@@ -135,3 +135,5 @@ If you don't require braille display support (which is the case for most robotic
 [Bind PCB port devices](http://www.yahboom.net/study/ROS-Driver-Board)
 
 [Tutorial on how to write basic udev rules in Linux](https://linuxconfig.org/tutorial-on-how-to-write-basic-udev-rules-in-linux)
+
+[How to View Kernel Messages in Linux | dmesg Command](https://www.geeksforgeeks.org/linux-unix/how-to-use-the-dmesg-command-on-linux/)
