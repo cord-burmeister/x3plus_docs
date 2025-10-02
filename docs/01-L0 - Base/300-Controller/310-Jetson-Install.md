@@ -196,8 +196,45 @@ To check the connection ping from the host to the Jetson ip address
  ping -4 ma3jet
 PING  (192.168.178.183) 56(84) bytes of data.
 64 bytes from ma3jet.fritz.box (192.168.178.183): icmp_seq=1 ttl=64 time=0.870 ms
-
 ```
+
+## Persistent Regulatory Domain Setup
+
+When the wifi connection is not compatible with the regulatory domain then the settings must be persisted.
+
+!!! note "This chapter describes the german region"
+     Adjust the language to you needs
+
+Create a systemd service:
+
+``` bash
+sudo nano /etc/systemd/system/set-regdom.service
+```
+
+Add this content:
+
+``` bash
+ini
+[Unit]
+Description=Set regulatory domain
+After=network.target
+
+[Service]
+Type=oneshot
+ExecStart=/sbin/iw reg set DE
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
+```
+
+Enable the service:
+
+``` bash
+sudo systemctl enable set-regdom.service
+```
+
+This ensures your Jetson Nano always boots with the correct regulatory domain, avoiding channel mismatches with your. 
 
 ## Install the NVIDIA SDKs
 
