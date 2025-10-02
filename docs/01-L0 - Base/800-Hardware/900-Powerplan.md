@@ -53,6 +53,4 @@ PDB -down-> Motors : 4 channels via AM2857 drivers\n12V\n1.2A per channel
 
 ![Power Plan](images/PowerPlan.png)
 
-
-USB Ports
-4 × USB 3.2 Type-A ports (dual stacked): Host mode only, each stack supports up to 3A VBUS output.
+USB Ports 4 × USB 3.2 Type-A ports (dual stacked): Host mode only, each stack supports up to 3A VBUS output.
