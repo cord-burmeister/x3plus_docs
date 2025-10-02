@@ -21,19 +21,19 @@ In this description we follow the headless installation flow. Therefore you need
 
 1. DOWNLOAD and INSTALL
 
-Installation on Ubuntu Ubuntu:
+    Installation on Ubuntu Ubuntu:
 
-``` bash
-sudo apt install ./sdkmanager_[version]-[build#]_amd64.deb
-```
+    ``` bash
+    sudo apt install ./sdkmanager_[version]-[build#]_amd64.deb
+    ```
 
 2. LAUNCH:
 
-From a terminal window, launch SDK Manager with the command:
+    From a terminal window, launch SDK Manager with the command:
 
-``` bash
-sdkmanager
-```
+    ``` bash
+    sdkmanager
+    ```
 
 ## Hardware Setup
 
@@ -147,6 +147,13 @@ To see list of available WiFi hotspots (<WiFiSSID>)
 ``` bash
 nmcli d wifi list
 ```
+
+!!! tip Regulatory domain mismatch
+    If your system is set to the wrong country code, it may not scan all channels.
+    Set it with (for Germany as an example):
+    ``` bash
+    sudo iw reg set DE
+    ```
 
 To see a list of all saved connections
 
