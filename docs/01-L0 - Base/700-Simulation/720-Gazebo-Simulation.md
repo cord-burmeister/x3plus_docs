@@ -42,8 +42,6 @@ In summary, Ignition Gazebo builds upon the lessons learned from Gazebo Classic,
 !!! note "Note"
     This project is targeting the LTS Version **Gazebo Harmonic** and not the recommended Humble version.
 
-
-
 ## Roadmap
 
 The recommended installation for new users is the use of binary packages available for the platform to use:
@@ -68,8 +66,8 @@ If the desired platform is not listed above or if a particular feature in a give
 
 Setting up the the robot simulation *gazebo* for ROS 2.
 
-!!! warning **Note:**
-    Please read the following chapter carefully. Based on the decision of the gazebo community to the start a new major version of gazebo and to handle also a rename of the new gazebo version, picking a gazebo version has a lot of dependencies to the setup of an ROS and gazebo integration.
+!!! warning "**Note:**"
+     Please read the following chapter carefully. Based on the decision of the gazebo community to the start a new major version of gazebo and to handle also a rename of the new gazebo version, picking a gazebo version has a lot of dependencies to the setup of an ROS and gazebo integration.
 
 See the [Migration Guide](https://gazebosim.org/docs/harmonic/migration_from_ignition)
 
@@ -91,7 +89,7 @@ Different branches of this repository support different combinations of ROS 1, R
 
 This project is implementing the guide [ros_gz_project_template](https://github.com/gazebosim/ros_gz_project_template), how to use the ros_gz_project_template to create a (recommended) structured workspace or improve your existing workspace for your ROS 2 and Gazebo projects. This template offers a consistent layout, automated build process, and integration with both ROS 2 and Gazebo, enabling you to focus on developing your robotics applications.
 
-!!! note **Note:**
+!!! note "Note:"
     This template is incorporated already in the packages.
 
 ### Define gazebo version

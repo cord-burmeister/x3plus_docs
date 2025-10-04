@@ -6,13 +6,16 @@
 
 This robot control board is not only a ROS car driver board, but also a STM32 core development board. It integrates STM32 core control unit, MPU9250 nine-axis attitude sensor and other components, and provides four-way encoder motor, four-way PWM servo, serial bus servo, RGB light bar and other peripheral interfaces. It can communicate and supply power with main control boards such as Raspberry Pi, JETSON series boards, and industrial computers.
 
+!!! warning "CH341 Driver Support"
+      Be aware that the Control Board requires a CH341 USB Serial driver in the kernel, which is not the default for the Jetson Orin Nano. See the Controller chapter to modify the kernel
+
 ## Features
 
-On board 9-axis IMU sensor, STM32 core control unit.
-It can drive 4-channel encoder motors, 4-channel PWM servos and serial bus servos.
-Support CAN bus communication, USB serial communication, SBUS bus communication.
-It can be used for Raspberry Pi, JETSON series boards, industrial computers.
-Support 12V voltage input and multiple power supply interface output, refuse to use a safe and stable power supply system.
+* On board 9-axis IMU sensor, STM32 core control unit.
+* It can drive 4-channel encoder motors, 4-channel PWM servos and serial bus servos.
+* Support CAN bus communication, USB serial communication, SBUS bus communication.
+* It can be used for Raspberry Pi, JETSON series boards, industrial computers.
+* Support 12V voltage input and multiple power supply interface output, refuse to use a safe and stable power supply system.
 
 ## Bind PCB port devices
 

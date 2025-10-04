@@ -2,6 +2,8 @@
 
 Breakdown of ROS Robot Control Board V3.0 current-handling capabilities based on Yahboom’s specs and typical usage:
 
+## Robot Board
+
 ### Power Input
 
 - **Input Voltage:** 12V DC (via T-type barrel connector)
@@ -22,11 +24,68 @@ Breakdown of ROS Robot Control Board V3.0 current-handling capabilities based on
 
 - The STM32 MCU and onboard logic draw minimal current (~50–100mA), so most of your current budget goes to motors and host board.
 
+## Jetson Orin Nano
+
+The Orin Nano Devkit board can provide 36 watts total to the system.
+
+ng a 1TB drive with a power draw of 2.5A at 3.3V.
+
 ### Safety Tips
 
 - Use a **12V/5A power adapter** if you're driving multiple motors and powering a Jetson board.
 - Always check **polarity** and **cable gauge** — especially for XT60-to-barrel or DC-to-Type-C adapters.
 - If you're using a battery, ensure it can safely deliver **peak current** (e.g., 5–6A bursts).
+
+<!-- 
+
+``` plantuml
+@startuml images/PowerPlan
+
+title Robot Power Plan
+
+ skinparam class {
+ BackgroundColor PaleGreen
+ ArrowColor SeaGreen
+ BorderColor SpringGreen
+ BackgroundColor<<PowerSource>> Wheat
+ BorderColor<<PowerSource>> Tomato
+ }
+ skinparam stereotypeCBackgroundColor YellowGreen
+ skinparam stereotypeCBackgroundColor<< PowerSource >> DimGray
+
+hide circle
+
+class Battery <<PowerSource>> {
+__output__
+V : 12
+A : 2
+} 
+
+class Controller  {
+__output__
+V : 12
+A : 2
+} 
+
+class Jetson  {
+__Max provide__
+V : 12
+A : 3
+__Consume__
+V : 12
+A : 3
+} 
+
+Battery -down-> Controller
+
+Controller -down-> Jetson
+@enduml
+
+```
+
+-->
+
+
 
 <!-- 
 

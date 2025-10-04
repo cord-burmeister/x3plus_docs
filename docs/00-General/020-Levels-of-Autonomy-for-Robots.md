@@ -19,8 +19,6 @@
 
 The levels of autonomy are designed to describe how autonomous a robot is in executing a task. They tie back to the attention a human supervisor has to provide the robot or a team of robots while they are executing the task.
 
-[@doe2020]
-
 ### Level 1 Autonomy (hands off)
 
 A human needs to be always within line of sight of the robot. For example, in the agricultural automation system shown in the picture below, a human must always follow a robot as it goes through the field. Simple reactive tasks such as keeping the robot in the center of the row or spraying when a weed is detected are automated. A widely deployed example of autonomous systems at this level of autonomy are GPS guided tractors. Here, the human is required to be in the cab to take care of unforeseen events, but the tractor drives itself on pre-programmed paths.
