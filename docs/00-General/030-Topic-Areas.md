@@ -20,7 +20,7 @@ This chapter contains a list of topics that are relevant to the project. The top
 ++[#lightblue] General
 ++[#lightblue] Level 0 - Manual
 ++[#lightblue] Level 1 - Hands Off
-++[#lightblue] Level 2 - Eyes Off
+' ++[#lightblue] Level 2 - Eyes Off
 ' ++[#lightblue] Level 3 - Mind Off
 ' ++[#lightblue] Level 4 - Monitoring Off
 ' ++[#lightblue] Level 5 - Development Off
@@ -44,9 +44,11 @@ This section provides an overview of the general topics that are relevant to the
 +[#azure] General
 ++[#lightblue] Motivation
 ++[#lightblue] Autonomy levels taxonomy
-++[#FFBBCC] Infrastructure
-++[#FFBBCC] ROS 1/2 ?
-++[#FFBBCC] Robot Selection
+++[#lightblue] ROS 2 Architecture
+++[#lightblue] Repository Structure
+++[#lightblue] Infrastructure
+++[#lightblue] Deployment Models
+' ++[#FFBBCC] Robot Selection
 
 @endmindmap
 ```
@@ -57,7 +59,7 @@ This section provides an overview of the general topics that are relevant to the
 ## Level 0 Topics
 
 This section provides an overview of the topics that are relevant to the Level 0 autonomy category. These topics are focused on manual control and basic robot operation.
-
+ 
 <!---
 
 ```plantuml
@@ -66,13 +68,21 @@ This section provides an overview of the topics that are relevant to the Level 0
 
 +[#azure]  Level 0 - Manual
 ++[#lightblue] Base
-+++[#FFBBCC] ROS
-++++[#FFBBCC] Transformation
-++++[#FFBBCC] URDF Model
-+++[#FFBBCC] Simulation
-++++[#FFBBCC] Add Objects
-++++[#FFBBCC] Handling Worlds
-+++[#FFBBCC] Hardware
++++[#lightblue] ROS
+++++[#lightblue] Concepts and Design
+++++[#lightblue] Transformation
+++++[#lightblue] URDF Model
++++[#lightblue] Simulation
+++++[#lightblue] Simulator Overview
+++++[#lightblue] Simulate the Robot
+++++[#lightblue] Handling Worlds
++++[#lightblue] Controller
+++++[#lightblue] Overview
+++++[#lightblue] Installation and Setup
++++[#lightblue] Hardware
+++++[#lightblue] Part List
+++++[#lightblue] Mechanical Assembly
+++++[#lightblue] Wiring
 ++[#lightgreen] Teleoperations 
 
 @endmindmap
@@ -81,9 +91,11 @@ This section provides an overview of the topics that are relevant to the Level 0
 
 ![topics](images/level0_topics.png)
 
+<!-- 
 ## Level 1 Topics
 
-This section provides an overview of the topics that are relevant to the Level 1 autonomy category. These topics are focused on hands-off robot operation and autonomy.
+This section provides an overview of the topics that are relevant to the Level 1 autonomy category. These topics are focused on hands-off robot operation and autonomy. 
+-->
 
 <!---
 
@@ -107,12 +119,14 @@ This section provides an overview of the topics that are relevant to the Level 1
 @endmindmap
 ```
 --->
-
+<!-- 
 ![topics](images/level1_topics.png)
+ -->
 
+<!-- 
 ## Level 2 Topics
 
-This section provides an overview of the topics that are relevant to the Level 2 autonomy category. These topics are focused on more advanced robot operation and autonomy.
+This section provides an overview of the topics that are relevant to the Level 2 autonomy category. These topics are focused on more advanced robot operation and autonomy. -->
 
 <!---
 
@@ -132,5 +146,7 @@ This section provides an overview of the topics that are relevant to the Level 2
 @endmindmap
 ```
 --->
+<!-- 
+![topics](images/level2_topics.png) 
 
-![topics](images/level2_topics.png)
+-->
