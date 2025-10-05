@@ -16,7 +16,7 @@ titlepage: true
 # the background color of the title page. The color value must be given as an HTML hex color like D8DE2C without the leading number sign (#). 
 # When specifying the color in YAML, it is advisable to enclose it in quotes like so titlepage-color: "D8DE2C" 
 # to avoid the truncation of the color (e.g. 000000 becoming 0).
-titlepage-color: "FF7F7F"
+titlepage-color: "add8e6"
 # the text color of the title page
 titlepage-text-color: "FFFFFF"
 # the color of the rule on the top of the title page
