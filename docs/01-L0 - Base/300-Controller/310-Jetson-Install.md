@@ -241,7 +241,42 @@ Enable the service:
 sudo systemctl enable set-regdom.service
 ```
 
-This ensures your Jetson Nano always boots with the correct regulatory domain, avoiding channel mismatches with your. 
+This ensures your Jetson Nano always boots with the correct regulatory domain, avoiding channel mismatches with your region.
+
+<!-- 
+
+## Disable IP V6 on the Jetson
+
+Disable via sysctl (temporary or persistent)
+
+### Step 1: Test it temporarily
+
+``` bash
+sudo sysctl -w net.ipv6.conf.all.disable_ipv6=1
+sudo sysctl -w net.ipv6.conf.default.disable_ipv6=1
+``` 
+
+### Step 2: Make it persistent Edit the config file:
+
+``` bash
+sudo nano /etc/sysctl.conf
+```
+
+Add these lines at the end:
+
+``` Code
+net.ipv6.conf.all.disable_ipv6 = 1
+net.ipv6.conf.default.disable_ipv6 = 1
+```
+
+Then apply:
+
+``` bash
+sudo sysctl -p
+``` 
+
+-->
+
 
 ## Install the NVIDIA SDKs
 
