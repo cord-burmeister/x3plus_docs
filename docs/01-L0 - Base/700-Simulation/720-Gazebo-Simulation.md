@@ -94,14 +94,14 @@ This project is implementing the guide [ros_gz_project_template](https://github.
 
 ### Define gazebo version
 
-!!! warning **Note:**
+!!! warning Note:
     We are using a specific and unsupported Gazebo version with ROS 2, you  need to set the GZ_VERSION environment variable, like:
 
 ``` bash
 export GZ_VERSION=harmonic
 ```
 
-!!! note **Note:**
+!!! note Note:
     Best you add this statement in the .bashrc file.
 
 ### Map ROS 2 and Gazebo topics/ messages using a bridge
