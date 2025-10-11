@@ -4,11 +4,11 @@ This is the project documentation for the x3plus project.
 
 ## Introduction
 
-This is the source for a collection of booklets which describe the journey exploring the robot space.
+This is the source for a collection of booklets or alternatively a web site which describe the journey exploring the robot space.
 
 ## Build the books
 
-### Install required tools on Windows
+### Install required tools for PDF generation on Windows
 
 To generate the books as PDF the following tools are required.
 
@@ -29,6 +29,29 @@ Use the powershell script to generate the PDFs
 GenerateBooks.ps1
 ```
 
+## Build the Mkdocs web site
+
+### Install required tools for mkdocs on Windows
+
+To run the Website generation locally install the following tools.
+
+``` CMD
+choco install mkdocs -y
+choco install python3 -y
+pip install mkdocs-material
+pip install mkdocs-literate-nav
+pip install mkdocs-git-revision-date-localized-plugin
+pip install mkdocs-bibtex
+```
+
+Then the website can run locally with
+
+``` bash
+mkdocs serve
+```
+
 ## Github Pages
+
+The web site of the project can be found under
 
 [Github Pages](https://cord-burmeister.github.io/x3plus_docs/)
