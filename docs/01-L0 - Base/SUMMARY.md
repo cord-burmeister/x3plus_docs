@@ -1,6 +1,5 @@
 
 * 00*.md
-* 1*.md
 * [ROS](100-ROS/)
 * [Controller](300-Controller/)
 * [Simulation](700-Simulation/)

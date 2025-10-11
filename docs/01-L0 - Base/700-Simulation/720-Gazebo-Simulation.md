@@ -35,7 +35,7 @@ Let's delve into the comparison between **Gazebo Ignition** and **Gazebo Classic
    - Worlds and models that work in Gazebo can be easily ported to Ignition³.
 
 6. **Plugin Support**:
-   - **Ignition Gazebo** supports various plugin types from Gazebo Classic³.
+   - **Ignition Gazebo** supports various plugin types from Gazebo Classic.
 
 In summary, Ignition Gazebo builds upon the lessons learned from Gazebo Classic, providing a more modular and extensible framework for robotic simulations. The transition from Classic to Ignition is part of a new era for Gazebo, and the community has played a crucial role in its success.
 
@@ -66,7 +66,7 @@ If the desired platform is not listed above or if a particular feature in a give
 
 Setting up the the robot simulation *gazebo* for ROS 2.
 
-!!! warning "**Note:**"
+!!! warning "Note:"
      Please read the following chapter carefully. Based on the decision of the gazebo community to the start a new major version of gazebo and to handle also a rename of the new gazebo version, picking a gazebo version has a lot of dependencies to the setup of an ROS and gazebo integration.
 
 See the [Migration Guide](https://gazebosim.org/docs/harmonic/migration_from_ignition)
