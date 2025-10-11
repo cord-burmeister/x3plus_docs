@@ -13,6 +13,6 @@ jobs:
           python-version: 3.x
       - run: pip install mkdocs mkdocs-material
       - run: pip install mkdocs-literate-nav
-      - run: pip install mkdocs-bibtex
       - run: pip install mkdocs-git-revision-date-localized-plugin
+      - run: pip install mkdocs-bibtex
       - run: mkdocs gh-deploy --force
