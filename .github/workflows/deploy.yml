@@ -15,4 +15,5 @@ jobs:
       - run: pip install mkdocs-literate-nav
       - run: pip install mkdocs-git-revision-date-localized-plugin
       - run: pip install mkdocs-bibtex
+      - run: pip install pypandoc_binary
       - run: mkdocs gh-deploy --force
