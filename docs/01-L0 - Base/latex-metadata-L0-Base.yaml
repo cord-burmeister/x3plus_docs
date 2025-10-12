@@ -3,7 +3,7 @@
 # This template defines some new variables to control the appearance of the resulting PDF document. The existing template variables from pandoc 
 # are all supported and their documentation can be found in the pandoc manual
 # https://pandoc.org/MANUAL.html#variables-for-latex
-title:  'MARVIN - The Project'
+title:  'MARVIN - The Level 0 Base'
 subtitle: "A journey to explore robots"
 date: "2017-02-20"
 author: ["Cord Burmeister", "Community"]

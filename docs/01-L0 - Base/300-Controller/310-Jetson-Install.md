@@ -35,6 +35,50 @@ In this description we follow the headless installation flow. Therefore you need
     sdkmanager
     ```
 
+## How to Enter Force Recovery Mode on Jetson Orin Nano
+
+1. Locate the J14 Header Pins
+On the Jetson Orin Nano Developer Kit, find the J14 header—this is a row of pins near the edge of the board.
+
+![DevKit Recovery Mode](images/700px-Orin_Nano_devkit_recovery_mode.png)
+
+You’ll need to connect Pin 9 (FC REC) and Pin 10 (GND) using a jumper wire or a small jumper cap.
+
+2. Connect to Host PC
+Use a USB-C cable to connect the Jetson Orin Nano to your Ubuntu host PC (Ubuntu 20.04 or 22.04 is recommended).
+
+Make sure the host has NVIDIA SDK Manager installed.
+
+3. Power On the Device
+With the jumper in place, power on the Jetson Orin Nano.
+
+The device should now boot into Force Recovery Mode.
+
+4. Verify Recovery Mode
+On your host PC, open a terminal and run:
+
+``` bash
+lsusb
+```
+
+You should see a line like:
+
+``` Code
+Bus XXX Device XXX: ID 0955:7f21 NVIDIA Corp.
+```
+
+This confirms the Jetson is in recovery mode.
+
+## Why Use Recovery Mode?
+
+Required for flashing JetPack via SDK Manager
+
+Useful for recovering from boot failures
+
+Allows firmware updates and low-level access
+
+If you’re using a custom carrier board or a third-party enclosure, the pin layout might differ slightly—so always check the board’s documentation.
+
 ## Hardware Setup
 
 Connect NVIDIA Jetson Orin Nano Developer Kit to the PC with a USB Type-C cable.
@@ -347,49 +391,3 @@ Build cuda_12.6.r12.6/compiler.34714021_0
 [Jetson Orin Nano Developer Kit User Guide - Software Setup](https://developer.nvidia.com/embedded/learn/jetson-orin-nano-devkit-user-guide/software_setup.html)
 
 [Tips - SSD + Docker](https://www.jetson-ai-lab.com/tips_ssd-docker.html)
-
-------------------------------
-<!-- 
-## Backup
-
-Connecting a Jetson device to a screen depends on whether you're going for a **direct display setup** or a **headless (remote) configuration**. Here's a breakdown of both approaches:
-
-### **Direct Display Setup (HDMI Monitor)**
-
-If you have a monitor with HDMI input, you can connect it directly to your Jetson Nano or Orin Nano:
-
-1. **Use the HDMI Port**: Plug an HDMI cable from the Jetson to your monitor.
-2. **Power Up the Jetson**: Use a 5V/4A power supply via the barrel jack or micro-USB (depending on your model).
-3. **Insert the MicroSD Card**: Flash it with JetPack OS using [NVIDIA SDK Manager](https://developer.nvidia.com/embedded/jetpack) or download a pre-built image.
-4. **Boot and Configure**: On first boot, you'll be prompted to set up the system.
-
-For a full walkthrough, the [NVIDIA Jetson Orin Nano Super COMPLETE Setup Guide ...](https://www.youtube.com/watch?v=-PjMC0gyH9s) walks you through everything from flashing the OS to first boot and running AI models. -->
-
-<!-- 
-#### Option 1: **Serial Console via USB**
-
-- Connect Jetson to your laptop using a micro-USB cable.
-- Use a serial terminal app like `screen` or `minicom` to access the console.
-
-[HEADLESS SETUP - Jetson Nano](https://www.youtube.com/watch?v=Ch1NKfER0oM) explains how to do this on both Ubuntu and Windows hosts.
-
-#### Option 2: **Remote Desktop (VNC or NoMachine)**
-
-- Install `xrdp` or `NoMachine` on Jetson.
-- Connect over LAN or Wi-Fi from your laptop.
-
-[L-2 Jetson Nano Headless | Use Jetson Nano Remotely](https://www.youtube.com/watch?v=7-WMvmWVxJQ) shows how to set up remote desktop access using VNC.
-
-[NoMachine - Jetson Remote Desktop on Windows](https://www.youtube.com/watch?v=OYrSADrtSag) is great if you're using Windows and want a smoother GUI experience.
-
-#### Option 3: **Direct Wi-Fi Connection**
-
-- Configure Jetson as a Wi-Fi hotspot or connect it to your laptop directly.
-
-[Direct Wi Fi Connection of Jetson Nano to Laptop](https://www.youtube.com/watch?v=0Jik1I_E2HY) demonstrates how to set up a peer-to-peer Wi-Fi link without a router.
-
----
-
-### Bonus: First-Time Setup Tips
-
-If you're just getting started, [Nvidia Jetson Nano Tutorial | First look with Artificial ...](https://www.youtube.com/watch?v=JOxXQ-3U8Zs) gives a great overview of hardware setup, SD card flashing, and running basic AI demos. -->
