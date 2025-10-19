@@ -1,0 +1,2304 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="DIY robot projects as learning journey">
+      
+      
+        <meta name="author" content="Cord Burmeister">
+      
+      
+        <link rel="canonical" href="https://cord-burmeister.github.io/x3plus_docs/01-L0%20-%20Base/700-Simulation/721-Simulate-Robot/">
+      
+      
+        <link rel="prev" href="../720-Gazebo-Simulation/">
+      
+      
+        <link rel="next" href="../727-Simple-Worlds/">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.22">
+    
+    
+      
+        <title>Simulate the robot - X3Plus Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.84d31ad4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#simulate-the-robot" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="X3Plus Documentation" class="md-header__button md-logo" aria-label="X3Plus Documentation" data-md-component="logo">
+      
+  <img src="../../../assets/logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            X3Plus Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Simulate the robot
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/cord-burmeister/x3plus_docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="X3Plus Documentation" class="md-nav__button md-logo" aria-label="X3Plus Documentation" data-md-component="logo">
+      
+  <img src="../../../assets/logo.svg" alt="logo">
+
+    </a>
+    X3Plus Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/cord-burmeister/x3plus_docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    General
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            General
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../00-Overview/000-Introduction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    000 Introduction
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../00-Overview/010-Motivation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Motivation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../00-Overview/020-Levels-of-Autonomy-for-Robots/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Levels of Autonomy for Robots
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../00-Overview/030-Topic-Areas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Topics
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../00-Overview/090-ROS2-Architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ROS 2 Architecture
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../00-Overview/100-Repository-Structure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Repository structure
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../00-Overview/110-Infrastructure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Infrastructure
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../00-Overview/190-Deployment-Models/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Deployment Models
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../00-Overview/900-Books/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Book and Structure
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    L0 Base
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            L0 Base
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../000-Introduction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    000 Introduction
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    ROS
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            ROS
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../100-ROS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ROS
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../100-ROS/202-Ros/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ROS the Robot Operating Platform
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../100-ROS/203-Ros-Design/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ROS Concepts and Design Patterns
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../100-ROS/205-Ros-Feature-Matrix/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Feature availability Matrix
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../100-ROS/211-Links/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Links
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../100-ROS/212-TF2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    TF2
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../100-ROS/250-Describe-Robot_model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Describe a robot model
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../100-ROS/260-Robot-Description/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Describe the robot
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../100-ROS/270-Improve-URDF/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Improve the URDF
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Controller
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            Controller
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../300-Controller/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Controller
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../300-Controller/300-JetsonModels/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    NVIDIA Jetson Models
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../300-Controller/305-Jetson/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Jetson Orin Nano Super
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../300-Controller/310-Jetson-Install/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Installing Jetson
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../300-Controller/320-Build-Kernel/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Build Kernel of Jetson Orin Nano
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../300-Controller/350-Development-Setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Setup for Development
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Simulation
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            Simulation
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Simulation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../720-Gazebo-Simulation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Simulating the robot
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Simulate the robot
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Simulate the robot
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#adding-movement" class="md-nav__link">
+    <span class="md-ellipsis">
+      Adding Movement
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#friction-in-gazebo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Friction in Gazebo
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#setting-friction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setting friction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#adjust-launch-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      Adjust Launch File
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#starting-the-simulation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Starting the simulation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#check-the-model-in-the-simulation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Check the model in the simulation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Check the model in the simulation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#operate-mobile-base-inside-the-simulation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Operate mobile base inside the simulation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#operate-mobile-base-with-simulation-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      Operate mobile base with simulation commands
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../727-Simple-Worlds/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Worlds
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../728-First-Worlds/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Adding Worlds
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Hardware
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            Hardware
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../800-Hardware/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Hardware assembly
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../800-Hardware/500-PartList/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Part List
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../800-Hardware/520-Assembly/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Mechanical Assembly
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../800-Hardware/550-Wiring/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Wiring the Robot
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../800-Hardware/560-Robot-Expansion-Board/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Yahboom ROS robot control board with STM32F103RCT6 IMU
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_6" id="__nav_3_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Final Setup
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_6">
+            <span class="md-nav__icon md-icon"></span>
+            Final Setup
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../900-Final-Setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Final Setup
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../900-Final-Setup/901-HW-Status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Status HW Components
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../900-Final-Setup/950-Workspace-Setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Setup the environments
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Basic Teleoperations
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Basic Teleoperations
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../02-L0%20-%20Teleoperations/000-Introduction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    000 Introduction
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Network
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            Network
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../02-L0%20-%20Teleoperations/100-Network/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Network Topics
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../02-L0%20-%20Teleoperations/100-Network/110-Network/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ROS 2 and Network
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../02-L0%20-%20Teleoperations/100-Network/111-WSL-Network/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    WSL and Network
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Input Devices
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            Input Devices
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../02-L0%20-%20Teleoperations/200-InputDevices/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Input Devcies
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../02-L0%20-%20Teleoperations/200-InputDevices/210-Keyboard/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Adding keyboard teleoperations
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../02-L0%20-%20Teleoperations/200-InputDevices/220-Joysticks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Adding joystick teleoperations
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#adding-movement" class="md-nav__link">
+    <span class="md-ellipsis">
+      Adding Movement
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#friction-in-gazebo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Friction in Gazebo
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#setting-friction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setting friction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#adjust-launch-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      Adjust Launch File
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#starting-the-simulation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Starting the simulation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#check-the-model-in-the-simulation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Check the model in the simulation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Check the model in the simulation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#operate-mobile-base-inside-the-simulation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Operate mobile base inside the simulation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#operate-mobile-base-with-simulation-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      Operate mobile base with simulation commands
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="simulate-the-robot">Simulate the robot</h1>
+<p>In this chapter we adapt the URDF file description, so that the simulation can handle robot in the relevant aspects.</p>
+<div class="admonition note">
+<p class="admonition-title"><strong>Note:</strong></p>
+<p>Due to the fact, that the Drive system plugin for gazebo has an implementation, but is missing odometry and tf publishing as of April 2024 based on the issue <a href="https://github.com/gazebosim/gz-sim/issues/1619">Add TF publishing in MecanumDrive system</a>, two modes are implemented in the <em>URDF</em> model and in the <em>gazebo</em> simulation. The mecanum drive and the diff drive behavior.</p>
+</div>
+<h2 id="adding-movement">Adding Movement</h2>
+<div class="admonition note">
+<p class="admonition-title"><strong>Note:</strong></p>
+<p>To improve the development cycle, only build the simulation packages with <em>colcon build --packages-up-to master3_bringup</em></p>
+</div>
+<p>We add a plugin in the urdf file at the end before the end robot tag, for the mecanum case.</p>
+<div class="highlight"><pre><span></span><code><span class="w">  </span><span class="nt">&lt;xacro:if</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;${mecanum}&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;gazebo&gt;</span>
+<span class="w">        </span><span class="nt">&lt;plugin</span>
+<span class="w">        </span><span class="na">filename=</span><span class="s">&quot;ignition-gazebo-mecanum-drive-system&quot;</span>
+<span class="w">        </span><span class="na">name=</span><span class="s">&quot;ignition::gazebo::systems::MecanumDrive&quot;</span><span class="nt">&gt;</span>
+<span class="w">        </span><span class="nt">&lt;front_left_joint&gt;</span>front_left_joint<span class="nt">&lt;/front_left_joint&gt;</span>
+<span class="w">        </span><span class="nt">&lt;front_right_joint&gt;</span>front_right_joint<span class="nt">&lt;/front_right_joint&gt;</span>
+<span class="w">        </span><span class="nt">&lt;back_left_joint&gt;</span>back_left_joint<span class="nt">&lt;/back_left_joint&gt;</span>
+<span class="w">        </span><span class="nt">&lt;back_right_joint&gt;</span>back_right_joint<span class="nt">&lt;/back_right_joint&gt;</span>
+<span class="w">        </span><span class="nt">&lt;wheel_separation&gt;</span>0.17<span class="nt">&lt;/wheel_separation&gt;</span>
+<span class="w">        </span><span class="nt">&lt;wheelbase&gt;</span>0.17<span class="nt">&lt;/wheelbase&gt;</span>
+<span class="w">        </span><span class="nt">&lt;wheel_radius&gt;</span>0.042<span class="nt">&lt;/wheel_radius&gt;</span>
+<span class="w">        </span><span class="nt">&lt;min_acceleration&gt;</span>-5<span class="nt">&lt;/min_acceleration&gt;</span>
+<span class="w">        </span><span class="nt">&lt;max_acceleration&gt;</span>5<span class="nt">&lt;/max_acceleration&gt;</span>
+<span class="w">        </span><span class="nt">&lt;odom_publish_frequency&gt;</span>10<span class="nt">&lt;/odom_publish_frequency&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/plugin&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/gazebo&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/xacro:if&gt;</span>
+</code></pre></div>
+<p>Similar definition is done not the <em>NON</em> mecanum case.</p>
+<div class="highlight"><pre><span></span><code><span class="w"> </span><span class="nt">&lt;xacro:unless</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;${mecanum}&quot;</span><span class="nt">&gt;</span>
+<span class="w">        </span><span class="nt">&lt;gazebo&gt;</span>
+<span class="w">            </span><span class="nt">&lt;plugin</span>
+<span class="w">            </span><span class="na">filename=</span><span class="s">&quot;ignition-gazebo-diff-drive-system&quot;</span>
+<span class="w">            </span><span class="na">name=</span><span class="s">&quot;ignition::gazebo::systems::DiffDrive&quot;</span><span class="nt">&gt;</span>
+<span class="w">            </span><span class="nt">&lt;left_joint&gt;</span>${ns}front_left_joint<span class="nt">&lt;/left_joint&gt;</span>
+<span class="w">            </span><span class="nt">&lt;right_joint&gt;</span>${ns}front_right_joint<span class="nt">&lt;/right_joint&gt;</span>
+<span class="w">            </span><span class="cm">&lt;!-- Lateral distance between left and right wheels --&gt;</span>
+<span class="w">            </span><span class="nt">&lt;wheel_separation&gt;</span>0.169<span class="nt">&lt;/wheel_separation&gt;</span>
+<span class="w">            </span><span class="cm">&lt;!-- Wheel radius --&gt;</span>
+<span class="w">            </span><span class="nt">&lt;wheel_radius&gt;</span>0.042<span class="nt">&lt;/wheel_radius&gt;</span>
+<span class="w">            </span><span class="nt">&lt;odom_publish_frequency&gt;</span>1<span class="nt">&lt;/odom_publish_frequency&gt;</span>
+<span class="w">            </span><span class="nt">&lt;max_linear_acceleration&gt;</span>1<span class="nt">&lt;/max_linear_acceleration&gt;</span>
+<span class="w">            </span><span class="nt">&lt;min_linear_acceleration&gt;</span>-1<span class="nt">&lt;/min_linear_acceleration&gt;</span>
+<span class="w">            </span><span class="nt">&lt;max_angular_acceleration&gt;</span>2<span class="nt">&lt;/max_angular_acceleration&gt;</span>
+<span class="w">            </span><span class="nt">&lt;min_angular_acceleration&gt;</span>-2<span class="nt">&lt;/min_angular_acceleration&gt;</span>
+<span class="w">            </span><span class="nt">&lt;max_linear_velocity&gt;</span>0.5<span class="nt">&lt;/max_linear_velocity&gt;</span>
+<span class="w">            </span><span class="nt">&lt;min_linear_velocity&gt;</span>-0.5<span class="nt">&lt;/min_linear_velocity&gt;</span>
+<span class="w">            </span><span class="nt">&lt;max_angular_velocity&gt;</span>1<span class="nt">&lt;/max_angular_velocity&gt;</span>
+<span class="w">            </span><span class="nt">&lt;min_angular_velocity&gt;</span>-1<span class="nt">&lt;/min_angular_velocity&gt;</span>
+<span class="w">          </span><span class="nt">&lt;/plugin&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/gazebo&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/xacro:unless&gt;</span>
+</code></pre></div>
+<p>We change the collision sections in all wheel links to a sphere, because the Mecanum controller is dependent on this collision model. This is a simplified geometry which models the ideal friction model.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;collision&gt;</span>
+<span class="w">    </span><span class="nt">&lt;origin</span><span class="w"> </span><span class="na">xyz=</span><span class="s">&quot;0 0 0&quot;</span><span class="w"> </span><span class="na">rpy=</span><span class="s">&quot;0 0 0&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;geometry&gt;</span>
+<span class="w">        </span><span class="nt">&lt;sphere&gt;</span>
+<span class="w">            </span><span class="nt">&lt;radius&gt;</span>0.042<span class="nt">&lt;/radius&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/sphere&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/geometry&gt;</span>
+<span class="nt">&lt;/collision&gt;</span>
+</code></pre></div>
+<p>We need also a adjustment of the friction parameter to mimic  the behavior of the mecanum wheels.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;gazebo</span><span class="w"> </span><span class="na">reference=</span><span class="s">&#39;back_left_wheel&#39;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;mu1&gt;</span>1<span class="nt">&lt;/mu1&gt;</span>
+<span class="w">    </span><span class="nt">&lt;mu2&gt;</span>0<span class="nt">&lt;/mu2&gt;</span>
+<span class="w">    </span><span class="nt">&lt;fdir1</span><span class="w"> </span><span class="na">expressed_in=</span><span class="s">&#39;base_footprint&#39;</span><span class="nt">&gt;</span>1<span class="w"> </span>1<span class="w"> </span>0<span class="nt">&lt;/fdir1&gt;</span>
+<span class="nt">&lt;/gazebo&gt;</span>
+</code></pre></div>
+<p>This has to be added to all wheels with different parameter.</p>
+<p>!!! note <strong>Note:</strong>
+     This configuration is adapted from the official example under <a href="https://github.com/gazebosim/gz-sim/blob/gz-sim8/examples/worlds/mecanum_drive.sdf">gz-sim/examples/worlds/mecanum_drive.sdf</a></p>
+<h2 id="friction-in-gazebo">Friction in Gazebo</h2>
+<p>There are several different types of friction that you can model. In the sdformat specification, the most common is the coefficient of friction. The coefficient of friction in version 1.7 of the sdformat is modeled as an ODE parameter with mu as the coefficient for the “first friction direction” and mu2 as the coefficient for the “second friction direction”. There is an additional parameter, fdir1 that can specify a specific primary friction direction relative to the link. Otherwise, it is modeled relative to the world.</p>
+<h2 id="setting-friction">Setting friction</h2>
+<p>To set the friction direction in Gazebo for <strong>mecanum wheels</strong>, we need to consider the unique behavior of these wheels. Mecanum wheels allow omnidirectional movement by using rollers set at an angle to the wheel's rotation axis. Each roller has its own direction of motion, which makes modeling their friction properties a bit challenging.</p>
+<p>Here's how you can approach it:</p>
+<ul>
+<li>Gazebo uses the <strong>Open Dynamics Engine (ODE)</strong> for physics simulation.</li>
+<li>ODE supports two friction coefficients: <code>mu</code> (static friction) and <code>mu2</code> (dynamic friction) ¹.</li>
+<li>By default, the friction directions corresponding to each coefficient are computed to be orthogonal to each other and the contact normal unit vector.</li>
+<li>If the <code>fdir1</code> parameter is not set, the first friction direction is computed from the component of the global X-axis that is orthogonal to the unit normal. The second friction direction is mutually orthogonal using a vector cross product.</li>
+<li>However, this approach doesn't work well for mecanum wheels because their link frame rotates as the wheel spins.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;surface&gt;</span>
+<span class="w">    </span><span class="nt">&lt;friction&gt;</span>
+<span class="w">        </span><span class="nt">&lt;ode&gt;</span>
+<span class="w">            </span><span class="nt">&lt;mu&gt;</span>1<span class="nt">&lt;/mu&gt;</span>
+<span class="w">            </span><span class="nt">&lt;mu2&gt;</span>0<span class="nt">&lt;/mu2&gt;</span>
+<span class="w">            </span><span class="nt">&lt;fdir1</span><span class="w"> </span><span class="na">ignition:expressed_in=</span><span class="s">&#39;chassis&#39;</span><span class="nt">&gt;</span>1<span class="w"> </span>-1<span class="w"> </span>0<span class="nt">&lt;/fdir1&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/ode&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/friction&gt;</span>
+<span class="w">    </span><span class="nt">&lt;bounce/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;contact/&gt;</span>
+<span class="nt">&lt;/surface&gt;</span>
+</code></pre></div>
+<p>This XML snippet describes the surface properties for a physics simulation. Let's break it down:</p>
+<ol>
+<li>
+<p><code>&lt;friction&gt;</code>: Specifies the friction properties.</p>
+<ul>
+<li><code>&lt;ode&gt;</code>: Indicates that the ODE (Open Dynamics Engine) physics engine is being used.<ul>
+<li><code>&lt;mu&gt;</code>: Coefficient of friction (static friction coefficient). A value of 1 means high friction.</li>
+<li><code>&lt;mu2&gt;</code>: Coefficient of dynamic friction. A value of 0 means no dynamic friction.</li>
+<li><code>&lt;fdir1&gt;</code>: Direction of friction force expressed in the chassis coordinate system. The values (1, -1, 0) indicate friction along the x and y axes, but no friction along the z axis.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><code>&lt;bounce&gt;</code>: Defines the bounce behavior when objects collide. It's not specified here, so the default behavior will apply.</p>
+</li>
+<li>
+<p><code>&lt;contact&gt;</code>: Specifies additional contact properties. Not detailed in this snippet.</p>
+</li>
+</ol>
+<p>Overall, this snippet provides information necessary for simulating interactions between objects with the specified surface properties.</p>
+<h2 id="adjust-launch-file">Adjust Launch File</h2>
+<p>The launch file <em>master3_drive.launch.py</em> will be extended with a handling of the command line parameter.</p>
+<div class="highlight"><pre><span></span><code>  <span class="n">mecanum</span> <span class="o">=</span> <span class="n">LaunchConfiguration</span><span class="p">(</span><span class="s2">&quot;mecanum&quot;</span><span class="p">)</span>
+    <span class="n">declare_mecanum_arg</span> <span class="o">=</span> <span class="n">DeclareLaunchArgument</span><span class="p">(</span>
+        <span class="s2">&quot;mecanum&quot;</span><span class="p">,</span>
+        <span class="n">default_value</span><span class="o">=</span><span class="s2">&quot;True&quot;</span><span class="p">,</span>
+        <span class="n">description</span><span class="o">=</span><span class="p">(</span>
+            <span class="s2">&quot;Whether to use mecanum drive controller (otherwise diff drive controller is used)&quot;</span><span class="p">,</span>
+        <span class="p">),</span>
+    <span class="p">)</span>
+</code></pre></div>
+<p>The parsing of the <em>xacro</em> model will be provided with the parameter of the model generation.</p>
+<div class="highlight"><pre><span></span><code> <span class="n">robot_description</span> <span class="o">=</span> <span class="n">Command</span><span class="p">(</span>
+    <span class="p">[</span>
+        <span class="n">PathJoinSubstitution</span><span class="p">([</span><span class="n">FindExecutable</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;xacro&quot;</span><span class="p">)]),</span>
+        <span class="s2">&quot; &quot;</span><span class="p">,</span>
+        <span class="n">PathJoinSubstitution</span><span class="p">(</span>
+            <span class="p">[</span>
+                <span class="n">FindPackageShare</span><span class="p">(</span><span class="s2">&quot;master3_description&quot;</span><span class="p">),</span>
+                <span class="s2">&quot;urdf&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;yahboomcar_X3.urdf.xacro&quot;</span><span class="p">,</span>
+            <span class="p">]</span>
+        <span class="p">),</span>
+        <span class="s2">&quot; mecanum:=&quot;</span><span class="p">,</span>
+        <span class="n">mecanum</span><span class="p">,</span>
+        <span class="s2">&quot; namespace:=&quot;</span><span class="p">,</span>
+        <span class="n">namespace</span><span class="p">,</span>
+    <span class="p">]</span>
+<span class="p">)</span>
+</code></pre></div>
+<p>Then pass it to the robot publisher as argument</p>
+<div class="highlight"><pre><span></span><code>   <span class="n">robot_state_publisher_node</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span>
+        <span class="n">package</span><span class="o">=</span><span class="s1">&#39;robot_state_publisher&#39;</span><span class="p">,</span>
+        <span class="n">executable</span><span class="o">=</span><span class="s1">&#39;robot_state_publisher&#39;</span><span class="p">,</span>
+        <span class="n">parameters</span><span class="o">=</span><span class="p">[{</span><span class="s1">&#39;robot_description&#39;</span><span class="p">:</span> <span class="n">robot_description</span><span class="p">}]</span>
+    <span class="p">)</span>
+</code></pre></div>
+<h2 id="starting-the-simulation">Starting the simulation</h2>
+<!-- I think this is gazebo harmonic and  -->
+<div class="admonition warning">
+<p class="admonition-title"><strong>Note:</strong></p>
+<p>As of developing the scenario the WSL from Windows does not support the ogre2 rendering engine. Therefore is always the Ogre Rendering engine used.</p>
+</div>
+<!-- For those that are not using the command line to start Ignition Gazebo, is editing ~/.ignition/gazebo/6/gui.config and change 
+<div class="highlight"><pre><span></span><code>//plugin<span class="o">[</span><span class="nv">filename</span><span class="o">=</span>MinimalScene<span class="o">]</span>/engine
+</code></pre></div>
+
+ from ogre2 to ogre. -->
+
+<p>We start the simulation in an empty world with the following command.</p>
+<div class="highlight"><pre><span></span><code>ros2<span class="w"> </span>launch<span class="w"> </span>master3_bringup<span class="w"> </span>master3_drive.launch.py
+</code></pre></div>
+<h2 id="check-the-model-in-the-simulation">Check the model in the simulation</h2>
+<h3 id="operate-mobile-base-inside-the-simulation">Operate mobile base inside the simulation</h3>
+<p>After spawning the model in the simulation and an empty world the following actions can trigger the drive logic</p>
+<ul>
+<li>Add the teleop UI in the simulation UI with <em>...</em>, search for <em>Teleop</em></li>
+<li>Scroll to the plugin UI</li>
+<li>Enter <em>/model/master3_drive/cmd_vel</em> as topic.</li>
+<li>Use buttons to move the mobile base</li>
+</ul>
+<p><img alt="model-in-gazebo" src="../images/model-in-gazebo.png" /></p>
+<h3 id="operate-mobile-base-with-simulation-commands">Operate mobile base with simulation commands</h3>
+<p>Commands can be send to the simulation to move the mobile base</p>
+<div class="highlight"><pre><span></span><code>gz<span class="w"> </span>topic<span class="w"> </span>-t<span class="w"> </span><span class="s2">&quot;/model/master3_drive/cmd_vel&quot;</span><span class="w"> </span>-m<span class="w"> </span>gz.msgs.Twist<span class="w"> </span>-p<span class="w"> </span><span class="s2">&quot;linear: {x: 0.5, y: 0.5}&quot;</span>
+
+gz<span class="w"> </span>topic<span class="w"> </span>-t<span class="w"> </span><span class="s2">&quot;/model/master3_drive/cmd_vel&quot;</span><span class="w"> </span>-m<span class="w"> </span>gz.msgs.Twist<span class="w"> </span>-p<span class="w"> </span><span class="s2">&quot;linear: {y: 0.5}, angular: {z: 0.2}&quot;</span>
+
+gz<span class="w"> </span>topic<span class="w"> </span>-t<span class="w"> </span><span class="s2">&quot;/model/master3_drive/cmd_vel&quot;</span><span class="w"> </span>-m<span class="w"> </span>gz.msgs.Twist<span class="w"> </span>-p<span class="w"> </span><span class="s2">&quot;linear: {x: 0, y: 0}, angular: {z: 0}&quot;</span>
+</code></pre></div>
+<h2 id="references">References</h2>
+<p><a href="http://sdformat.org/tutorials?tut=sdformat_urdf_extensions&amp;cat=specification&amp;">SDFormat extensions to URDF</a></p>
+<p><a href="https://roboticscasual.com/tutorial-ros2-launch-files-all-you-need-to-know/">Tutorial: ROS2 launch files – All you need to know</a></p>
+<p><a href="https://robotics.stackexchange.com/questions/27423/mecanum-simulation-possible-using-directional-friction">Mecanum simulation possible using directional friction?.</a></p>
+<p><a href="https://arxiv.org/pdf/1211.2323.pdf">Modelling of the motion of a Mecanum-wheeled vehicle - arXiv.org.</a></p>
+<p><a href="https://youtu.be/07nK9Dh-tZM">Simulate the Mecanum Wheel Robot in Gazebo Harmonic - ROS2 Jazzy Tutorial</a></p>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 15, 2025 19:15:30 UTC">October 15, 2025</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      2025, Cord Burmeister
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.top", "navigation.expand"], "search": "../../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  </body>
+</html>

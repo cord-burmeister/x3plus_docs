@@ -1,0 +1,2380 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="DIY robot projects as learning journey">
+      
+      
+        <meta name="author" content="Cord Burmeister">
+      
+      
+        <link rel="canonical" href="https://cord-burmeister.github.io/x3plus_docs/02-L0%20-%20Teleoperations/200-InputDevices/220-Joysticks/">
+      
+      
+        <link rel="prev" href="../210-Keyboard/">
+      
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.22">
+    
+    
+      
+        <title>Adding joystick teleoperations - X3Plus Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.84d31ad4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#adding-joystick-teleoperations" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="X3Plus Documentation" class="md-header__button md-logo" aria-label="X3Plus Documentation" data-md-component="logo">
+      
+  <img src="../../../assets/logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            X3Plus Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Adding joystick teleoperations
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/cord-burmeister/x3plus_docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="X3Plus Documentation" class="md-nav__button md-logo" aria-label="X3Plus Documentation" data-md-component="logo">
+      
+  <img src="../../../assets/logo.svg" alt="logo">
+
+    </a>
+    X3Plus Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/cord-burmeister/x3plus_docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    General
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            General
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../00-Overview/000-Introduction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    000 Introduction
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../00-Overview/010-Motivation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Motivation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../00-Overview/020-Levels-of-Autonomy-for-Robots/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Levels of Autonomy for Robots
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../00-Overview/030-Topic-Areas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Topics
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../00-Overview/090-ROS2-Architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ROS 2 Architecture
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../00-Overview/100-Repository-Structure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Repository structure
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../00-Overview/110-Infrastructure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Infrastructure
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../00-Overview/190-Deployment-Models/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Deployment Models
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../00-Overview/900-Books/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Book and Structure
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    L0 Base
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            L0 Base
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01-L0%20-%20Base/000-Introduction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    000 Introduction
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    ROS
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            ROS
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01-L0%20-%20Base/100-ROS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ROS
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01-L0%20-%20Base/100-ROS/202-Ros/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ROS the Robot Operating Platform
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01-L0%20-%20Base/100-ROS/203-Ros-Design/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ROS Concepts and Design Patterns
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01-L0%20-%20Base/100-ROS/205-Ros-Feature-Matrix/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Feature availability Matrix
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01-L0%20-%20Base/100-ROS/211-Links/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Links
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01-L0%20-%20Base/100-ROS/212-TF2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    TF2
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01-L0%20-%20Base/100-ROS/250-Describe-Robot_model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Describe a robot model
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01-L0%20-%20Base/100-ROS/260-Robot-Description/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Describe the robot
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01-L0%20-%20Base/100-ROS/270-Improve-URDF/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Improve the URDF
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Controller
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            Controller
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01-L0%20-%20Base/300-Controller/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Controller
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01-L0%20-%20Base/300-Controller/300-JetsonModels/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    NVIDIA Jetson Models
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01-L0%20-%20Base/300-Controller/305-Jetson/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Jetson Orin Nano Super
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01-L0%20-%20Base/300-Controller/310-Jetson-Install/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Installing Jetson
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01-L0%20-%20Base/300-Controller/320-Build-Kernel/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Build Kernel of Jetson Orin Nano
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01-L0%20-%20Base/300-Controller/350-Development-Setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Setup for Development
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Simulation
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            Simulation
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01-L0%20-%20Base/700-Simulation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Simulation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01-L0%20-%20Base/700-Simulation/720-Gazebo-Simulation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Simulating the robot
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01-L0%20-%20Base/700-Simulation/721-Simulate-Robot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Simulate the robot
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01-L0%20-%20Base/700-Simulation/727-Simple-Worlds/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Worlds
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01-L0%20-%20Base/700-Simulation/728-First-Worlds/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Adding Worlds
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Hardware
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            Hardware
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01-L0%20-%20Base/800-Hardware/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Hardware assembly
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01-L0%20-%20Base/800-Hardware/500-PartList/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Part List
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01-L0%20-%20Base/800-Hardware/520-Assembly/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Mechanical Assembly
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01-L0%20-%20Base/800-Hardware/550-Wiring/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Wiring the Robot
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01-L0%20-%20Base/800-Hardware/560-Robot-Expansion-Board/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Yahboom ROS robot control board with STM32F103RCT6 IMU
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_6" id="__nav_3_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Final Setup
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_6">
+            <span class="md-nav__icon md-icon"></span>
+            Final Setup
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01-L0%20-%20Base/900-Final-Setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Final Setup
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01-L0%20-%20Base/900-Final-Setup/901-HW-Status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Status HW Components
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01-L0%20-%20Base/900-Final-Setup/950-Workspace-Setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Setup the environments
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Basic Teleoperations
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Basic Teleoperations
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../000-Introduction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    000 Introduction
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Network
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            Network
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../100-Network/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Network Topics
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../100-Network/110-Network/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ROS 2 and Network
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../100-Network/111-WSL-Network/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    WSL and Network
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Input Devices
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            Input Devices
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Input Devcies
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../210-Keyboard/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Adding keyboard teleoperations
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Adding joystick teleoperations
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Adding joystick teleoperations
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#using-a-gamepad" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using a Gamepad
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-use-gamepads-for-robotics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Why use gamepads for robotics?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#connecting-to-joysticksgamepads-in-ros" class="md-nav__link">
+    <span class="md-ellipsis">
+      Connecting to Joysticks/Gamepads in ROS
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#map-buttons-to-index-numbers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Map buttons to index numbers
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creating-a-launch-and-params-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creating a launch and params file
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#converting-joy-to-twist" class="md-nav__link">
+    <span class="md-ellipsis">
+      Converting Joy to Twist
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nodes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Nodes
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#using-a-gamepad" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using a Gamepad
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-use-gamepads-for-robotics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Why use gamepads for robotics?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#connecting-to-joysticksgamepads-in-ros" class="md-nav__link">
+    <span class="md-ellipsis">
+      Connecting to Joysticks/Gamepads in ROS
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#map-buttons-to-index-numbers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Map buttons to index numbers
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creating-a-launch-and-params-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creating a launch and params file
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#converting-joy-to-twist" class="md-nav__link">
+    <span class="md-ellipsis">
+      Converting Joy to Twist
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nodes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Nodes
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="adding-joystick-teleoperations">Adding joystick teleoperations</h1>
+<p>It doesn't take long to realize though, that it’s not a very practical approach. The keyboard:</p>
+<p>Only gives coarse control
+Requires terminal window to be kept open and active
+Isn't very "portable"
+All of this can sometimes make for a less-than-comfortable teleop experience, so we’re going to explore some other options we have to improve things!</p>
+<h2 id="using-a-gamepad">Using a Gamepad</h2>
+<p>You're probably familiar with gamepads - also known as game controllers. They're usually used for playing video games and are a compact and ergonomic way of controlling many buttons and axes. This tutorial will (try to) avoid using the term "controller" to minimize confusion with the controllers used by ros2_control, but it will sometimes use the word "joystick", which is used by ROS and Linux to refer to all game controllers, not just actual joysticks (which are one large stick, gripped with a hand).</p>
+<p>Gamepads generally fall into three main categories:</p>
+<ul>
+<li>Wired (USB)</li>
+<li>Wireless (USB)</li>
+<li>Bluetooth</li>
+</ul>
+<p>Each has their pros and cons. Of course within each of these is a whole range of options with different features at different price points.</p>
+<p>I am using the Xbox controller</p>
+<p><img alt="Xbox controller" src="../images/xbox-controller.jpeg" /></p>
+<h2 id="why-use-gamepads-for-robotics">Why use gamepads for robotics?</h2>
+<div class="admonition warning">
+<p class="admonition-title">No Joystick in WSL Kernel</p>
+<p>Using the Linux subsystem on windows has a restriction. Although is is possible to map the USB Host Port into the linux subsystem, the joystick support is not enabled for the kernel used in the Ubuntu 22.04 version of the WSL. See <a href="https://github.com/microsoft/WSL/issues/7747">Gamepad support in WSL2 (/dev/jsx) #7747</a></p>
+</div>
+<p>So our first step is going to be checking that the gamepad actually works in Linux. Without going too deep into it, there are two different underlying interfaces that Linux can use to handle gamepads, the “old way” and the “new way”. For the most part this isn't something we need to know about, and all the examples in this tutorial will use the “new way” underneath, but in the next tutorial there will be some extra info about the old way, in case your situation requires it.</p>
+<p>To check our gamepad works in Linux, we want to install some useful tools:</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>joystick<span class="w"> </span>jstest-gtk<span class="w"> </span>evtest
+</code></pre></div>
+<p>With the controller connected (e.g. via USB or Bluetooth), we can open a terminal and run <em>evtest</em>. It will ask for the event number (it helpfully tells you some options).</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>evtest
+No<span class="w"> </span>device<span class="w"> </span>specified,<span class="w"> </span>trying<span class="w"> </span>to<span class="w"> </span>scan<span class="w"> </span>all<span class="w"> </span>of<span class="w"> </span>/dev/input/event*
+Not<span class="w"> </span>running<span class="w"> </span>as<span class="w"> </span>root,<span class="w"> </span>no<span class="w"> </span>devices<span class="w"> </span>may<span class="w"> </span>be<span class="w"> </span>available.
+Available<span class="w"> </span>devices:
+/dev/input/event9:<span class="w"> </span>Microsoft<span class="w"> </span>X-Box<span class="w"> </span>One<span class="w"> </span>S<span class="w"> </span>pad
+Select<span class="w"> </span>the<span class="w"> </span>device<span class="w"> </span>event<span class="w"> </span>number<span class="w"> </span><span class="o">[</span><span class="m">0</span>-9<span class="o">]</span>:<span class="w"> </span><span class="m">9</span>
+Input<span class="w"> </span>driver<span class="w"> </span>version<span class="w"> </span>is<span class="w"> </span><span class="m">1</span>.0.1
+Input<span class="w"> </span>device<span class="w"> </span>ID:<span class="w"> </span>bus<span class="w"> </span>0x3<span class="w"> </span>vendor<span class="w"> </span>0x45e<span class="w"> </span>product<span class="w"> </span>0x2ea<span class="w"> </span>version<span class="w"> </span>0x301
+Input<span class="w"> </span>device<span class="w"> </span>name:<span class="w"> </span><span class="s2">&quot;Microsoft X-Box One S pad&quot;</span>
+</code></pre></div>
+<p>After proceeding, any button presses should cause some new text to come through on the screen.</p>
+<div class="highlight"><pre><span></span><code>Event:<span class="w"> </span><span class="nb">time</span><span class="w"> </span><span class="m">1713622172</span>.597958,<span class="w"> </span>--------------<span class="w"> </span>SYN_REPORT<span class="w"> </span>------------
+Event:<span class="w"> </span><span class="nb">time</span><span class="w"> </span><span class="m">1713622172</span>.613928,<span class="w"> </span><span class="nb">type</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="o">(</span>EV_ABS<span class="o">)</span>,<span class="w"> </span>code<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="o">(</span>ABS_Y<span class="o">)</span>,<span class="w"> </span>value<span class="w"> </span><span class="m">56</span>
+Event:<span class="w"> </span><span class="nb">time</span><span class="w"> </span><span class="m">1713622172</span>.613928,<span class="w"> </span>--------------<span class="w"> </span>SYN_REPORT<span class="w"> </span>------------
+Event:<span class="w"> </span><span class="nb">time</span><span class="w"> </span><span class="m">1713622172</span>.629927,<span class="w"> </span><span class="nb">type</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="o">(</span>EV_ABS<span class="o">)</span>,<span class="w"> </span>code<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="o">(</span>ABS_Y<span class="o">)</span>,<span class="w"> </span>value<span class="w"> </span><span class="m">122</span>
+Event:<span class="w"> </span><span class="nb">time</span><span class="w"> </span><span class="m">1713622172</span>.629927,<span class="w"> </span>--------------<span class="w"> </span>SYN_REPORT<span class="w"> </span>------------
+Event:<span class="w"> </span><span class="nb">time</span><span class="w"> </span><span class="m">1713622172</span>.653968,<span class="w"> </span><span class="nb">type</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="o">(</span>EV_ABS<span class="o">)</span>,<span class="w"> </span>code<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="o">(</span>ABS_Y<span class="o">)</span>,<span class="w"> </span>value<span class="w"> </span><span class="m">198</span>
+Event:<span class="w"> </span><span class="nb">time</span><span class="w"> </span><span class="m">1713622172</span>.653968,<span class="w"> </span>--------------<span class="w"> </span>SYN_REPORT<span class="w"> </span>------------
+Event:<span class="w"> </span><span class="nb">time</span><span class="w"> </span><span class="m">1713622172</span>.685962,<span class="w"> </span><span class="nb">type</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="o">(</span>EV_ABS<span class="o">)</span>,<span class="w"> </span>code<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="o">(</span>ABS_Y<span class="o">)</span>,<span class="w"> </span>value<span class="w"> </span><span class="m">265</span>
+Event:<span class="w"> </span><span class="nb">time</span><span class="w"> </span><span class="m">1713622172</span>.685962,<span class="w"> </span>--------------<span class="w"> </span>SYN_REPORT<span class="w"> </span>------------
+Event:<span class="w"> </span><span class="nb">time</span><span class="w"> </span><span class="m">1713622172</span>.785972,<span class="w"> </span><span class="nb">type</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="o">(</span>EV_ABS<span class="o">)</span>,<span class="w"> </span>code<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="o">(</span>ABS_Y<span class="o">)</span>,<span class="w"> </span>value<span class="w"> </span><span class="m">329</span>
+Event:<span class="w"> </span><span class="nb">time</span><span class="w"> </span><span class="m">1713622172</span>.785972,<span class="w"> </span>--------------<span class="w"> </span>SYN_REPORT<span class="w"> </span>------------
+Event:<span class="w"> </span><span class="nb">time</span><span class="w"> </span><span class="m">1713622174</span>.590057,<span class="w"> </span><span class="nb">type</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="o">(</span>EV_ABS<span class="o">)</span>,<span class="w"> </span>code<span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="o">(</span>ABS_RY<span class="o">)</span>,<span class="w"> </span>value<span class="w"> </span><span class="m">1432</span>
+Event:<span class="w"> </span><span class="nb">time</span><span class="w"> </span><span class="m">1713622174</span>.590057,<span class="w"> </span>--------------<span class="w"> </span>SYN_REPORT<span class="w"> </span>------------
+</code></pre></div>
+<h2 id="connecting-to-joysticksgamepads-in-ros">Connecting to Joysticks/Gamepads in ROS</h2>
+<p>Once Linux can see the gamepad, we need to get it into ROS.</p>
+<p>ROS comes with some packages that make working with gamepads and joysticks really easy. Rather than just running one program that generates Twist messages directly (like teleop_twist_keyboard), the process is split into two. The first program communicates with the joystick through the Linux drivers and publishes a sensor_msgs/Joy message - essentially a list of which buttons and axes were pressed at that time. This data can be used by other nodes to drive behavior (e.g. trigger a service when a particular button is pressed, or use an analog stick to steer a camera with a servo). What we’ll be using it for soon is to pick out the thumb stick values and publish an appropriate Twist message.</p>
+<p>Although splitting things up might seem more complex, it means that we don't need to rewrite the Twist calculations for every joystick out there, and we don't need to rewrite the joystick driver code for every possible application.</p>
+<!--
+<div class="highlight"><pre><span></span><code>@startdot images/ros-joy_node
+digraph foo {
+    joystick [label=&quot;Joystick&quot;; color=lightblue; style=filled ]
+    driver [label=&quot;Linux\nJoystick\nDriver&quot;; color=lightblue; style=filled ]
+    joy_node [label=&quot;joy_node&quot;]
+    other [label=&quot;other nodes&quot;]
+    teleop [label=&quot;teleop_twist_joy&quot;; ]
+    sink [label=&quot;cmd_vel consumer&quot;; color=lightblue; style=filled ]
+
+    joystick -&gt; driver
+    driver -&gt; joy_node
+    joy_node -&gt; other [label=&quot;/joy&quot;]
+    joy_node -&gt; teleop [label=&quot;/joy&quot;]
+    teleop -&gt; sink [label=&quot;/cmd_vel&quot;]
+}
+@enddot
+</code></pre></div>
+-->
+
+<p><img alt="ROS Joystick" src="../images/ros-joy_node.png" /></p>
+<p>To listen to a joystick with the new drivers, we can use the tools from the joy package. The first one will tell us which controllers ROS can see:</p>
+<div class="highlight"><pre><span></span><code>ros2<span class="w"> </span>run<span class="w"> </span>joy<span class="w"> </span>joy_enumerate_devices
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>ID<span class="w"> </span>:<span class="w"> </span>GUID<span class="w">                             </span>:<span class="w"> </span>GamePad<span class="w"> </span>:<span class="w"> </span>Mapped<span class="w"> </span>:<span class="w"> </span>Joystick<span class="w"> </span>Device<span class="w"> </span>Name
+-------------------------------------------------------------------------------
+<span class="w"> </span><span class="m">0</span><span class="w"> </span>:<span class="w"> </span>030000005e040000ea02000001030000<span class="w"> </span>:<span class="w">    </span><span class="nb">true</span><span class="w"> </span>:<span class="w">   </span><span class="nb">true</span><span class="w"> </span>:<span class="w"> </span>Xbox<span class="w"> </span>One<span class="w"> </span>Wireless<span class="w"> </span>Controller
+</code></pre></div>
+<p>Now we can open up two terminals to run the two commands below - the first is running the node and the second is displaying the outputs.</p>
+<p>Run in first terminal</p>
+<div class="highlight"><pre><span></span><code>ros2<span class="w"> </span>run<span class="w"> </span>joy<span class="w"> </span>joy_node<span class="w"> </span>
+</code></pre></div>
+<p>Run in second terminal</p>
+<div class="highlight"><pre><span></span><code>ros2<span class="w"> </span>topic<span class="w"> </span><span class="nb">echo</span><span class="w"> </span>/joy<span class="w"> </span>
+</code></pre></div>
+<h2 id="map-buttons-to-index-numbers">Map buttons to index numbers</h2>
+<p>Each controller version has potential different buttons and mappings.
+So first thing is determine the axis and button mapping to the index.</p>
+<p>The visual map looks like this</p>
+<p><img alt="Button Mapping" src="../images/xbox-controller-mapping.png" /></p>
+<p>I document that with this mapping table</p>
+<table>
+<thead>
+<tr>
+<th>Axis / button</th>
+<th>Index</th>
+<th>description</th>
+<th>Mapping</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Axis</td>
+<td>0</td>
+<td>Left thumb stick vertical</td>
+<td>Rotate base</td>
+</tr>
+<tr>
+<td>Axis</td>
+<td>1</td>
+<td>Left thumb stick horizontal</td>
+<td>Move forward</td>
+</tr>
+<tr>
+<td>Axis</td>
+<td>4</td>
+<td>Right thumb stick  vertical</td>
+<td></td>
+</tr>
+<tr>
+<td>Axis</td>
+<td>3</td>
+<td>Right thumb stick horizontal</td>
+<td>Move sideways</td>
+</tr>
+<tr>
+<td>Axis</td>
+<td>7</td>
+<td>Directional pad   vertical</td>
+<td></td>
+</tr>
+<tr>
+<td>Axis</td>
+<td>6</td>
+<td>Directional pad  horizontal</td>
+<td></td>
+</tr>
+<tr>
+<td>Axis</td>
+<td>2</td>
+<td>Left Throttle</td>
+<td></td>
+</tr>
+<tr>
+<td>Axis</td>
+<td>5</td>
+<td>Right Throttle</td>
+<td></td>
+</tr>
+<tr>
+<td>Button</td>
+<td>0</td>
+<td>"A" Button</td>
+<td></td>
+</tr>
+<tr>
+<td>Button</td>
+<td>1</td>
+<td>"B" Button</td>
+<td></td>
+</tr>
+<tr>
+<td>Button</td>
+<td>2</td>
+<td>"X" Button</td>
+<td></td>
+</tr>
+<tr>
+<td>Button</td>
+<td>3</td>
+<td>"Y" Button</td>
+<td></td>
+</tr>
+<tr>
+<td>Button</td>
+<td>4</td>
+<td>Left Bumper</td>
+<td>Activate Turbo</td>
+</tr>
+<tr>
+<td>Button</td>
+<td>5</td>
+<td>Right Bumper</td>
+<td>Enable Movements</td>
+</tr>
+<tr>
+<td>Button</td>
+<td>6</td>
+<td>View  Button</td>
+<td></td>
+</tr>
+<tr>
+<td>Button</td>
+<td>7</td>
+<td>Menu  Button</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="creating-a-launch-and-params-file">Creating a launch and params file</h2>
+<p>Before we go any further, we’re going to create a new package for the teleoperations, a launch file and a params file for running our gamepad control. That’s because the next node we’ll be running has a lot of parameters to specify, and typing them all in at the command line will be tedious.</p>
+<p>We’ll start with the launch file. Create joystick_xbox.launch.py in the launch directory, and copy-paste the launch script below. This script simply:</p>
+<ul>
+<li>Specifies the path to a params file</li>
+<li>Declares a joy node that uses the params file</li>
+<li>Launches it</li>
+</ul>
+<div class="highlight"><pre><span></span><code>from<span class="w"> </span>launch<span class="w"> </span>import<span class="w"> </span>LaunchDescription
+from<span class="w"> </span>launch_ros.actions<span class="w"> </span>import<span class="w"> </span>Node
+
+import<span class="w"> </span>os
+from<span class="w"> </span>ament_index_python.packages<span class="w"> </span>import<span class="w"> </span>get_package_share_directory
+
+def<span class="w"> </span>generate_launch_description<span class="o">()</span>:
+
+<span class="w">    </span><span class="nv">joy_params</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>os.path.join<span class="o">(</span>get_package_share_directory<span class="o">(</span><span class="s1">&#39;master3_teleop&#39;</span><span class="o">)</span>,<span class="s1">&#39;config&#39;</span>,<span class="s1">&#39;joystick_xbox.yaml&#39;</span><span class="o">)</span>
+
+<span class="w">    </span><span class="nv">joy_node</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>Node<span class="o">(</span>
+<span class="w">            </span><span class="nv">package</span><span class="o">=</span><span class="s1">&#39;joy&#39;</span>,
+<span class="w">            </span><span class="nv">executable</span><span class="o">=</span><span class="s1">&#39;joy_node&#39;</span>,
+<span class="w">            </span><span class="nv">parameters</span><span class="o">=[</span>joy_params<span class="o">]</span>,
+<span class="w">         </span><span class="o">)</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span>LaunchDescription<span class="o">([</span>
+<span class="w">        </span>joy_node<span class="w">       </span>
+<span class="w">    </span><span class="o">])</span>
+</code></pre></div>
+<p>Of course we then need to actually write the params file, so we will go ahead and create joystick_xbox.yaml in our config directory. The parameters specified below are only a subset of the full parameter list but they are ones we are more likely to change. The values shown here are actually the same as the defaults, but they are there to change if we need to. We'll learn a bit more about them in the next tutorial.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">joy_node</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">ros__parameters</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">device_id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span>
+<span class="w">    </span><span class="nt">deadzone</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.05</span>
+<span class="w">    </span><span class="nt">autorepeat_rate</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">20.0</span>
+</code></pre></div>
+<p>After a rebuild to add the new files, we should be able to launch joystick_xbox.launch.py and get the same behavior as we did running joy_node directly.</p>
+<div class="highlight"><pre><span></span><code>ros2<span class="w"> </span>launch<span class="w"> </span>master3_teleop<span class="w"> </span>joystick_xbox.launch.py<span class="w"> </span>
+</code></pre></div>
+<h2 id="converting-joy-to-twist">Converting Joy to Twist</h2>
+<p>Now that we have our raw joystick data coming through on /joy we need to convert it to a Twist message. The package we use for this is called teleop_twist_joy.</p>
+<p>Although we can run it at the command line with ros2 run, there are so many nested parameters to set that it’s not worth it unless we trying to troubleshoot something. Instead, let’s add it straight to our launch file and we’ll pass the parameters using the same joystick.yaml file as earlier to keep things simple.</p>
+<p>By default, teleop_twist_joy wants to publish its output to /cmd_vel, but remember our differential drive controller from the last tutorial is subscribing instead to /master3_drive/cmd_vel, so we need to remap the topic name. Also note the example code below explicitly names the node teleop_node. This is because the default "node name" (that we need to set the parameters properly) doesn’t match the "executable name" which, while technically fine, is quite confusing. By explicitly naming it, we force everything to line up.</p>
+<div class="highlight"><pre><span></span><code><span class="nv">teleop_node</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>Node<span class="o">(</span>
+<span class="w">            </span><span class="nv">package</span><span class="o">=</span><span class="s1">&#39;teleop_twist_joy&#39;</span>,<span class="w"> </span>
+<span class="w">            </span><span class="nv">executable</span><span class="o">=</span><span class="s1">&#39;teleop_node&#39;</span>,
+<span class="w">            </span><span class="nv">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;teleop_node&#39;</span>,
+<span class="w">            </span><span class="nv">parameters</span><span class="o">=[</span>joy_params<span class="o">]</span>,
+<span class="w">            </span><span class="nv">remappings</span><span class="o">=[(</span><span class="s1">&#39;/cmd_vel&#39;</span>,<span class="w"> </span><span class="s1">&#39;master3_drive/cmd_vel&#39;</span><span class="o">)]</span>
+<span class="w">            </span><span class="o">)</span>
+<span class="c1">#...</span>
+</code></pre></div>
+<p>And add to launch description at the bottom</p>
+<p>Now for the parameters. For each of the six dimensions of the Twist we can specify:</p>
+<p>Which joystick axis to use</p>
+<ul>
+<li>Max speed in regular mode</li>
+<li>Max speed in turbo mode</li>
+</ul>
+<p>Keep in mind that our differential drive robot controller can only linear X and angular Z, so we only need to set those.</p>
+<p>We also need to set which button enables regular mode, and which button for turbo mode. Having separate regular and turbo speeds gives us finer control over the robot, especially if your joystick sensitivity is poor or you’re just using the D-pad.</p>
+<p>Finally, we have the option of disabling the “dead-man's switch”. By default, you need to keep the regular or turbo button held down while moving the joystick to send commands, so that if something bad happens (e.g you drop the controller and the thumbstick gets bumped), it won’t send any motion commands. This is enabled by default, and the parameters below keep it that way, but you can change it if desired.</p>
+<p>So we’ve got axis_linear, scale_linear, scale_linear_turbo, then the same for <em>angular</em>. Inside all the linear ones we want to set what it is for the x dimension, and in the angular ones we have yaw (note that it is roll, pitch, yaw here even though the resulting Twist message will refer to the angular axes also as x, y, z). Finally we’ve got the require_enable_button, enable_button, and enable_turbo button.</p>
+<p>The example below sets the regular speeds to 0.5 (m/s and rad/s) and the turbos to 1. These are decent defaults and you can tweak them now or later if required. If you can’t remember your axes or button numbers that’s ok, just have a guess so that we can get this to run, and then you can rerun the test tool to confirm it later.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># ... below the joy parameters</span>
+
+teleop_node:
+<span class="w">  </span>ros__parameters:
+
+<span class="w">    </span>axis_linear:<span class="w">  </span><span class="c1"># Left thumb stick vertical</span>
+<span class="w">      </span>x:<span class="w"> </span><span class="m">1</span>
+<span class="w">    </span>scale_linear:
+<span class="w">      </span>x:<span class="w"> </span><span class="m">0</span>.5
+<span class="w">    </span>scale_linear_turbo:
+<span class="w">      </span>x:<span class="w"> </span><span class="m">1</span>.0
+
+<span class="w">    </span>axis_linear:<span class="w">  </span><span class="c1"># Right thumb stick horizontal</span>
+<span class="w">      </span>y:<span class="w"> </span><span class="m">6</span>
+<span class="w">    </span>scale_linear:
+<span class="w">      </span>y:<span class="w"> </span><span class="m">0</span>.5
+<span class="w">    </span>scale_linear_turbo:
+<span class="w">      </span>y:<span class="w"> </span><span class="m">1</span>.0
+
+<span class="w">    </span>axis_angular:<span class="w">  </span><span class="c1"># Left thumb stick horizontal</span>
+<span class="w">      </span>yaw:<span class="w"> </span><span class="m">0</span>
+<span class="w">    </span>scale_angular:
+<span class="w">      </span>yaw:<span class="w"> </span><span class="m">0</span>.5
+<span class="w">    </span>scale_angular_turbo:
+<span class="w">      </span>yaw:<span class="w"> </span><span class="m">1</span>.0
+
+<span class="w">    </span>require_enable_button:<span class="w"> </span><span class="nb">true</span>
+<span class="w">    </span>enable_button:<span class="w"> </span><span class="m">5</span><span class="w">  </span><span class="c1"># Right shoulder button</span>
+<span class="w">    </span>enable_turbo_button:<span class="w"> </span><span class="m">4</span><span class="w">  </span><span class="c1"># Left shoulder button</span>
+</code></pre></div>
+<p>Once those are in we can rerun the launch file. In a new terminal, run ros2 topic echo /cmd_vel to see the values coming up.</p>
+<p>When we move the sticks by themselves there should be nothing, when we hold the regular speed button down, we should get those regular speeds, and likewise the higher speeds with the turbo button.</p>
+<h2 id="nodes">Nodes</h2>
+<p>The resulting nodes for the joystick handling looks like</p>
+<p><img alt="Nodes joystick" src="../images/rqt-joystick.png" /></p>
+<h2 id="references">References</h2>
+<p><a href="https://articulatedrobotics.xyz/tutorials/mobile-robot/applications/teleop/">Teleoperation by Articulated Robotics</a></p>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 15, 2025 19:15:30 UTC">October 15, 2025</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      2025, Cord Burmeister
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.top", "navigation.expand"], "search": "../../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  </body>
+</html>

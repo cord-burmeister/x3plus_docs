@@ -1,0 +1,2389 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="DIY robot projects as learning journey">
+      
+      
+        <meta name="author" content="Cord Burmeister">
+      
+      
+        <link rel="canonical" href="https://cord-burmeister.github.io/x3plus_docs/00-Overview/100-Repository-Structure/">
+      
+      
+        <link rel="prev" href="../090-ROS2-Architecture/">
+      
+      
+        <link rel="next" href="../110-Infrastructure/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.22">
+    
+    
+      
+        <title>Repository structure - X3Plus Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.84d31ad4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#repository-structure" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="X3Plus Documentation" class="md-header__button md-logo" aria-label="X3Plus Documentation" data-md-component="logo">
+      
+  <img src="../../assets/logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            X3Plus Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Repository structure
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/cord-burmeister/x3plus_docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="X3Plus Documentation" class="md-nav__button md-logo" aria-label="X3Plus Documentation" data-md-component="logo">
+      
+  <img src="../../assets/logo.svg" alt="logo">
+
+    </a>
+    X3Plus Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/cord-burmeister/x3plus_docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    General
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            General
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../000-Introduction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    000 Introduction
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../010-Motivation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Motivation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../020-Levels-of-Autonomy-for-Robots/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Levels of Autonomy for Robots
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../030-Topic-Areas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Topics
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../090-ROS2-Architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ROS 2 Architecture
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Repository structure
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Repository structure
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#project-description" class="md-nav__link">
+    <span class="md-ellipsis">
+      Project Description
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#list-of-repositories" class="md-nav__link">
+    <span class="md-ellipsis">
+      List of repositories
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#runtime-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Runtime structure
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#project-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Project structure
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#development-environment-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Development Environment Setup
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Development Environment Setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#instructions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Instructions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-the-setup-scripts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Running the Setup Scripts
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Running the Setup Scripts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bashsetup-humblesh" class="md-nav__link">
+    <span class="md-ellipsis">
+      bash/setup-humble.sh
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bashsetup-ws-botsh" class="md-nav__link">
+    <span class="md-ellipsis">
+      bash/setup-ws-bot.sh
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bashsetup-ws-gzsh" class="md-nav__link">
+    <span class="md-ellipsis">
+      bash/setup-ws-gz.sh
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bashsetup-ws-pitsh" class="md-nav__link">
+    <span class="md-ellipsis">
+      bash/setup-ws-pit.sh
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#project-structure-and-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      Project Structure and Components
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#known-issues-and-limitations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Known Issues and Limitations
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../110-Infrastructure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Infrastructure
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../190-Deployment-Models/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Deployment Models
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../900-Books/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Book and Structure
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    L0 Base
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            L0 Base
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01-L0%20-%20Base/000-Introduction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    000 Introduction
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    ROS
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            ROS
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01-L0%20-%20Base/100-ROS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ROS
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01-L0%20-%20Base/100-ROS/202-Ros/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ROS the Robot Operating Platform
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01-L0%20-%20Base/100-ROS/203-Ros-Design/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ROS Concepts and Design Patterns
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01-L0%20-%20Base/100-ROS/205-Ros-Feature-Matrix/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Feature availability Matrix
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01-L0%20-%20Base/100-ROS/211-Links/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Links
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01-L0%20-%20Base/100-ROS/212-TF2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    TF2
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01-L0%20-%20Base/100-ROS/250-Describe-Robot_model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Describe a robot model
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01-L0%20-%20Base/100-ROS/260-Robot-Description/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Describe the robot
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01-L0%20-%20Base/100-ROS/270-Improve-URDF/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Improve the URDF
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Controller
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            Controller
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01-L0%20-%20Base/300-Controller/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Controller
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01-L0%20-%20Base/300-Controller/300-JetsonModels/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    NVIDIA Jetson Models
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01-L0%20-%20Base/300-Controller/305-Jetson/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Jetson Orin Nano Super
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01-L0%20-%20Base/300-Controller/310-Jetson-Install/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Installing Jetson
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01-L0%20-%20Base/300-Controller/320-Build-Kernel/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Build Kernel of Jetson Orin Nano
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01-L0%20-%20Base/300-Controller/350-Development-Setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Setup for Development
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Simulation
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            Simulation
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01-L0%20-%20Base/700-Simulation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Simulation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01-L0%20-%20Base/700-Simulation/720-Gazebo-Simulation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Simulating the robot
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01-L0%20-%20Base/700-Simulation/721-Simulate-Robot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Simulate the robot
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01-L0%20-%20Base/700-Simulation/727-Simple-Worlds/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Worlds
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01-L0%20-%20Base/700-Simulation/728-First-Worlds/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Adding Worlds
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Hardware
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            Hardware
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01-L0%20-%20Base/800-Hardware/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Hardware assembly
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01-L0%20-%20Base/800-Hardware/500-PartList/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Part List
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01-L0%20-%20Base/800-Hardware/520-Assembly/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Mechanical Assembly
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01-L0%20-%20Base/800-Hardware/550-Wiring/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Wiring the Robot
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01-L0%20-%20Base/800-Hardware/560-Robot-Expansion-Board/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Yahboom ROS robot control board with STM32F103RCT6 IMU
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_6" id="__nav_3_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Final Setup
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_6">
+            <span class="md-nav__icon md-icon"></span>
+            Final Setup
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01-L0%20-%20Base/900-Final-Setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Final Setup
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01-L0%20-%20Base/900-Final-Setup/901-HW-Status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Status HW Components
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01-L0%20-%20Base/900-Final-Setup/950-Workspace-Setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Setup the environments
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Basic Teleoperations
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Basic Teleoperations
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02-L0%20-%20Teleoperations/000-Introduction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    000 Introduction
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Network
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            Network
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02-L0%20-%20Teleoperations/100-Network/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Network Topics
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02-L0%20-%20Teleoperations/100-Network/110-Network/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ROS 2 and Network
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02-L0%20-%20Teleoperations/100-Network/111-WSL-Network/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    WSL and Network
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Input Devices
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            Input Devices
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02-L0%20-%20Teleoperations/200-InputDevices/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Input Devcies
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02-L0%20-%20Teleoperations/200-InputDevices/210-Keyboard/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Adding keyboard teleoperations
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02-L0%20-%20Teleoperations/200-InputDevices/220-Joysticks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Adding joystick teleoperations
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#project-description" class="md-nav__link">
+    <span class="md-ellipsis">
+      Project Description
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#list-of-repositories" class="md-nav__link">
+    <span class="md-ellipsis">
+      List of repositories
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#runtime-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Runtime structure
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#project-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Project structure
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#development-environment-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Development Environment Setup
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Development Environment Setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#instructions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Instructions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-the-setup-scripts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Running the Setup Scripts
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Running the Setup Scripts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bashsetup-humblesh" class="md-nav__link">
+    <span class="md-ellipsis">
+      bash/setup-humble.sh
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bashsetup-ws-botsh" class="md-nav__link">
+    <span class="md-ellipsis">
+      bash/setup-ws-bot.sh
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bashsetup-ws-gzsh" class="md-nav__link">
+    <span class="md-ellipsis">
+      bash/setup-ws-gz.sh
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bashsetup-ws-pitsh" class="md-nav__link">
+    <span class="md-ellipsis">
+      bash/setup-ws-pit.sh
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#project-structure-and-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      Project Structure and Components
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#known-issues-and-limitations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Known Issues and Limitations
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="repository-structure">Repository structure</h1>
+<p>Boot strap scripts of the robot project.</p>
+<h2 id="project-description">Project Description</h2>
+<p>The <code>x3plus_setup</code> project is designed to provide a set of bootstrap scripts for setting up the development environment and workspace for the X3Plus robot project. The goal of this project is to simplify the process of getting started with the X3Plus robot by automating the installation of necessary dependencies and configuration of the development environment.</p>
+<h2 id="list-of-repositories">List of repositories</h2>
+<p>The project is structured in the following repositories</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Scope</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/cord-burmeister/x3plus_setup">x3plus_setup</a></td>
+<td>Setup Scripts</td>
+<td>This repository contains the scripts to setup workspace for the different deployment roles</td>
+</tr>
+<tr>
+<td><a href="https://github.com/cord-burmeister/x3plus">x3plus</a></td>
+<td>Core Logic</td>
+<td>This repository contains the packages of the control logic of the robot</td>
+</tr>
+<tr>
+<td><a href="https://github.com/cord-burmeister/x3plus_pit">x3plus_pit</a></td>
+<td>Cockpit Logic</td>
+<td>eleoperations cockpit packages for the robot project</td>
+</tr>
+<tr>
+<td><a href="https://github.com/cord-burmeister/x3plus_driver">x3plus_driver</a></td>
+<td>Hardware driver</td>
+<td>This repository contains the driver for the robot</td>
+</tr>
+<tr>
+<td><a href="https://github.com/cord-burmeister/x3plus_bot">x3plus_bot</a></td>
+<td>Hardware wrapper</td>
+<td>This repository contains the ROS nodes to wrap the hardware components to the ROS system</td>
+</tr>
+<tr>
+<td><a href="https://github.com/cord-burmeister/x3plus_gz">x3plus_gz</a></td>
+<td>Gazebo Simulation</td>
+<td>This repository contains the ROS and Gazebo simulation nodes to the ROS system</td>
+</tr>
+<tr>
+<td><a href="https://github.com/cord-burmeister/x3plus_docs">x3plus_docs</a></td>
+<td>Documentation</td>
+<td>This is the Website and source for documentation for all aspects of the project</td>
+</tr>
+</tbody>
+</table>
+<h2 id="runtime-structure">Runtime structure</h2>
+<!--
+
+<div class="highlight"><pre><span></span><code>Plantuml. (2025b). *Plantuml startuml*. images/repos_structure
+
+title Repository structure
+
+skinparam rectangle {
+  BackgroundColor&lt;&lt;Application&gt;&gt; #E6F7FF
+  BackgroundColor&lt;&lt;AbstractDDS&gt;&gt; #FDEBD0
+  BackgroundColor&lt;&lt;Simulation&gt;&gt; #FADBD8
+  BackgroundColor&lt;&lt;Hardware&gt;&gt; #D5F5E3
+  BorderColor black
+}
+
+rectangle &quot;Cockpit&quot; &lt;&lt;Application&gt;&gt; {
+  [x3plus_pit]
+}
+
+rectangle &quot;Application Layer&quot; &lt;&lt;Application&gt;&gt; {
+  [x3plus]
+}
+
+rectangle &quot;Hardware Abstract Layer&quot; &lt;&lt;AbstractDDS&gt;&gt; {
+  [ROS topics / interfaces]
+}
+
+rectangle &quot;Simulation Layer&quot; &lt;&lt;Simulation&gt;&gt; {
+  [x3plus_gz]
+}
+
+rectangle &quot;Hardware Layer&quot; &lt;&lt;Hardware&gt;&gt; {
+  [x3plus_bot]
+  [x3plus_driver]
+}
+
+rectangle &quot;Documentation&quot; &lt;&lt;Documentation&gt;&gt; {
+  [x3plus_docs]
+}
+
+rectangle &quot;Setup&quot; &lt;&lt;Setup&gt;&gt; {
+  [x3plus_setup]
+}
+
+&#39; Connections between layers
+[x3plus] -down-&gt; [ROS topics / interfaces]
+[x3plus_pit] -down-&gt; [ROS topics / interfaces]
+
+[ROS topics / interfaces] -down-&gt; [x3plus_gz]
+[ROS topics / interfaces] -down-&gt; [x3plus_bot]
+[x3plus_bot] -down-&gt; [x3plus_driver]
+
+Plantuml. (2025a). *Plantuml enduml*.
+</code></pre></div>
+-->
+
+<p><img alt="repos_structure" src="../images/repos_structure.png" /></p>
+<h2 id="project-structure">Project structure</h2>
+<p><img alt="overview" src="../images/overview.png" /></p>
+<h2 id="development-environment-setup">Development Environment Setup</h2>
+<h3 id="prerequisites">Prerequisites</h3>
+<p>Before running the setup scripts, ensure that you have the following dependencies installed:</p>
+<ul>
+<li>Ubuntu 22.04 or later</li>
+<li>ROS 2 Humble Hawksbill</li>
+</ul>
+<h3 id="instructions">Instructions</h3>
+<ol>
+<li>
+<p>Clone the repository:</p>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/cord-burmeister/x3plus_setup.git
+<span class="nb">cd</span><span class="w"> </span>x3plus_setup
+</code></pre></div>
+</li>
+<li>
+<p>Run the setup script for ROS 2 Humble:</p>
+<div class="highlight"><pre><span></span><code>bash<span class="w"> </span>bash/setup-humble.sh
+</code></pre></div>
+</li>
+</ol>
+<h2 id="running-the-setup-scripts">Running the Setup Scripts</h2>
+<p>The <code>x3plus_setup</code> project provides several setup scripts to configure different workspaces for the X3Plus robot. Below are the instructions for running each setup script:</p>
+<h3 id="bashsetup-humblesh"><code>bash/setup-humble.sh</code></h3>
+<p>This script sets up the ROS 2 Humble environment and installs the necessary dependencies.</p>
+<h3 id="bashsetup-ws-botsh"><code>bash/setup-ws-bot.sh</code></h3>
+<p>This script sets up the workspace for the X3Plus robot controller.</p>
+<h3 id="bashsetup-ws-gzsh"><code>bash/setup-ws-gz.sh</code></h3>
+<p>This script sets up the workspace for the X3Plus Gazebo simulation.</p>
+<h3 id="bashsetup-ws-pitsh"><code>bash/setup-ws-pit.sh</code></h3>
+<p>This script sets up the workspace for the X3Plus development and cockpit environment.</p>
+<p>To run any of these scripts, use the following command:</p>
+<div class="highlight"><pre><span></span><code>bash<span class="w"> </span>&lt;script-name&gt;.sh
+</code></pre></div>
+<p>Replace <code>&lt;script-name&gt;</code> with the name of the script you want to run.</p>
+<h2 id="project-structure-and-components">Project Structure and Components</h2>
+<p>The <code>x3plus_setup</code> project consists of the following components:</p>
+<ul>
+<li><code>bash/</code>: Directory containing the setup scripts.</li>
+<li><code>docu/</code>: Directory containing documentation files.</li>
+<li><code>LICENSE</code>: License file for the project.</li>
+<li><code>README.md</code>: This file, containing the project documentation.</li>
+</ul>
+<h2 id="known-issues-and-limitations">Known Issues and Limitations</h2>
+<ul>
+<li>The setup scripts are designed to work on Ubuntu 22.04 or later. Compatibility with other operating systems is not guaranteed.</li>
+<li>Some dependencies may require manual installation if they are not available through the package manager.</li>
+</ul>
+<h2 id="references">References</h2>
+<p><a href="https://automaticaddison.com/organizing-files-and-folders-inside-a-ros-2-package/">Organizing Files and Folders Inside a ROS 2 Package</a></p>
+<p><a href="https://automaticaddison.com/naming-and-organizing-packages-in-large-ros-2-projects/">Naming and Organizing Packages in Large ROS 2 Projects</a></p>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 15, 2025 19:15:30 UTC">October 15, 2025</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      2025, Cord Burmeister
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.top", "navigation.expand"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  </body>
+</html>

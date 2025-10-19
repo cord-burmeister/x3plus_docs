@@ -1,0 +1,2155 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="DIY robot projects as learning journey">
+      
+      
+        <meta name="author" content="Cord Burmeister">
+      
+      
+        <link rel="canonical" href="https://cord-burmeister.github.io/x3plus_docs/01-L0%20-%20Base/100-ROS/211-Links/">
+      
+      
+        <link rel="prev" href="../205-Ros-Feature-Matrix/">
+      
+      
+        <link rel="next" href="../212-TF2/">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.22">
+    
+    
+      
+        <title>Links - X3Plus Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.84d31ad4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#links" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="X3Plus Documentation" class="md-header__button md-logo" aria-label="X3Plus Documentation" data-md-component="logo">
+      
+  <img src="../../../assets/logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            X3Plus Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Links
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/cord-burmeister/x3plus_docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="X3Plus Documentation" class="md-nav__button md-logo" aria-label="X3Plus Documentation" data-md-component="logo">
+      
+  <img src="../../../assets/logo.svg" alt="logo">
+
+    </a>
+    X3Plus Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/cord-burmeister/x3plus_docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    General
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            General
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../00-Overview/000-Introduction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    000 Introduction
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../00-Overview/010-Motivation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Motivation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../00-Overview/020-Levels-of-Autonomy-for-Robots/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Levels of Autonomy for Robots
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../00-Overview/030-Topic-Areas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Topics
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../00-Overview/090-ROS2-Architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ROS 2 Architecture
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../00-Overview/100-Repository-Structure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Repository structure
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../00-Overview/110-Infrastructure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Infrastructure
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../00-Overview/190-Deployment-Models/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Deployment Models
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../00-Overview/900-Books/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Book and Structure
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    L0 Base
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            L0 Base
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../000-Introduction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    000 Introduction
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    ROS
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            ROS
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ROS
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../202-Ros/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ROS the Robot Operating Platform
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../203-Ros-Design/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ROS Concepts and Design Patterns
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../205-Ros-Feature-Matrix/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Feature availability Matrix
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Links
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Links
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#links-in-gazebo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Links in Gazebo
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#frame-ids" class="md-nav__link">
+    <span class="md-ellipsis">
+      Frame IDs
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-coordinate-frames-are-important" class="md-nav__link">
+    <span class="md-ellipsis">
+      Why Coordinate Frames Are Important?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#standard-coordinate-frames-in-ros-for-a-mobile-robot" class="md-nav__link">
+    <span class="md-ellipsis">
+      Standard Coordinate Frames in ROS for a Mobile Robot
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#map-to-odom" class="md-nav__link">
+    <span class="md-ellipsis">
+      Map to Odom
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../212-TF2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    TF2
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../250-Describe-Robot_model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Describe a robot model
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../260-Robot-Description/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Describe the robot
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../270-Improve-URDF/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Improve the URDF
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Controller
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            Controller
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../300-Controller/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Controller
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../300-Controller/300-JetsonModels/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    NVIDIA Jetson Models
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../300-Controller/305-Jetson/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Jetson Orin Nano Super
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../300-Controller/310-Jetson-Install/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Installing Jetson
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../300-Controller/320-Build-Kernel/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Build Kernel of Jetson Orin Nano
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../300-Controller/350-Development-Setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Setup for Development
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Simulation
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            Simulation
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../700-Simulation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Simulation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../700-Simulation/720-Gazebo-Simulation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Simulating the robot
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../700-Simulation/721-Simulate-Robot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Simulate the robot
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../700-Simulation/727-Simple-Worlds/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Worlds
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../700-Simulation/728-First-Worlds/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Adding Worlds
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Hardware
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            Hardware
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../800-Hardware/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Hardware assembly
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../800-Hardware/500-PartList/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Part List
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../800-Hardware/520-Assembly/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Mechanical Assembly
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../800-Hardware/550-Wiring/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Wiring the Robot
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../800-Hardware/560-Robot-Expansion-Board/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Yahboom ROS robot control board with STM32F103RCT6 IMU
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_6" id="__nav_3_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Final Setup
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_6">
+            <span class="md-nav__icon md-icon"></span>
+            Final Setup
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../900-Final-Setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Final Setup
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../900-Final-Setup/901-HW-Status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Status HW Components
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../900-Final-Setup/950-Workspace-Setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Setup the environments
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Basic Teleoperations
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Basic Teleoperations
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../02-L0%20-%20Teleoperations/000-Introduction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    000 Introduction
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Network
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            Network
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../02-L0%20-%20Teleoperations/100-Network/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Network Topics
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../02-L0%20-%20Teleoperations/100-Network/110-Network/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ROS 2 and Network
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../02-L0%20-%20Teleoperations/100-Network/111-WSL-Network/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    WSL and Network
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Input Devices
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            Input Devices
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../02-L0%20-%20Teleoperations/200-InputDevices/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Input Devcies
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../02-L0%20-%20Teleoperations/200-InputDevices/210-Keyboard/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Adding keyboard teleoperations
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../02-L0%20-%20Teleoperations/200-InputDevices/220-Joysticks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Adding joystick teleoperations
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#links-in-gazebo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Links in Gazebo
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#frame-ids" class="md-nav__link">
+    <span class="md-ellipsis">
+      Frame IDs
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-coordinate-frames-are-important" class="md-nav__link">
+    <span class="md-ellipsis">
+      Why Coordinate Frames Are Important?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#standard-coordinate-frames-in-ros-for-a-mobile-robot" class="md-nav__link">
+    <span class="md-ellipsis">
+      Standard Coordinate Frames in ROS for a Mobile Robot
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#map-to-odom" class="md-nav__link">
+    <span class="md-ellipsis">
+      Map to Odom
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="links">Links</h1>
+<h2 id="links-in-gazebo">Links in Gazebo</h2>
+<p>In Gazebo, a link refers to a rigid body within the simulated world. It is synonymous with the concept of a body in the URDF (Unified Robot Description Format) context.
+Links represent physical objects such as robot parts, sensors, or any other components that interact with the simulation environment.
+Each link has intrinsic properties like mass, friction coefficients, and a pose (position and orientation) relative to the world frame.
+Links are connected to each other via joints, forming a Gazebo model. A model is essentially a collection of interconnected links.</p>
+<div class="admonition tip">
+<p class="admonition-title">Important concept</p>
+<p>The concept of the links and TF2 is a very basic concept which must be understood. Make you familiar with it.</p>
+</div>
+<h2 id="frame-ids">Frame IDs</h2>
+<p>A frame ID (also known as a coordinate frame) defines a reference coordinate system within the simulation.
+In ROS and Gazebo, different components (such as links, sensors, or cameras) have their own coordinate frames.
+Commonly used frame IDs include:</p>
+<ul>
+<li><em>World frame</em>: The global reference frame in which all other frames are defined. It remains fixed relative to the simulated world.</li>
+<li><em>Link frames</em>: Each link has its own local coordinate frame. The pose of a link is specified relative to this frame.</li>
+<li><em>Sensor frames</em>: Sensors (like cameras, IMUs, or lidars) have their own frames. For example, an IMU sensor may have a frame attached to the robot’s body.</li>
+<li><em>Base frame</em>: Often used for mobile robots, the base frame represents the robot’s footprint or chassis.</li>
+<li><em>End-effector frame</em>: For robotic arms, this frame corresponds to the tool or end-effector.
+Transformations between frames allow us to express positions and orientations of objects relative to each other.</li>
+</ul>
+<!-- 
+## ROS Communication with Gazebo
+
+Gazebo provides a set of ROS APIs that allow users to manipulate and obtain information about the simulated world.
+
+Key ROS topics related to links and frame IDs in Gazebo include:
+/gazebo/link_states: Publishes pose and twist information for all links in the simulation relative to the world frame.
+/gazebo/model_states: Provides pose and twist information for entire models (collections of links) relative to the world frame.
+You can retrieve this information using the following commands:
+To see link states: rostopic echo -n 1 /gazebo/link_states
+To see model states: rostopic echo -n 1 /gazebo/model_states -->
+
+<blockquote>
+<p><em>Note:</em> Remember that understanding links and frame IDs is crucial for correctly modeling and simulating robots in Gazebo.</p>
+</blockquote>
+<h2 id="why-coordinate-frames-are-important">Why Coordinate Frames Are Important?</h2>
+<p>In a real-world scenario, in order for the robot to avoid obstacles as it moves around in the environment, we need to convert a detected object’s coordinates in the LIDAR coordinate frame to equivalent coordinates in the robot base’s frame.</p>
+<p>You can see why coordinate frames and being able to transform data from one coordinate frame to another is important for accurate autonomous navigation.</p>
+<h2 id="standard-coordinate-frames-in-ros-for-a-mobile-robot">Standard Coordinate Frames in ROS for a Mobile Robot</h2>
+<p>Below are the standard coordinate frames for a basic two wheeled differential drive robot.</p>
+<ul>
+<li>The red arrows represent the x axes</li>
+<li>The blue arrows represent the z axes</li>
+<li>The green dots (into the page) represent the y axes.</li>
+</ul>
+<p><img alt="coordsystems_img" src="../images/coordsystems_img.png" /></p>
+<p>The official ROS documents have an explanation of these coordinate frames, but let’s briefly define the main ones.</p>
+<ul>
+<li><em>map</em> frame has its origin at some arbitrarily chosen point in the world. This coordinate frame is fixed in the world.</li>
+<li><em>odom</em> frame has its origin at the point where the robot is initialized. This coordinate frame is fixed in the world.</li>
+<li><em>base_footprint</em> has its origin directly under the center of the robot. It is the 2D pose of the robot. This coordinate frame moves as the robot moves.</li>
+<li><em>base_link</em> has its origin directly at the pivot point or center of the robot. This coordinate frame moves as the robot moves.</li>
+<li><em>laser_link</em> has its origin at the center of the laser sensor (i.e. LIDAR). This coordinate frame remains fixed (i.e. “static”) relative to the base_link.
+If you have other sensors on your robot, like an IMU, you can have a coordinate frame for that as well.</li>
+</ul>
+<!-- ## Static Transform Publisher
+
+How can we automatically convert data that is published in one coordinate frame to equivalent data in another coordinate frame? For example, suppose we have an object at coordinate (x=3.7, y=1.23, z = 0.0) in the map coordinate frame. We want to navigate the robot to this object. What is the object’s position relative to the base_link coordinate frame?
+
+Fortunately, ROS has a package called tf to handle all these coordinate transforms for us. -->
+
+<p>For coordinate frames that don’t change relative to each other through time (e.g. laser_link to base_link stays static because the laser is attached to the robot), we use the Static Transform Publisher.</p>
+<p>For coordinate frames that do change relative to each other through time (e.g. map to base_link), we use tf broadcasters and listeners. A lot of ROS packages handle these moving coordinate frame transforms for you, so you often don’t need to write these yourself.</p>
+<p><img alt="coordinate_frames" src="../images/coordinate_frames.jpg" /></p>
+<!-- Examples
+coordinate_frames
+Let’s take a look at some examples of how to set up static transform publishers in ROS. These static transform publishers will typically appear inside the launch file for whatever robot you’re working on.
+
+Here is the syntax:
+ -->
+
+<p>static_transform_publisher x y z yaw pitch roll frame_id child_frame_id period_in_ms</p>
+<p>From the ROS website: “Publish a static coordinate transform to tf using an x/y/z offset in meters and yaw/pitch/roll in radians. (yaw is rotation about Z, pitch is rotation about Y, and roll is rotation about X). The period, in milliseconds, specifies how often to send a transform. 100ms (10hz) is a good value.”</p>
+<h2 id="map-to-odom">Map to Odom</h2>
+<!-- If we want, for example, the map and odometry frame to be equivalent, here is the code you would write inside a ROS launch file:
+
+<div class="highlight"><pre><span></span><code>&lt;node<span class="w"> </span><span class="nv">pkg</span><span class="o">=</span><span class="s2">&quot;tf&quot;</span><span class="w"> </span><span class="nv">type</span><span class="o">=</span><span class="s2">&quot;static_transform_publisher&quot;</span><span class="w"> </span><span class="nv">name</span><span class="o">=</span><span class="s2">&quot;map_to_odom&quot;</span><span class="w"> </span><span class="nv">args</span><span class="o">=</span><span class="s2">&quot;0 0 0 0 0 0 map odom 30&quot;</span><span class="w"> </span>/&gt;
+<span class="sb">```</span><span class="w"> </span>--&gt;
+
+map<span class="w"> </span>-&gt;<span class="w"> </span>odom<span class="w"> </span>transform<span class="w"> </span>tells<span class="w"> </span>us<span class="w"> </span>the<span class="w"> </span>position<span class="w"> </span>and<span class="w"> </span>orientation<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>starting<span class="w"> </span>point<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>robot<span class="w"> </span><span class="o">(</span>i.e.<span class="w"> </span>odom<span class="w"> </span>coordinate<span class="w"> </span>frame,<span class="w"> </span>which<span class="w"> </span>is<span class="w"> </span>the<span class="w"> </span>child<span class="o">)</span><span class="w"> </span>inside<span class="w"> </span>the<span class="w"> </span>map’s<span class="w"> </span>coordinate<span class="w"> </span>frame<span class="w"> </span><span class="o">(</span>i.e.<span class="w"> </span>the<span class="w"> </span>parent<span class="o">)</span>.
+
+&lt;!--<span class="w"> </span>In<span class="w"> </span>our<span class="w"> </span>example<span class="w"> </span>above,<span class="w"> </span>we<span class="w"> </span>assume<span class="w"> </span>that<span class="w"> </span>the<span class="w"> </span>odom<span class="w"> </span>frame<span class="w"> </span>does<span class="w"> </span>not<span class="w"> </span>move<span class="w"> </span>relative<span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span>map<span class="w"> </span>frame<span class="w"> </span>over<span class="w"> </span>time.<span class="w"> </span>--&gt;
+
+Odom<span class="w"> </span>to<span class="w"> </span>Base<span class="w"> </span>Footprint
+odom<span class="w"> </span>-&gt;<span class="w"> </span>base_footprint<span class="w"> </span>transform<span class="w"> </span>is<span class="w"> </span>not<span class="w"> </span>static<span class="w"> </span>because<span class="w"> </span>the<span class="w"> </span>robot<span class="w"> </span>moves<span class="w"> </span>around<span class="w"> </span>the<span class="w"> </span>world.<span class="w"> </span>The<span class="w"> </span>base_footprint<span class="w"> </span>coordinate<span class="w"> </span>frame<span class="w"> </span>will<span class="w"> </span>constantly<span class="w"> </span>change<span class="w"> </span>as<span class="w"> </span>the<span class="w"> </span>wheels<span class="w"> </span>turn.<span class="w"> </span>This<span class="w"> </span>non-static<span class="w"> </span>transform<span class="w"> </span>is<span class="w"> </span>often<span class="w"> </span>provided<span class="w"> </span><span class="k">in</span><span class="w"> </span>packages<span class="w"> </span>like<span class="w"> </span>the<span class="w"> </span>robot_pose_ekf<span class="w"> </span>package.
+
+Base<span class="w"> </span>Footprint<span class="w"> </span>to<span class="w"> </span>Base<span class="w"> </span>Link
+base_footprint<span class="w"> </span>-&gt;<span class="w"> </span>base_link<span class="w"> </span>is<span class="w"> </span>a<span class="w"> </span>static<span class="w"> </span>transform<span class="w"> </span>because<span class="w"> </span>both<span class="w"> </span>coordinate<span class="w"> </span>frames<span class="w"> </span>are<span class="w"> </span>fixed<span class="w"> </span>to<span class="w"> </span>each<span class="w"> </span>other.<span class="w"> </span>The<span class="w"> </span>robot<span class="w"> </span>moves,<span class="w"> </span>and<span class="w"> </span>the<span class="w"> </span>coordinate<span class="w"> </span>frame<span class="w"> </span>of<span class="w"> </span>its<span class="w"> </span>“footprint”<span class="w"> </span>will<span class="w"> </span>move.
+
+&lt;!--<span class="w"> </span><span class="sb">```</span><span class="w"> </span>bash
+&lt;node<span class="w"> </span><span class="nv">pkg</span><span class="o">=</span><span class="s2">&quot;tf&quot;</span><span class="w"> </span><span class="nv">type</span><span class="o">=</span><span class="s2">&quot;static_transform_publisher&quot;</span><span class="w"> </span><span class="nv">name</span><span class="o">=</span><span class="s2">&quot;base_link_broadcaster&quot;</span><span class="w"> </span><span class="nv">args</span><span class="o">=</span><span class="s2">&quot;0 0 0.09 0 0 0 base_footprint base_link 30&quot;</span><span class="w"> </span>/&gt;
+</code></pre></div>
+
+In this case above, we assume that the origin of the base_link coordinate frame (i.e. center of the robot) is located 0.09 meters above its footprint. -->
+
+<p>Base Link to Laser
+base_link -&gt; laser transform gives us the position and orientation of the laser inside the base_link’s coordinate frame. This transform is static.</p>
+<!-- ``` bash
+<node pkg="tf" type="static_transform_publisher" name="base_link_to_laser" args="0.06 0 0.08 0 0 0 base_link laser 30" />
+```
+
+We assume that the laser is located 0.06 meters forward of the center of the robot and 0.08 meters above the center of the robot. -->
+
+<!-- 
+## More intuitive command-line arguments for static_transform_publisher
+
+The command-line handling has been changed to use flags instead, and all flags except for --frame-id and --child-frame-id are optional. Thus, the above command-line can be simplified to: ros2 run tf2_ros static_transform_publisher --frame-id foo --child-frame-id bar To change just the translation x, the command-line would be:
+
+ros2 run tf2_ros static_transform_publisher --x 1.5 --frame-id foo --child-frame-id bar -->
+
+<h2 id="references">References</h2>
+<p><a href="https://automaticaddison.com/coordinate-frames-and-transforms-for-ros-based-mobile-robots/">Coordinate Frames and Transforms for ROS-based Mobile Robots</a></p>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 15, 2025 19:15:30 UTC">October 15, 2025</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      2025, Cord Burmeister
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.top", "navigation.expand"], "search": "../../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  </body>
+</html>
