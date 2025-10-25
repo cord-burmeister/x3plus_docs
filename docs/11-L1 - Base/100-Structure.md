@@ -66,19 +66,18 @@ This is a list of topics which will be supported in the mapping.
 
 | Description | Gazebo | Hardware | Topic | Direction |
 |-------------|--------|----------|-------|-----------|
-| Drive Commands | ![](images/task.png) | ![](images/task.png) | /cmd_vel | In |
-| Velocity | ![](images/notok.png) | ![](images/ok.png) | /vel_raw | Out |
-| Edition | ![](images/notok.png) | ![](images/ok.png) | /edition | Out |
-| Buzzer | ![](images/notok.png) | ![](images/ok.png) | /Buzzer | In |
-| Odometry | ![](images/ok.png) | ![](images/task.png) | /wheeled/odom | Out |
-| Battery Voltage | ![](images/task.png) | ![](images/ok.png) | /voltage | Out |
-| Imu | ![](images/task.png) | ![](images/ok.png) | /imu/data_raw | Out |
-| MagneticField | ![](images/notok.png) | ![](images/ok.png) | /imu/mag | Out |
-| LIDAR | ![](images/task.png) | ![](images/task.png) | /scan | Out |
+| Drive Commands | ![task](images/task.png) | ![task](images/task.png) | /cmd_vel | In |
+| Velocity | ![notok](images/notok.png) | ![ok](images/ok.png) | /vel_raw | Out |
+| Edition | ![notok](images/notok.png) | ![ok](images/ok.png) | /edition | Out |
+| Buzzer | ![notok](images/notok.png) | ![ok](images/ok.png) | /Buzzer | In |
+| Odometry | ![ok](images/ok.png) | ![task](images/task.png) | /wheeled/odom | Out |
+| Battery Voltage | ![notok](images/task.png) | ![ok](images/ok.png) | /voltage | Out |
+| Imu | ![task](images/task.png) | ![ok](images/ok.png) | /imu/data_raw | Out |
+| MagneticField | ![notok](images/notok.png) | ![ok](images/ok.png) | /imu/mag | Out |
+| LIDAR | ![task](images/task.png) | ![task](images/task.png) | /scan | Out |
 
-![](images/ok.png) Topic is integrated
+![ok](images/ok.png) Topic is integrated
 
-![](images/task.png) This has to be done and documented for the final integration
+![task](images/task.png) This has to be done and documented for the final integration
 
-![](images/notok.png) Topic can be ignored
-
+![notok](images/notok.png) Topic can be ignored
