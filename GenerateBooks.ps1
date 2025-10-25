@@ -195,18 +195,26 @@ function Find-ForBooks {
         [string] $FolderName,
         [string] $PreSharedFolder,
         [string] $PostSharedFolder,
-        [string] $OutputFolder
+        [string] $OutputFolder, 
+        [bool] $HandleDraftsOnly = $false
     )
     # Get folder in the sort order
      $filteredFolders = Get-ChildItem -Path $FolderName -Directory | Where-Object { $_.Name -match "^\d" } | Sort-Object Name
     foreach ($folder in $filteredFolders) {
         Write-Host "Processing folder: $($folder.Name)"
-        Find-ForBooks -FolderName $folder.FullName -OutputFolder $OutputFolder -PreSharedFolder $PreSharedFolder -PostSharedFolder $PostSharedFolder
+        Find-ForBooks -FolderName $folder.FullName -OutputFolder $OutputFolder -PreSharedFolder $PreSharedFolder -PostSharedFolder $PostSharedFolder -HandleDraftsOnly $HandleDraftsOnly
     }
-     $bookDefinitions = Get-ChildItem -Path $FolderName  -Filter *.yaml | Sort-Object Name
+    if ($HandleDraftsOnly) {
+        # When handling drafts only, match files by filename pattern '*.Draft.yaml'
+        $bookDefinitions = Get-ChildItem -Path $FolderName -Filter *-Draft.yaml -File | Sort-Object Name
+    }
+    else {
+        $bookDefinitions = Get-ChildItem -Path $FolderName -Filter *.yaml -File | Sort-Object Name
+    }
+
     foreach ($bookDefinition in $bookDefinitions) {
         Write-Host "Processing book: $($bookDefinition.Name)"
-        Convert-Book -FolderName $FolderName -OutputFolder $OutputFolder -BookDefinitionFile $bookDefinition.FullName $PreSharedFolder -PostSharedFolder $PostSharedFolder
+        Convert-Book -FolderName $FolderName -OutputFolder $OutputFolder -PreSharedFolder $PreSharedFolder -PostSharedFolder $PostSharedFolder -BookDefinitionFile $bookDefinition.FullName
     }
 }
 
@@ -237,7 +245,7 @@ if (-Not (Test-Path -Path $OutputFolder)) {
 
 Set-Location $folderPath
 
-Find-ForBooks -FolderName $folderPath -PreSharedFolder $sharedPathPre -PostSharedFolder $sharedPathPost -OutputFolder $OutputFolder
+Find-ForBooks -FolderName $folderPath -PreSharedFolder $sharedPathPre -PostSharedFolder $sharedPathPost -OutputFolder $OutputFolder -HandleDraftsOnly $true
 
 Set-Location $location
 $end = Get-Date
