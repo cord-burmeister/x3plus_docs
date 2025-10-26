@@ -3,7 +3,7 @@
         "choco",
         "eisvogel",
         "miktex",
-        "pandoc"
+        "pandoc",
         "endmindmap",
         "startmindmap",
         "Teleoperation",
@@ -188,8 +188,20 @@
         "xacro",
         "yahboom",
         "yahboomcar",
-        "Yocto"
-         
-         
+        "Yocto",
+        "Youyeetoo",
+        "Matterport",
+        "UART",
+        "world",
+        "topic",
+        "rviz",
+        "lidar",
+        "LIDAR",
+        "horizontal",
+        "vertical",
+        "LiDAR",
+        "lidars",
+        "LIDARs",
+        "ultrasonic"
     ]
 }
