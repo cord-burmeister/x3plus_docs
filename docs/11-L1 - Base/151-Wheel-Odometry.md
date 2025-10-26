@@ -130,7 +130,7 @@ digraph foo {
 ```
 -->
 
-[](images/nodes-wheel-odometry.png)
+![nodes-wheel-odometry](images/nodes-wheel-odometry.png)
 
 ## References
 
