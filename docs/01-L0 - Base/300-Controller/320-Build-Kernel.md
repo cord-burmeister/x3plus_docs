@@ -85,6 +85,11 @@ cat /etc/nv_tegra_release
 
 Jetson Linux 36.X is NVIDIA’s latest board support package (BSP) for Jetson Orin modules, providing kernel, drivers, bootloader, and Ubuntu-based root filesystem for edge AI development.
 
+!!! warning "Issues with R36 Revision 4.7"
+    [R36 (release), REVISION: 4.7 cannot boot up properly](https://forums.developer.nvidia.com/t/r36-release-revision-4-7-cannot-boot-up-properly/347732) has issues with booting and kernel source availablitity.
+
+    It’s also worth noting that the Jetson Orin Nano has a known issue with booting after updating to L4T R36 release REVISION 47, which is related to a change in the boot configuration. 
+
 Jetson Linux 36.X—specifically version **36.4.4** as of October 2025—is part of the **JetPack 6.2.1 SDK** and is designed to support production-grade deployment on Jetson AGX Orin, Orin NX, and Orin Nano modules. Here's a breakdown of its key features and architecture:
 
 ### Core Components

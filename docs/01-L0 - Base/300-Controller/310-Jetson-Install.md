@@ -15,7 +15,7 @@ In this description we follow the headless installation flow. Therefore you need
 * A Ubuntu based Host PC with enough hard disc space to cache the installation files. This is approximately 10 GB.
 * USB Cable to flash the image
 * Cable to bridge the jumper to set the Jetson in recovery mode
-* Network first cable then WiFi
+* Network cable in the beginning then WiFi
 
 ## Get Started
 
@@ -47,7 +47,27 @@ You’ll need to connect Pin 9 (FC REC) and Pin 10 (GND) using a jumper wire or 
 2. Connect to Host PC
 Use a USB-C cable to connect the Jetson Orin Nano to your Ubuntu host PC (Ubuntu 20.04 or 22.04 is recommended).
 
-Your device will boot up and enter force recovery mode now. To confirm whether you do it correctly, connect your device to a host PC, and run lsusb in a terminal, then you should see something like
+3. Power On the Device
+With the jumper in place, power on the Jetson Orin Nano.
+
+The device should now boot into Force Recovery Mode.
+
+4. Verify Recovery Mode
+On your host PC, open a terminal and run:
+
+``` bash
+lsusb
+```
+
+You should see a line like:
+
+``` Code
+Bus XXX Device XXX: ID 0955:7f21 NVIDIA Corp.
+```
+
+This confirms the Jetson is in recovery mode.
+
+In detail you can see
 
 ``` bash
 Bus <bbb> Device <ddd>: ID 0955: <nnnn> Nvidia Corp.
@@ -71,29 +91,6 @@ Where:
 7019 for Jetson AGX Xavier (P2888-0005 with 64GB)
 7019 for Jetson AGX Xavier Industrial (P2888-0008)
 
-
-Make sure the host has NVIDIA SDK Manager installed.
-
-3. Power On the Device
-With the jumper in place, power on the Jetson Orin Nano.
-
-The device should now boot into Force Recovery Mode.
-
-4. Verify Recovery Mode
-On your host PC, open a terminal and run:
-
-``` bash
-lsusb
-```
-
-You should see a line like:
-
-``` Code
-Bus XXX Device XXX: ID 0955:7f21 NVIDIA Corp.
-```
-
-This confirms the Jetson is in recovery mode.
-
 ## Why Use Recovery Mode?
 
 Required for flashing JetPack via SDK Manager
@@ -104,15 +101,7 @@ Allows firmware updates and low-level access
 
 If you’re using a custom carrier board or a third-party enclosure, the pin layout might differ slightly—so always check the board’s documentation.
 
-## Hardware Setup
-
-Connect NVIDIA Jetson Orin Nano Developer Kit to the PC with a USB Type-C cable.
-
-While shorting the FC REC pin and GND pin of the 12-pin header under the module, insert the power supply plug into the DC jack.
-
-This will turn on the Jetson dev kit in Force Recovery Mode .
-
-## Steps
+## SW Installation Steps
 
 Launch SDK Manger
 
