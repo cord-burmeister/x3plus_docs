@@ -47,6 +47,31 @@ You’ll need to connect Pin 9 (FC REC) and Pin 10 (GND) using a jumper wire or 
 2. Connect to Host PC
 Use a USB-C cable to connect the Jetson Orin Nano to your Ubuntu host PC (Ubuntu 20.04 or 22.04 is recommended).
 
+Your device will boot up and enter force recovery mode now. To confirm whether you do it correctly, connect your device to a host PC, and run lsusb in a terminal, then you should see something like
+
+``` bash
+Bus <bbb> Device <ddd>: ID 0955: <nnnn> Nvidia Corp.
+```
+
+Where:
+
+= <bbb> is any three-digit number
+= <ddd> is any three-digit number
+
+<nnnn> is a four-digit number that represents the type of your Jetson module:
+7023 for Jetson AGX Orin (P3701-0000 Developer Kit module)
+7223 for Jetson AGX Orin (P3701-0004 with 32GB)
+7323 for Jetson Orin NX (P3767-0000 with 16GB)
+7423 for Jetson Orin NX (P3767-0001 with 8GB)
+7523 for Jetson Orin Nano (P3767-0003 with 8GB)
+7e19 for Jetson Xavier NX (P3668-0000 development m)
+7e19 for Jetson Xavier NX (P3668-0001)
+7019 for Jetson AGX Xavier (P2888-0001 with 16GB)
+7019 for Jetson AGX Xavier (P2888-0004 with 32GB)
+7019 for Jetson AGX Xavier (P2888-0005 with 64GB)
+7019 for Jetson AGX Xavier Industrial (P2888-0008)
+
+
 Make sure the host has NVIDIA SDK Manager installed.
 
 3. Power On the Device
