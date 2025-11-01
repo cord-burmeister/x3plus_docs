@@ -74,7 +74,7 @@ This is a list of topics which will be supported in the mapping.
 | Battery Voltage | ![notok](images/task.png) | ![ok](images/ok.png) | /voltage | Out |
 | Imu | ![task](images/task.png) | ![ok](images/ok.png) | /imu/data_raw | Out |
 | MagneticField | ![notok](images/notok.png) | ![ok](images/ok.png) | /imu/mag | Out |
-| LIDAR | ![task](images/task.png) | ![task](images/task.png) | /scan | Out |
+| LIDAR | ![ok](images/ok.png) | ![task](images/task.png) | /scan_raw | Out |
 
 ![ok](images/ok.png) Topic is integrated
 

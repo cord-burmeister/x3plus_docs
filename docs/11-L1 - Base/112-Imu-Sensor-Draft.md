@@ -100,7 +100,7 @@ But first, let's add our IMU to the urdf:
 ```
 
 Which is a simple link and a fixed joint in the center of the base link.
-The rpy attribute inside a <joint> element is used to define the orientation of the joint's axis in 3D space—specifically, how the child link is rotated relative to the parent link. rpy stands for roll, pitch, and yaw, which are the rotations around the X, Y, and Z axes respectively. It uses Euler angles in radians to express these rotations.
+The rpy attribute inside a &lt;joint&gt; element is used to define the orientation of the joint's axis in 3D space—specifically, how the child link is rotated relative to the parent link. rpy stands for roll, pitch, and yaw, which are the rotations around the X, Y, and Z axes respectively. It uses Euler angles in radians to express these rotations.
 
 * xyz: sets the position of the joint
 * rpy: sets the orientation of the joint
@@ -134,7 +134,7 @@ The simulation is generating gazebo IMU message on the topic *imu* which then is
   direction: "GZ_TO_ROS"
 ```
 
-With adding the IMU we aren't done yet, with the new Gazebo we also have to make sure that our simulated world has the right plugins within its <world> tag. We add the following code to the URDF description do add the plugin in the gazebo world.
+With adding the IMU we aren't done yet, with the new Gazebo we also have to make sure that our simulated world has the right plugins within its &lt;world&gt; tag. We add the following code to the URDF description do add the plugin in the gazebo world.
 
 ``` XML
     <gazebo>
@@ -281,7 +281,6 @@ accelerometer:
 ```
 
 !!! note Notes
-
     * Works with ROS 1 and ROS 2 (different branches).
     * Requires the IMU to be stationary during calibration data collection.
     * Calibration improves orientation estimation and sensor fusion results.
@@ -385,6 +384,22 @@ We attach the noise model in the URDF description to the IMU sensor.
     </gazebo>
 ```
 
+## IMU visualization in Rviz2
+
+When using the `rviz_imu_plugin` in RViz2 to visualize IMU data, the marker behavior is governed by how the plugin interprets and displays the `sensor_msgs/msg/Imu` message. Here's how the markers behave and what you can configure:
+
+### Marker Behavior in `rviz_imu_plugin`
+
+The plugin displays two main types of markers:
+
+* **Orientation Marker** Driven by `orientation` field in the IMU message (quaternion). Rotates in real time to reflect the IMU’s orientation.
+* **Acceleration Marker** Driven by `linear_acceleration` field.  Points in the direction of acceleration.and Length corresponds to magnitude.
+
+### Best Practices
+
+* Ensure your IMU messages include valid `orientation` and `linear_acceleration` data.
+* Use `tf2` to broadcast transforms if your IMU frame isn’t directly connected to the fixed frame.
+
 ## References
 
 [Wikipedia](https://en.wikipedia.org/wiki/Inertial_measurement_unit)
@@ -402,5 +417,3 @@ We attach the noise model in the URDF description to the IMU sensor.
 [imu_calib](https://github.com/dpkoch/imu_calib)
 
 [How to Calibrate an IMU: A Step-by-Step Guide](https://thetechylife.com/how-do-you-calibrate-an-imu/)
-
-[](https://www.mathworks.com/help/nav/ug/estimate-camera-to-imu-transformation-using-extrinsic-calibration.html)
