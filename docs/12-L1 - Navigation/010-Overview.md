@@ -2,7 +2,27 @@
 
 Indoor robots are evolving with distinct levels of autonomous navigation, as explained by Relay Robotics. This chapter explores how these levels shape robot capabilities and deployment strategies.
 
-## Chapter: Navigating Autonomy — The Relay Robotics Framework
+## Aspects for navigation
+
+### Installation complexity
+
+In general, indoor robots today go through an installation process before being put into operation. In addition to modifying building infrastructure, mapping, labeling, and other required setup can be a part of this process. This can often be cost-, time-, and labor-intensive.
+
+### Social navigation
+
+Indoor environments are highly social spaces. Robots have to co-navigate with all other agents, human and robot, that are also using the space.
+
+Successfully navigating in these highly unstructured and social environments requires skills and behaviors that are usually placed under the label “social navigation.”
+
+### Operational domain helps define autonomous navigation
+
+A robot’s operational domain is the kinds of environments it can be successful in. Not all indoor environments are the same. Different environments have different needs and might require different levels of navigation sophistication.
+
+### Multi-floor autonomous navigation
+
+elf-driving cars need only worry about single-level roads. But a large number of buildings in the world are multi-floor, and robots need to be able to traverse those floors to be effective.
+
+## Navigating Autonomy — The Relay Robotics Framework
 
 In the bustling corridors of modern hotels, hospitals, and office buildings, indoor service robots are becoming a familiar sight. But behind their smooth movements lies a complex hierarchy of autonomy. Relay Robotics, a pioneer in indoor delivery robots, has introduced a structured framework to define *five levels of autonomous navigation*, offering clarity in a rapidly advancing field.
 
@@ -36,9 +56,17 @@ Relay Robotics emphasizes that most commercial indoor robots today operate at **
 
 This framework helps businesses assess robot capabilities and choose the right level for their needs. Whether delivering towels in a hotel or transporting lab samples in a hospital, understanding these levels ensures smoother integration and better performance.
 
+| Level | Installation Complexity | Social Navigation     | Operational Domain     | Multi-Floor Navigation     |
+|-------|--------------------------|------------------------|-------------------------|-----------------------------|
+| 1  | ![red](images/circle-red.png) ![red](images/circle-red.png) ![red](images/circle-red.png) ![red](images/circle-red.png)  | ![blue](images/circle-blue.png) | ![purple](images/circle-purple.png) | Rarely Compatible |
+| 2  | ![red](images/circle-red.png) ![red](images/circle-red.png) ![red](images/circle-red.png) | ![blue](images/circle-blue.png) | ![purple](images/circle-purple.png) ![purple](images/circle-purple.png) | Sometimes Compatible |
+| 3  | ![red](images/circle-red.png) | ![blue](images/circle-blue.png) ![blue](images/circle-blue.png) | ![purple](images/circle-purple.png) ![purple](images/circle-purple.png) ![purple](images/circle-purple.png) | Compatible |
+| 4  | ![red](images/circle-red.png) | ![blue](images/circle-blue.png) ![blue](images/circle-blue.png) ![blue](images/circle-blue.png) ![blue](images/circle-blue.png) | ![purple](images/circle-purple.png) ![purple](images/circle-purple.png) ![purple](images/circle-purple.png) ![purple](images/circle-purple.png) | Expected |
+| 5  | | ![blue](images/circle-blue.png) ![blue](images/circle-blue.png) ![blue](images/circle-blue.png) ![blue](images/circle-blue.png) | ![purple](images/circle-purple.png) ![purple](images/circle-purple.png) ![purple](images/circle-purple.png) ![purple](images/circle-purple.png) | Expected |
+
 ## References
 
-[ROS2-Based AMR System for Mapping and Navigation in Unknown Indoor Environments](https://webthesis.biblio.polito.it/33156/1/tesi.pdf): A Master’s Degree Thesis with an overveiw over navigation options
+[ROS2-Based AMR System for Mapping and Navigation in Unknown Indoor Environments](https://webthesis.biblio.polito.it/33156/1/tesi.pdf): A Master’s Degree Thesis with an overview over navigation options
 
 [Autonomous Robot Navigation and Nav2](https://foxglove.dev/blog/autonomous-robot-navigation-and-nav2): Autonomous Robot Navigation and Nav2 overview.
 
@@ -51,3 +79,5 @@ This framework helps businesses assess robot capabilities and choose the right l
 [Review Paper: Key Points on Robot Navigation and Its Practical Uses in the Field of Manufacturing](https://www.researchgate.net/publication/380881597_Review_Paper_Key_Points_on_Robot_Navigation_and_Its_Practical_Uses_in_the_Field_of_Manufacturing): Key  aspects  are  covered  in  this review  article,  along  with  a  brief  explanation of mobile  robot  navigation.
 
 [Relay Robotics proposes levels of autonomous navigation for indoor robots](https://www.therobotreport.com/relay-robotics-explains-autonomous-navigation-levels-indoor-robots/): A characterization of the required navigation capabilities for the different abstraction levels.
+
+[Principles and Guidelines for Evaluating Social Robot Navigation Algorithms](https://arxiv.org/abs/2306.16740): Overview Social Robot Navigation Algorithms
