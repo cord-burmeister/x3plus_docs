@@ -25,7 +25,7 @@ Before running the setup scripts, ensure that you have the following dependencie
 
 ## Running the Setup Scripts
 
-The `x3plus_setup` project provides several setup scripts to configure different workspaces for the X3Plus robot. 
+The `x3plus_setup` project provides several setup scripts to configure different workspaces for the X3Plus robot.
 
 ### `bash/setup-ws-bot.sh`
 

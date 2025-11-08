@@ -20,7 +20,7 @@ git config --global user.name "<user name>"
 git config --global credential.credentialStore cache
 ```
 
-Configure the git-crendtianl-manager 
+Configure the git-credential-manager
 
 !!! Note
     The following procedure works also on a Rasberry PI
@@ -35,7 +35,11 @@ git-credential-manager configure
 
 Htop gives you performance overview with a text UI.
 
-![](images/htop.png)
+``` bash
+sudo apt install htop -y 
+```
+
+![Htop](images/htop.png)
 
 ## References
 
