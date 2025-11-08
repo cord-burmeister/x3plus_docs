@@ -331,9 +331,95 @@ The filter file is locate under */x3plus_bringup/config
 ros2 launch x3plus_gazebo x3plus_launch.py
 ```
 
-When using the lidar in teh simulation we see that the points are only in a range of 180 degree in front of the robot base.
+When using the lidar in the simulation we see that the points are only in a range of 180 degree in front of the robot base.
 
 ![Laser scan in the house](images/gz-house-scan.png)
+
+## Check the hardware
+
+Run *lsusb* in the terminal
+
+Look for a line like:
+
+``` bash
+...
+10c4:ea60 Silicon Labs CP2102 USB to UART Bridge Controller
+...
+```
+
+When you find the entry then the device can be found on the USB bus. Now we need to bind the device. Use the rules script from the *sllidar* repository.
+
+``` bash
+cd src/sllidar_ros2/scripts/
+sudo cp rplidar.rules /etc/udev/rules.d
+```
+
+I was using a reboot to ensure the proper system configuration.
+
+``` bash
+sudo reboot
+```
+
+We can use the start script from the vendor to start the LIDAR ROS driver with a visualization in *Rviz2*.
+
+``` bash
+ ros2 launch sllidar_ros2 view_sllidar_c1_launch.py
+```
+
+You should see the driver output.
+
+``` bash
+[INFO] [launch]: All log files can be found below /home/marvin/.ros/log/2025-11-08-11-19-42-736148-ma3jet-2927
+[INFO] [launch]: Default logging verbosity is set to INFO
+[INFO] [sllidar_node-1]: process started with pid [2928]
+[INFO] [rviz2-2]: process started with pid [2930]
+[sllidar_node-1] [INFO] [1762597182.897318089] [sllidar_node]: SLLidar running on ROS2 package SLLidar.ROS2 SDK Version:1.0.1, SLLIDAR SDK Version:2.1.0
+[sllidar_node-1] [INFO] [1762597183.415447238] [sllidar_node]: SLLidar S/N: B91BE195C1E79ED8B5E29EF13DCC4A7D
+[sllidar_node-1] [INFO] [1762597183.415584041] [sllidar_node]: Firmware Ver: 1.02
+[sllidar_node-1] [INFO] [1762597183.415602281] [sllidar_node]: Hardware Rev: 18
+[sllidar_node-1] [INFO] [1762597183.418660595] [sllidar_node]: SLLidar health status : 0
+[sllidar_node-1] [INFO] [1762597183.418731157] [sllidar_node]: SLLidar health status : OK.
+[sllidar_node-1] [INFO] [1762597183.696539078] [sllidar_node]: current scan mode: Standard, sample rate: 5 Khz, max_distance: 16.0 m, scan frequency:10.0 Hz,
+[rviz2-2] [INFO] [1762597184.553775534] [rviz2]: Stereo is NOT SUPPORTED
+[rviz2-2] [INFO] [1762597184.554199416] [rviz2]: OpenGl version: 4.5 (GLSL 4.5)
+[rviz2-2] [INFO] [1762597184.618672875] [rviz2]: Stereo is NOT SUPPORTED
+
+```
+
+!!! note "Raw scan data"
+    Keep in mind that this driver is providing the full scan data for the 360 degree scope.
+
+![The raw LIDAR Scan data in RViz2](images/rviz2-slidar-c1-raw.png)
+
+## Integration in the launch file
+
+We integrate the new node for the LIDAR inclusive the driver into our launch file with the following snippet.
+
+``` python
+    # Instead of using IncludeLaunchDescription, directly launch the sllidar_node with remappings:
+    lidar_cmd = Node (
+        package='sllidar_ros2',
+        executable='sllidar_node',
+        name='sllidar_node',
+        output='screen',
+        parameters=[{
+            'channel_type':'serial',
+            'serial_port': '/dev/rplidar',
+            'serial_baudrate': 460800, 
+            'frame_id': 'laser_link',
+            'inverted': False, 
+            'angle_compensate': True, 
+            'scan_mode': 'Standard',
+        }], 
+        remappings=[('scan', 'scan_raw')]
+    )
+```
+
+This will not call the vendor launch file. We start the node directly, with the port name which we bound to the USB device and we are using a frame id which corresponds to the robot description. Important is the remapping of the original topic name *scan* to *scan_raw*
+
+!!! note "Several launch files"
+    Keep in mid that we implement the driver handling in the launch file *bringup_launch.py* in the *x3plus_bot_bringup* which encapsulates the hardware handling.
+    The laser scan post processing is handled in the launch file *bringup_launch.py* from the *x3plus_bringup* package which encapsulates the common handling.
 
 ## References
 

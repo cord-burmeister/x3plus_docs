@@ -134,4 +134,4 @@ digraph foo {
 
 ## References
 
-[Kinematic Model of a Four Mecanum Wheeled Mobile Robot](https://research.ijcaonline.org/volume113/number3/pxc3901586.pdf)
+[Kinematic Model of a Four Mecanum Wheeled Mobile Robot](https://research.ijcaonline.org/volume113/number3/pxc3901586.pdf) : International Journal of Computer Applications article describing kinematic background.

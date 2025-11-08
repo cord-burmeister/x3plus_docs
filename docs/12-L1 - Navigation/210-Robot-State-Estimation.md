@@ -44,7 +44,7 @@ digraph foo {
 ## handling localization
 
 When we adjust the relative position and rotation of the IMU sensor to the base_link, we also have to adjust the calculation of the kalman filter in the params file for the ekf_filter_node.
-
+ 
 ``` yaml
   imu0: example/imu
         imu0_config: [false, false, false,
