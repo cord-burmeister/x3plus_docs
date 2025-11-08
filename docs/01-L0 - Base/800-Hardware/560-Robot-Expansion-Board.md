@@ -1,6 +1,6 @@
 # Yahboom ROS robot control board with STM32F103RCT6 IMU
 
-![](images/ROS_Robot_Control_Board.jpg)
+![ROS_Robot_Control_Board](images/ROS_Robot_Control_Board.jpg)
 
 ## Introduction
 
@@ -49,7 +49,7 @@ sudo nano /etc/udev/rules.d/myserial.rules
 The ROS control board device ID information 1a86:7523 is required here, and the following is the content of the myserial.rules file
 
 ``` bash
-KERNEL=="ttyUSB*", ATTRS{idVendor}=="1a86", ATTRS{idProduct}=="7523", MODE:="0777", SYMLINK+="myserial"
+KERNEL=="ttyCH341USB*", ATTRS{idVendor}=="1a86", ATTRS{idProduct}=="7523", MODE:="0777", SYMLINK+="myserial"
 ```
 
 Note: Binding failures often occur at this step. It is recommended to directly open the tutorial copy we provided.
@@ -126,7 +126,7 @@ If you don't require braille display support (which is the case for most robotic
    ```bash
    lsusb
    dmesg | tail
-   ls /dev/ttyUSB*
+   ls /dev/tty*USB*
    ```
 
    You should see a stable entry in `/dev/ttyUSB0` (or another ttyUSB* node) without immediate disconnection messages.
