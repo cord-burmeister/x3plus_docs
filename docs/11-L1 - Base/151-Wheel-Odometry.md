@@ -33,7 +33,7 @@ The Inverse kinematics is calculated in the *x3plus_wrapper* package.
 
 The formula is based on parameter and the article from [@TaheriQiaoGhaeminehad2015]
 
-* $\omega_𝑖$ [rad/s],  wheels angular velocity
+* $\omega_i$ [rad/s],  wheels angular velocity
 * $l_x$ [m] is the distance from the center robot to the middle of the wheel
 * $l_y$ [m] is the distance from the center robot to the axis of the wheels
 
