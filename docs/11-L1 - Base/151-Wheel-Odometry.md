@@ -108,7 +108,6 @@ odom.twist.twist.angular.z = angular * 1.0
 !!! warning TODO
     Check the vx and vy values
 
-
 ### Node structure
 
 The final node structure with the relevant topics are described below.
