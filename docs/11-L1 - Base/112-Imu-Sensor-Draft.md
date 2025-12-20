@@ -402,18 +402,18 @@ The plugin displays two main types of markers:
 
 ## References
 
-[Wikipedia](https://en.wikipedia.org/wiki/Inertial_measurement_unit)
+[Wikipedia](https://en.wikipedia.org/wiki/Inertial_measurement_unit): IMUs are typically used to maneuver modern vehicles including motorcycles, missiles, aircraft
 
-[Conventions for IMU Sensor Drivers](https://www.ros.org/reps/rep-0145.html)
+[Conventions for IMU Sensor Drivers](https://www.ros.org/reps/rep-0145.html): This REP defines common parameters, topics, namespaces, and data processing conventions for drivers of Inertial Measurement Unit (IMU) sensors.
 
-[Week 5-6: Gazebo sensors](https://github.com/MOGI-ROS/Week-5-6-Gazebo-sensors)
+[Week 5-6: Gazebo sensors](https://github.com/MOGI-ROS/Week-5-6-Gazebo-sensors): After we built a simulated robot that we can drive around manually, we'll start adding various types of sensors to it.
 
-[eky.yaml at GitHub](https://github.com/cra-ros-pkg/robot_localization/blob/ros2/params/ekf.yaml)
+[eky.yaml at GitHub](https://github.com/cra-ros-pkg/robot_localization/blob/ros2/params/ekf.yaml) Sample config file with documentation.
 
-[Getting IMU and Sensor Data in ROS](https://www.stereolabs.com/docs/ros/sensor-data)
+[Getting IMU and Sensor Data in ROS](https://www.stereolabs.com/docs/ros/sensor-data): In this tutorial, you will learn how to display ZED cameras’ sensor data using PlotJuggler and subscribe to the sensors’ data streams.
 
-[Towards understanding IMU: Frames of reference used to represent IMU orientation](https://atadiat.com/en/e-towards-understanding-imu-frames-vpython-visualize-orientation/)
+[Towards understanding IMU: Frames of reference used to represent IMU orientation](https://atadiat.com/en/e-towards-understanding-imu-frames-vpython-visualize-orientation/): In this part, we will discuss the most common frames of reference used with IMUs, Inertial and body frames, and how to convert between them
 
-[imu_calib](https://github.com/dpkoch/imu_calib)
+[imu_calib](https://github.com/dpkoch/imu_calib): This repository contains a ROS package with tools for computing and applying calibration parameters to IMU measurements.
 
-[How to Calibrate an IMU: A Step-by-Step Guide](https://thetechylife.com/how-do-you-calibrate-an-imu/)
+[How to Calibrate an IMU: A Step-by-Step Guide](https://thetechylife.com/how-do-you-calibrate-an-imu/): In this step-by-step guide, we will explore the fundamentals of IMU calibration and walk you through the necessary steps to achieve precise and reliable measurements.
