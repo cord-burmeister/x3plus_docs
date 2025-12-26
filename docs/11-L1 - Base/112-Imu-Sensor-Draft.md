@@ -32,11 +32,11 @@ In the neutral orientation, the sensor frame is aligned with the world frame, he
 !!! tip Missing documentation
     None of the publicly available Yahboom documentation retrieved through search explicitly states the physical orientation (axis directions) of the MPU‑9250 IMU on the Yahboom ROS Robot Control Board V3.0. 
 
-Because Yahboom does not publish a coordinate‑frame diagram for the board, the orientation must be determined experimentally or by inspecting the PCB silkscreen.
+Because Yahboom does not publish a coordinate-frame diagram for the board, the orientation must be determined experimentally or by inspecting the PCB silkscreen.
 
 #### What you *can* infer
 
-The Yahboom board uses an **MPU9250**, whose *chip‑internal* axes are standardized:
+The Yahboom board uses an **MPU9250**, whose *chip-internal* axes are standardized:
 
 | Axis | MPU9250 default orientation (chip-level) |
 |------|-------------------------------------------|
@@ -54,8 +54,8 @@ You can identify the board’s IMU orientation in under 2 minutes:
 
 Move the robot:
 
-- Tilt **nose up** $\to$ check which axis shows **+Z or −Z** acceleration change  
-- Tilt **right side down** $\to$ check which axis shows **+Y or −Y**  
+- Tilt **nose up** $\to$ check which axis shows **+Z or -Z** acceleration change
+- Tilt **right side down** $\to$ check which axis shows **+Y or -Y**
 - Push forward $\to$ check which gyro axis increases
 
 This gives you the exact mapping.
@@ -168,9 +168,9 @@ Then we need to fill the ROS message
       imu.angular_velocity.z = gz * 1.0
 ```
 
-The IMU needs covariances – and if they’re zero or missing, the EKF will ignore those measurements just like it did with your custom odom.
+The IMU needs covariances - and if they’re zero or missing, the EKF will ignore those measurements just like it did with your custom odom.
 
-**robot_localization** expects every fused sensor (odom, IMU, etc.) to provide a full 36‑element covariance for pose and twist; it uses those to weigh the measurements in the EKF. 
+**robot_localization** expects every fused sensor (odom, IMU, etc.) to provide a full 36-element covariance for pose and twist; it uses those to weigh the measurements in the EKF. 
 
 For a typical **sensor_msgs/Imu** on a planar robot, you need:
 
@@ -259,7 +259,7 @@ With adding the IMU we aren't done yet, with the new Gazebo we also have to make
 
 In Gazebo you don’t actually set the covariance matrix directly on the IMU sensor; you set noise parameters in the SDF/URDF, and Gazebo publishes an IMU message whose covariance fields are usually all zeros. Gazebo Sim currently doesn’t provide an API to modify the IMU covariances themselves; the sensor noise is read from the $<imu>$ noise tags in the SDF instead.
 
-MPU‑9250 Noise Specs (needed for covariance) From the MPU‑9250 datasheet (typical values):
+MPU-9250 Noise Specs (needed for covariance) From the MPU-9250 datasheet (typical values):
 
 Accelerometer
 
@@ -268,7 +268,7 @@ Accelerometer
 
 Gyroscope
 
-* Noise density: $0.005 0^\circ /s/\sqrt{Hz} \approx 8.7e‑5 {rad}/s/\sqrt{Hz}$
+* Noise density: $0.005 0^\circ /s/\sqrt{Hz} \approx 8.7e-5 {rad}/s/\sqrt{Hz}$
 * Bias instability: $\sim 0.005 0^\circ/s$
 
 <!-- 
@@ -310,7 +310,7 @@ In your $<sensor type="imu">$ you define Gaussian noise for angular velocity and
 </sensor>
 ```
 
-This gives you a very realistic MPU‑9250‑like IMU.
+This gives you a very realistic MPU-9250-like IMU.
 
 <!-- 
 **2. ROS-side IMU covariance (for EKF, filters, etc.)**

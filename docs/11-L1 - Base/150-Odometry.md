@@ -1,10 +1,11 @@
 
-# Robot localization
-
+# Odometry
 
 ## Overview
 
-Odometry is the process of estimating a robot’s position, orientation, and velocity over time using onboard sensors. It’s a foundational technique for navigation and localization, especially in mobile robotics.
+Odometry systems estimate a robot’s pose and velocity based on its motion. These estimates are obtained from various sensors, including IMUs, LIDAR, RADAR, VIO, and wheel encoders. It’s important to note that IMUs tend to drift over time, while wheel encoders drift over the distance traveled. As a result, these sensors are often used together to mitigate each other’s limitations.
+
+The odometry frame (often referred to as ‘odom frame’) and its associated transformation are used by a robot’s odometry system to continuously publish localization information. However, this information becomes less accurate over time or distance due to sensor modalities and drift effects. Despite this limitation, the robot can still utilize this data for immediate navigation tasks, such as collision avoidance. To maintain consistently accurate odometry information over extended periods, the map frame provides globally accurate data that is used to correct any inaccuracies in the odom frame.
 
 ### How It Works
 
@@ -27,14 +28,6 @@ Odometry is the process of estimating a robot’s position, orientation, and vel
 - **Non-Systematic**: Environmental factors (e.g., wheel slippage, uneven terrain).
 
 Odometry is often combined with SLAM (Simultaneous Localization and Mapping) or external references like GPS to correct drift and improve long-term accuracy.
-
-## Odometry
-
-Odometry systems estimate a robot’s pose and velocity based on its motion. These estimates are obtained from various sensors, including IMUs, LIDAR, RADAR, VIO, and wheel encoders. It’s important to note that IMUs tend to drift over time, while wheel encoders drift over the distance traveled. As a result, these sensors are often used together to mitigate each other’s limitations.
-
-The odometry frame (often referred to as ‘odom frame’) and its associated transformation are used by a robot’s odometry system to continuously publish localization information. However, this information becomes less accurate over time or distance due to sensor modalities and drift effects. Despite this limitation, the robot can still utilize this data for immediate navigation tasks, such as collision avoidance. To maintain consistently accurate odometry information over extended periods, the map frame provides globally accurate data that is used to correct any inaccuracies in the odom frame.
-
-
 
 ## References
 

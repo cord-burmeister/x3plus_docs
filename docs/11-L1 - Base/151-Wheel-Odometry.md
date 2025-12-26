@@ -125,24 +125,24 @@ If all your inputs have zero covariances, the filter never initializes and there
 
 robot_localization requires non-zero covariance for every variable you want to fuse:
 
-* position $𝑥,𝑦,𝑧$
+* position $x,y,z$
 * orientation (roll, pitch, yaw)
 * linear velocity
 * angular velocity
 
 
 Pose covariance for odom
-Order is: $[𝑥,𝑦,𝑧,roll,pitch,yaw]$
+Order is: $[x,y,z,roll,pitch,yaw]$
 
 Example (flat indoor floor, wheel odom of decent quality):
 
 Interpretation:
 
-* $x, y: 0.02$ → standard deviation ≈ $\sqrt{0.02}$ ≈ $0.14$ m
-* $yaw: 0.05$ → std ≈ $0.22$ rad
-* $z, roll, pitch: 99999$ → ignore these, they’re effectively unusable
+* $x, y: 0.02 \to \text{standard deviation} \approx \sqrt{0.02} \approx 0.14$ m
+* $yaw: 0.05 \to \text{std} \approx 0.22$ rad
+* $z, roll, pitch: 99999 \to$  ignore these, they’re effectively unusable
 
-For an omni base, x and y are similarly accurate, so keep them roughly equal. If you know your lateral odom is worse (e.g., wheel slip sideways), you can inflate $𝑦$ later.
+For an omni base, x and y are similarly accurate, so keep them roughly equal. If you know your lateral odom is worse (e.g., wheel slip sideways), you can inflate $y$ later.
 
 ``` python
         # For an omnidirectional base, you can usually assume similar uncertainty in x and y, and treat z/roll/pitch as “don’t care” with huge covariances.
@@ -163,8 +163,8 @@ For an omni robot, both $v_x$ and $v_y$ are valid; you usually trust planar velo
 
 Interpretation:
 
-* $v_x,v_y:0.01$ → std ≈ $0.1$ m/s
-* $\omega_z : 0.02$ → std ≈ $0.14$ rad/s
+* $v_x,v_y:0.01 \to \text{std} \approx 0.1$ m/s
+* $\omega_z : 0.02 \to \text{std} \approx 0.14$ rad/s
 * vertical and roll/pitch rates essentially *ignored*
 
 If your angular velocity estimate is especially good (e.g., fused with an IMU), you can lower 0.02 slightly (e.g., 0.01).
