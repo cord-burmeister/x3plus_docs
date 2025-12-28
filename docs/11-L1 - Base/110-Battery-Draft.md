@@ -12,7 +12,7 @@ We adapt the values of the battery used in the project
 ![battery](images/battery.png)
 
 | Parameter | Value |
-|-----------|-------|
+| --------- | ----- |
 | Model | XZ01 |
 | Voltage | 12V |
 | Capacity | 5600mAH |
@@ -21,7 +21,6 @@ We adapt the values of the battery used in the project
 ## Simulation Modeling
 
 In simulation, battery behavior is abstracted to enable realistic testing in a predefined gazebo plugin which simulates a linear battery consumption.
-
 
 ``` XML
 <model>
@@ -58,7 +57,7 @@ Description of the SDF parameters used:
 Description of the SDF optional parameters not used:
 
 * &lt;fix_issue_225&gt;: As reported here, there are some issues affecting batteries in Gazebo Blueprint and Citadel. This parameter fixes the issues. Feel free to omit the parameter if you have legacy code and want to preserve the old behavior.
-* &lt;start_draining&gt;: Start draining battery from the begining of the simulation. If this is not set the battery draining can only be started through the topics set through .
+* &lt;start_draining&gt;: Start draining battery from the beginning of the simulation. If this is not set the battery draining can only be started through the topics set through .
 * &lt;start_power_draining_topic&gt;: Topic(s) that can be used to start power draining.
 * &lt;stop_power_draining_topic&gt;: Topic(s) that can be used to stop power draining.
 
@@ -79,10 +78,11 @@ We need to add the mapping from gazebo to ROS in the bridge file.
 ## Hardware Integration
 
 In the physical robot, battery handling involves:
-- **Voltage and Current Monitoring**: Using ADCs or dedicated battery management ICs to track charge levels and detect undervoltage conditions.
-- **Power Distribution**: Isolating high-current loads and protecting sensitive components via fuses, regulators, and soft-start circuits.
-- **Thermal and Safety Management**: Implementing temperature sensors and cutoff logic to prevent overheating or over-discharge.
-- **Charging Interface**: Supporting safe charging protocols (e.g., CC/CV for Li-ion) with status feedback to the control system.
+
+* **Voltage and Current Monitoring**: Using ADCs or dedicated battery management ICs to track charge levels and detect undervoltage conditions.
+* **Power Distribution**: Isolating high-current loads and protecting sensitive components via fuses, regulators, and soft-start circuits.
+* **Thermal and Safety Management**: Implementing temperature sensors and cutoff logic to prevent overheating or over-discharge.
+* **Charging Interface**: Supporting safe charging protocols (e.g., CC/CV for Li-ion) with status feedback to the control system.
 
 ## References
 
