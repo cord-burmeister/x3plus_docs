@@ -2,14 +2,14 @@
 
 This is the part list of components required for the robot assembly.
 
-!!! warning "Partlist is changeing over time"
+!!! warning "Partlist is changing over time"
     Be aware that the list changes when we evolve the base to further levels.
     The list is not complete and will be updated when we add more components.
 
 | Count | Item | Description | Link | Single Price |
-|-------|------|-------------|------|-------|
+| ----- | ---- | ----------- | ---- | ----- |
 | 1 | Car Chassis | Yahboom Smart Robot Frame All Metal Intelligent Car Chassis Kit with 520 DC Motor School Education Electronic Project Kit | [Amazon](https://www.amazon.de/dp/B0BZS2VNPL?ref=ppx_yo2ov_dt_b_fed_asin_title) | 139 € |
-| 1 | Robot Control Board | Yahboom ROS2 Robot Control Board 3.0 Developed ROS2 Car Driver Extension IMU  | [Amazon](https://www.amazon.de/dp/B0CZHM4CL5?ref=ppx_yo2ov_dt_b_fed_asin_title) | 84 € |
+| 1 | Robot Control Board | Yahboom ROS2 Robot Control Board 3.0 Developed ROS2 Car Driver Extension IMU | [Amazon](https://www.amazon.de/dp/B0CZHM4CL5?ref=ppx_yo2ov_dt_b_fed_asin_title) | 84 € |
 | 2 | USB 3.0 HUB Expansion Board | Yahboom USB 3.0 HUB Expansion Board Docking Station USB3.0 * 4 for Mechanical Engineers, ROS Robot Car | [Amazon](https://www.amazon.de/gp/product/B0D1JY88LD/ref=ppx_yo_dt_b_asin_title_o02_s00?ie=UTF8&psc=1) | 30 € |
 | 1 | Universal Netzteiladapter | 5A 120W Einstellbares Netzteil, Universal Netzteiladapter 3V~24V 5A Verstellbarer Netzadapter 100V-240V | [Amazon](https://www.amazon.de/gp/product/B0D6YZ7T3K/ref=ppx_yo_dt_b_asin_title_o01_s00?ie=UTF8&th=1) | 24 € |
 | 1 | 5 Paare Deans Style T-Stecker | 5 Paare Deans Style T-Stecker Buchse und Stecker mit 14AWG Silikondraht | [Amazon](https://www.amazon.de/gp/product/B098WRZMPQ/ref=ppx_yo_dt_b_asin_title_o01_s00?ie=UTF8&psc=1) | 8 € |

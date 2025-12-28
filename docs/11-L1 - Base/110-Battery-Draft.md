@@ -16,11 +16,15 @@ We adapt the values of the battery used in the project
 | Model | XZ01 |
 | Voltage | 12V |
 | Capacity | 5600mAH |
+| Current | 5A max |
 | Type | Li-ion Rechargeable Battery |
 
 ## Simulation Modeling
 
 In simulation, battery behavior is abstracted to enable realistic testing in a predefined gazebo plugin which simulates a linear battery consumption.
+
+!!! Note "Linear Battery Model"
+    The linear battery model assumes a constant power draw from the battery, leading to a linear decrease in charge over time. This simplification is suitable for many robotic applications where power consumption remains relatively stable.
 
 ``` XML
 <model>
@@ -84,8 +88,157 @@ In the physical robot, battery handling involves:
 * **Thermal and Safety Management**: Implementing temperature sensors and cutoff logic to prevent overheating or over-discharge.
 * **Charging Interface**: Supporting safe charging protocols (e.g., CC/CV for Li-ion) with status feedback to the control system.
 
+!!! note "Battery Handling"
+    The robot's robot battery handling is handled by the ROS robot control board which includes voltage and current sensing capabilities along with safety features.
+
+The linear battery model is not perfect for real Li-Ion Batteries.
+Non-Linear Discharge Curve: Li-ion batteries (like the 12V XZ01 pack, likely a 3S configuration of 18650 cells) don't discharge linearly. Voltage typically:
+
+* Starts high (~12.6V fully charged).
+* Drops slowly at first (plateau around 12-11V for much of the capacity).
+* Then declines more steeply toward the end (down to ~9-10V at cutoff).
+
+Linear model assumes a straight drop from 12V to 10V, which overestimates voltage early in discharge and underestimates it late. This could lead to inaccurate SOC estimates in hardware integration.
+Battery Specs: Based on general XZ01 specs (a common 12V 5.6Ah Li-ion pack), the actual curve might look more like this rough approximation:
+
+* 100% SOC: ~12.6V
+* 80% SOC: ~12.2V
+* 50% SOC: ~11.8V
+* 20% SOC: ~11.0V
+* 0% SOC: ~9.0V (cutoff)
+
+Other Factors: Temperature, load current, and aging affect the curve. Simulation assumes constant power_load (2.1W), but real discharge varies with current draw.
+
+## What C‑rating corresponds on a Li‑ion battery?
+
+To compute the C‑rating, you divide the discharge current by the battery’s capacity:
+
+$$
+\text{C-rate} = \frac{\text{discharge current (A)}}{\text{capacity (Ah)}}
+$$
+
+The C-rate expresses how much current a battery can safely deliver relative to its capacity
+
+## Calculating Battery Runtime
+
+Key Calculations
+
+* **State of Charge (SOC):**
+
+  * SOC = (voltage - min_voltage) / (max_voltage - min_voltage)
+  * SOC = (voltage - 10) / (12 - 10) = (voltage - 10) / 2
+  * Clamp SOC to [0.0, 1.0] to avoid invalid values.
+* **Charge:**
+  * charge = $SOC * capacity = SOC * 5.6 Ah$
+* **Percentage:**
+  * percentage = SOC * 100 (as a float, e.g., 85.5 for 85.5%)
+* **Voltage:**
+  * Directly use the measured/available voltage value.
+* **Current:**
+
+  * If you have a current sensor, use the measured value.
+  * Otherwise, estimate from the model's power_load (2.1W): current ≈ power_load / voltage = 2.1 / voltage (A). Note: This is a rough approximation and assumes constant power draw—real hardware may vary.
+* **Capacity:**
+  * Fixed at 5.6 Ah (from your battery spec).
+Other Fields (set based on hardware status):
+* **power_supply_status:**
+ Set to 2 (DISCHARGING) if voltage > min_voltage and not charging.
+* **power_supply_health:** Set to 1 (GOOD) unless you have fault detection.
+* **power_supply_technology:** Set to 3 (LION) for Li-ion.
+* **present:** Set to true.
+* **cell_voltage, cell_temperature, location, serial_number:** Populate if available from hardware; otherwise, leave empty or set defaults.
+* **header:** Include timestamp and frame_id (e.g., "battery").
+
+### Curve Based SOC Calculation
+
+For a more accurate model based on the typical Li-ion discharge curve, use piecewise linear interpolation with the following voltage-SOC points (approximated for XZ01):
+
+* 12.6V → 100% SOC
+* 12.2V → 80% SOC
+* 11.8V → 50% SOC
+* 11.0V → 20% SOC
+* 9.0V → 0% SOC
+
+**Calculation Steps:**
+
+1. If voltage ≥ 12.6V, SOC = 1.0
+2. If voltage ≤ 9.0V, SOC = 0.0
+3. Otherwise, find the interval $[V_i, V_{i+1}]$ where $V_i ≤ voltage < V_{i+1}$
+4. Interpolate: $SOC = SOC_i + (SOC_{i+1} - SOC_i) * (voltage - V_i) / (V_{i+1} - V_i)$
+
+This provides better accuracy than the linear model, accounting for the plateau and steeper drop-off.
+
+## Code
+
+Here is a sample ROS 2 Python node that publishes battery state based on the above calculations:
+
+```python
+import rclpy
+from sensor_msgs.msg import BatteryState
+
+# Constants from your model
+CAPACITY = 5.6  # Ah
+POWER_LOAD = 2.1  # W
+
+# Voltage-SOC curve points (voltage, SOC)
+CURVE_POINTS = [
+    (12.6, 1.0),  # 100% SOC
+    (12.2, 0.8),  # 80% SOC
+    (11.8, 0.5),  # 50% SOC
+    (11.0, 0.2),  # 20% SOC
+    (9.0, 0.0)    # 0% SOC
+]
+
+def calculate_soc_from_curve(voltage: float) -> float:
+    """Calculate SOC using piecewise linear interpolation from the discharge curve."""
+    if voltage >= CURVE_POINTS[0][0]:
+        return 1.0
+    if voltage <= CURVE_POINTS[-1][0]:
+        return 0.0
+    
+    for i in range(len(CURVE_POINTS) - 1):
+        v1, soc1 = CURVE_POINTS[i]
+        v2, soc2 = CURVE_POINTS[i + 1]
+        if v1 >= voltage >= v2:  # Note: voltages are decreasing
+            # Linear interpolation
+            soc = soc1 + (soc2 - soc1) * (voltage - v1) / (v2 - v1)
+            return max(0.0, min(1.0, soc))
+    return 0.0  # Fallback
+
+def calculate_battery_state(voltage: float, current_measured: float = None) -> BatteryState:
+    msg = BatteryState()
+    msg.voltage = voltage
+    msg.capacity = CAPACITY
+    
+    # Calculate SOC using curve
+    soc = calculate_soc_from_curve(voltage)
+    
+    msg.charge = soc * CAPACITY
+    msg.percentage = soc * 100.0
+    
+    # Current
+    if current_measured is not None:
+        msg.current = current_measured
+    else:
+        msg.current = POWER_LOAD / voltage if voltage > 0 else 0.0
+    
+    # Other fields
+    msg.power_supply_status = BatteryState.POWER_SUPPLY_STATUS_DISCHARGING
+    msg.power_supply_health = BatteryState.POWER_SUPPLY_HEALTH_GOOD
+    msg.power_supply_technology = BatteryState.POWER_SUPPLY_TECHNOLOGY_LION
+    msg.present = True
+    
+    return msg
+```
+
 ## References
 
 [Gazebo Battery](https://gazebosim.org/api/sim/8/battery.html): The battery system keeps track of the battery charge on a robot model.
 
 [How to Create a Battery State Publisher in ROS 2](https://automaticaddison.com/how-to-create-a-battery-state-publisher-in-ros-2/): Tutorial to show you how to create a simulated battery state publisher in ROS 2.
+
+[Battery Discharge Curve](https://www.powerstream.com/li.htm): Information about Li-Ion battery discharge curves.
+
+[Lithium-Ion Battery C-Rate Explained: Charge & Discharge Limits, Heat, and Safety](https://batteryuniversity.com/article/bu-409-what-is-c-rate): Explanation of C-Rate for Lithium-Ion batteries.
+
+[How to Read Lithium Battery Discharge Curve and Charging Curve?](https://www.evspecifications.com/en/news/2021-07-15-how-to-read-lithium-battery-discharge-curve-and-charging-curve): Guide on reading lithium battery discharge and charging curves.
