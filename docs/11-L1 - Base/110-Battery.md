@@ -170,9 +170,7 @@ This provides better accuracy than the linear model, accounting for the plateau 
 
 ## Code
 
-!!! warning "TODO"
-
-Here is a sample ROS 2 Python node that publishes battery state based on the above calculations:
+Here is ROS 2 Python code that publishes battery state based on the above calculations:
 
 ```python
 import rclpy
