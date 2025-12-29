@@ -264,15 +264,11 @@ $$
 k_s = \frac{\text{actual angle}}{\text{odometry angle}}
 $$
 
-- Multiply your `wheel_separation` by the factor $k_s$.
+- Multiply your `wheel_separation_length` by the factor $k_s$.
 
 ### Why Rotation Test matters
 
 Track width is almost never the nominal CAD value once you include tire deformation, load, and friction.
-
-
-!!! warning TODO
-
 
 ### How to execute Rotation Test
 
@@ -323,13 +319,16 @@ w: 0.887819510119828
 - Yaw (theta) = $2 * atan2(z, w)$.
 - If x,y may be non‑zero use the general formula: $yaw = atan2(2*(wz + xy), 1 - 2*(yy + zz))$.
 
+!!! note "Consider units"
+      The real rotation is measured by the app in *degree* and the unit in ROS are *radiants*
 
+This gives the formula
 
+$$
+k_s  = \frac{(\text{angle}_1 - \text{angle}_0) / 180 * \Pi }{2 * (\operatorname{atan2}(pos.z_1, pos.w_1) - \operatorname{atan2}(pos.z_0, pos.w_0))}
+$$
 
-$0^0$ $210^0$
-
-$210^0$ 0.7748076959666872
-$80^0$ 0.887819510119828
+Apply the factor to 
 
 ## Correct Left/Right Asymmetry
 
