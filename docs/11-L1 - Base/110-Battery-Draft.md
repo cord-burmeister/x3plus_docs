@@ -170,6 +170,8 @@ This provides better accuracy than the linear model, accounting for the plateau 
 
 ## Code
 
+!!! warning "TODO"
+
 Here is a sample ROS 2 Python node that publishes battery state based on the above calculations:
 
 ```python
@@ -230,6 +232,37 @@ def calculate_battery_state(voltage: float, current_measured: float = None) -> B
     
     return msg
 ```
+
+## Adding Battery State to Cockpit
+
+We add the battery state topic to the cockpit configuration file to visualize the battery status in the cockpit interface. We are using the rviz2 [rviz_2d_overlay_plugins](https://github.com/teamspatzenhirn/rviz_2d_overlay_plugins) plugin to visualize the battery state.
+
+Therefore, we need to add the conversion from BatteryState message to the a float message which can be visualized in the rviz2.
+
+### Node structure
+
+The final node structure with the relevant topics are described below.
+
+* /gazebo: When starting the simulation the gazebo bridge will publish the ROS message.
+* /wrapper_node: Start the car chassis, obtain the speed vel data of the wheels, and publish it
+* /battery_to_float_node: Receive the battery state data and convert it to a float message for visualization in rviz2.
+
+<!--
+
+``` plantuml
+@startdot images/battery_percentage
+digraph foo {
+    source [label="gazebo bridge \n/ wrapper"; color=lightblue; style=filled ]
+    madgwick [label="battery_to_float_node"]
+    sink [label="rviz_2d_overlay_plugins"; color=lightgreen; style=filled]
+    source -> madgwick [label="/battery_state"]
+    madgwick -> sink [label="/battery_percentage"]
+}
+@enddot
+```
+-->
+
+![Battery InformationFlow](images/battery_percentage.png)
 
 ## References
 
