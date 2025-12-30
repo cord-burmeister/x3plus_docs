@@ -118,7 +118,7 @@ odom.twist.twist.angular.z = angular * 1.0
 
 When you publish an nav_msgs/Odometry message without a covariance, ROS 2 fills the covariance with all zeros. And for robot_localization, a zero covariance means:
 
-    “This measurement is perfectly certain.”
+> *“This measurement is perfectly certain.”*
 
 The EKF treats that as invalid and rejects the message.
 If all your inputs have zero covariances, the filter never initializes and therefore never publishes.
@@ -129,7 +129,6 @@ robot_localization requires non-zero covariance for every variable you want to f
 * orientation (roll, pitch, yaw)
 * linear velocity
 * angular velocity
-
 
 Pose covariance for odom
 Order is: $[x,y,z,roll,pitch,yaw]$

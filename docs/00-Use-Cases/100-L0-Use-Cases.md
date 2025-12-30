@@ -1,7 +1,5 @@
 # Use cases with L0 Base
 
-
-
 ## ROS Launch with Gazebo viewer (without a robot)
 
 Just view the simulation environment
@@ -36,5 +34,3 @@ Run on
 ``` bash
 ros2 run  teleop_twist_keyboard teleop_twist_keyboard 
 ```
-
-## Drive around
