@@ -328,7 +328,7 @@ $$
 k_s  = \frac{(\text{angle}_1 - \text{angle}_0) / 180 * \Pi }{2 * (\operatorname{atan2}(pos.z_1, pos.w_1) - \operatorname{atan2}(pos.z_0, pos.w_0))}
 $$
 
-Apply the factor to 
+Apply the factor to `wheel_separation_length`
 
 ## Correct Left/Right Asymmetry
 
@@ -350,9 +350,8 @@ Even after radius and separation calibration, robots often **curve slightly** du
 !!! tip Important
       This is the single most important calibration for mecanum robots.
 
-### Rule of thumb
-
-If the robot drifts **right**, the **left wheel** is effectively “larger” → reduce its multiplier slightly. Adjust by small increments (0.5–1%).
+!!! tip "Rule of thumb"
+      If the robot drifts **right**, the **left wheel** is effectively “larger” $\to$ reduce its multiplier slightly. Adjust by small increments (0.5–1%).
 
 ## Validate with a Square Path Test
 
