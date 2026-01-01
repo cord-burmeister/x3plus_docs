@@ -24,6 +24,61 @@ In the neutral orientation, the sensor frame is aligned with the world frame, he
 
 ## IMU integration to the project
 
+### Physical integration
+
+!!! warning TODO
+  Check chapter
+
+!!! tip Missing documentation
+    None of the publicly available Yahboom documentation retrieved through search explicitly states the physical orientation (axis directions) of the MPU‑9250 IMU on the Yahboom ROS Robot Control Board V3.0. 
+
+Because Yahboom does not publish a coordinate-frame diagram for the board, the orientation must be determined experimentally or by inspecting the PCB silkscreen.
+
+#### What you *can* infer
+
+The Yahboom board uses an **MPU9250**, whose *chip-internal* axes are standardized:
+
+| Axis | MPU9250 default orientation (chip-level) |
+|------|-------------------------------------------|
+| X    | Right (when looking at the top of the chip) |
+| Y    | Forward |
+| Z    | Up (out of the chip) |
+
+But the **board designer can rotate the chip arbitrarily**, so this does *not* tell us how the axes map to the robot.
+
+#### How to determine the orientation yourself
+
+You can identify the board’s IMU orientation in under 2 minutes:
+
+### 1. Run `rostopic echo /transbot/imu` (or `/imu/data_raw`)
+
+Move the robot:
+
+- Tilt **nose up** $\to$ check which axis shows **+Z or -Z** acceleration change
+- Tilt **right side down** $\to$ check which axis shows **+Y or -Y**
+- Push forward $\to$ check which gyro axis increases
+
+This gives you the exact mapping.
+
+### 2. Look for silkscreen markings
+
+Many Yahboom boards print:
+
+- A small **triangle** on the IMU chip corner  
+- Or **X/Y arrows** on the PCB
+
+If you can send a photo of your board, I can identify the axes precisely.
+
+---
+
+##  If you want, I can generate a ROS `imu_link` → `base_link` transform  
+
+Once we know the orientation, I can help you write the correct:
+
+- `robot_localization` config  
+- `imu_filter_madgwick` parameters  
+- TF rotation (`roll/pitch/yaw`) for the IMU frame
+
 ### Adapt to sensor capabilities
 
 Based on the capabilities of the sensor and driver functionality the orientation will be provided or not.
@@ -89,6 +144,61 @@ digraph foo {
 
 ![Imu Flow](images/dotimu.png)
 
+### Adapt the wrapper code for the raw data
+
+The wrapper is reading the IMU data from the hardware driver.
+
+``` python
+    ax, ay, az = self.car.get_accelerometer_data()
+    gx, gy, gz = self.car.get_gyroscope_data()
+    mx, my, mz = self.car.get_magnetometer_data()
+```
+
+Then we need to fill the ROS message 
+
+``` python
+      # Populate IMU data
+      imu.header.stamp = time_stamp.to_msg()
+      imu.header.frame_id = self.imu_link
+      imu.linear_acceleration.x = ax * 1.0
+      imu.linear_acceleration.y = ay * 1.0
+      imu.linear_acceleration.z = az * 1.0
+      imu.angular_velocity.x = gx * 1.0
+      imu.angular_velocity.y = gy * 1.0
+      imu.angular_velocity.z = gz * 1.0
+```
+
+The IMU needs covariances - and if they’re zero or missing, the EKF will ignore those measurements just like it did with your custom odom.
+
+**robot_localization** expects every fused sensor (odom, IMU, etc.) to provide a full 36-element covariance for pose and twist; it uses those to weigh the measurements in the EKF. 
+
+For a typical **sensor_msgs/Imu** on a planar robot, you need:
+
+* orientation_covariance: 9 values
+* angular_velocity_covariance: 9 values
+* linear_acceleration_covariance: 9 values
+
+None of the fused entries may be zero if you want the EKF to accept them.
+
+``` python
+ # orientation quaternion already set here… 
+        imu.orientation_covariance = [ 
+            99999.0, 0.0, 0.0, 
+            0.0, 99999.0, 0.0, 
+            0.0, 0.0, 0.05 # yaw 
+        ] 
+        imu.angular_velocity_covariance = [ 
+            99999.0, 0.0, 0.0, 
+            0.0, 99999.0, 0.0, 
+            0.0, 0.0, 0.02 # yaw rate 
+        ] 
+        imu.linear_acceleration_covariance = [ 
+               0.5, 0.0, 0.0, 
+               0.0, 0.5, 0.0, 
+               0.0, 0.0, 0.5 
+        ]
+```
+
 ### IMU structure in robot description
 
 But first, let's add our IMU to the urdf:
@@ -144,6 +254,80 @@ With adding the IMU we aren't done yet, with the new Gazebo we also have to make
         </plugin>
     </gazebo>
 ```
+
+### IMU noise and covariance
+
+In Gazebo you don’t actually set the covariance matrix directly on the IMU sensor; you set noise parameters in the SDF/URDF, and Gazebo publishes an IMU message whose covariance fields are usually all zeros. Gazebo Sim currently doesn’t provide an API to modify the IMU covariances themselves; the sensor noise is read from the $<imu>$ noise tags in the SDF instead.
+
+MPU-9250 Noise Specs (needed for covariance) From the MPU-9250 datasheet (typical values):
+
+Accelerometer
+
+* Noise density: $300 \mu g/ \sqrt{Hz} \approx 0.00294 m/s^2/\sqrt{Hz}$
+* Bias instability: $\sim 0.02 m/s^2$
+
+Gyroscope
+
+* Noise density: $0.005 0^\circ /s/\sqrt{Hz} \approx 8.7e-5 {rad}/s/\sqrt{Hz}$
+* Bias instability: $\sim 0.005 0^\circ/s$
+
+<!-- 
+So you have two layers: -->
+
+**1. Gazebo IMU noise (simulation realism)**
+In your $<sensor type="imu">$ you define Gaussian noise for angular velocity and linear acceleration, e.g.:
+
+``` xml
+<sensor name="imu_sensor" type="imu">
+  <always_on>1</always_on>
+  <update_rate>100</update_rate>
+  <imu>
+    <angular_velocity>
+      <x>
+       <noise type="gaussian"> 
+        <mean>0.0</mean> 
+        <stddev>8.7e-5</stddev> <!-- gyro noise density --> 
+        <bias_mean>0.0</bias_mean> 
+        <bias_stddev>8.7e-5</bias_stddev> 
+        </noise>
+      </x>
+      <y> ... same ... </y> 
+      <z> ... same ... </z>
+    </angular_velocity>
+    <linear_acceleration>
+      <x> 
+        <noise type="gaussian"> 
+          <mean>0.0</mean> 
+          <stddev>0.00294</stddev> <!-- accel noise density --> 
+          <bias_mean>0.0</bias_mean> 
+          <bias_stddev>0.02</bias_stddev> 
+        </noise> 
+      </x>
+      <y> ... same ... </y> 
+      <z> ... same ... </z>
+    </linear_acceleration>
+  </imu>
+</sensor>
+```
+
+This gives you a very realistic MPU-9250-like IMU.
+
+<!-- 
+**2. ROS-side IMU covariance (for EKF, filters, etc.)**
+Since Gazebo often publishes zero covariances, you normally override / set the covariance on the ROS side (e.g., in an IMU filter node, a small wrapper node, or in the EKF params). The usual practice:
+
+* Fill only the diagonal entries of the $3×3$ sub-matrices (orientation, angular velocity, linear acceleration).
+* Use $covariance = \sigma^2$
+where $\sigma$ is the standard deviation (noise level) you want to assume.
+
+If a part of the IMU is not used or unreliable, set its covariance to a very large value (e.g. $1𝑒3$ or higher) so the EKF effectively ignores it.
+
+Concrete starting point (tune later, don’t treat as “correct” constants):
+
+* Orientation covariance diagonal: something like $(0.05 rad)^2$ if you trust orientation moderately.
+* Angular velocity covariance diagonal: derived from your $<angular\_velocity><noise><stddev>$ in SDF:
+if $stddev = 0.0001$, $covariance = (0.0001)^2$.
+* Linear acceleration covariance diagonal: same: $covariance ≈ ({stddev} {from} {SDF})^2$. -->
 
 ## Why Calibrate an IMU?
 

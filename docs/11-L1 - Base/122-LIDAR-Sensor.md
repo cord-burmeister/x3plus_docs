@@ -14,7 +14,7 @@ Whether you're prototyping obstacle avoidance, SLAM, or environmental mapping, t
 These are ideal for indoor mapping, basic navigation, and obstacle detection:
 
 | Sensor | Type | Range | Price Estimate | Notes |
-|--------|------|-------|----------------|-------|
+| ------ | ---- | ----- | -------------- | ----- |
 | **TF-Luna** | 1D | Up to 8 m | ~$20–$30 | Compact, low-power, great for short-range sensing |
 | **RPLIDAR A1M8** | 2D 360° | Up to 12 m | ~$100–$120 | 8,000 samples/sec, plug-and-play, ROS compatible |
 | **WayPonDEV LD14P** | 2D 360° | ~12 m | ~$90–$110 | Good for robot navigation and mapping |
@@ -25,7 +25,7 @@ These are ideal for indoor mapping, basic navigation, and obstacle detection:
 These offer better resolution and longer range, suitable for SLAM and outdoor use:
 
 | Sensor | Type | Range | Price Estimate | Notes |
-|--------|------|-------|----------------|-------|
+| ------ | ---- | ----- | -------------- | ----- |
 | **Slamtec RPLIDAR A2M12** | 2D 360° | Up to 16 m | ~$250–$300 | High-speed scanning, ROS support |
 | **Slamtec RPLIDAR S2L** | 2D 360° | Up to 30 m | ~$300–$350 | Enhanced accuracy, suitable for SLAM |
 | **WayPonDEV TFS20-L** | 2D | ~20 m | ~$200–$250 | Designed for drones and robots |
@@ -35,7 +35,7 @@ These offer better resolution and longer range, suitable for SLAM and outdoor us
 These are more expensive but offer full 3D mapping and outdoor durability:
 
 | Sensor | Type | Range | Price Estimate | Notes |
-|--------|------|-------|----------------|-------|
+| ------ | ---- | ----- | -------------- | ----- |
 | **EOS LiDAR Sensor** | 3D Spherical | 15–45 m | ~$2750 | IP54-rated, 360°x180° FOV, WiFi/Bluetooth |
 | **Matterport Pro3** | 3D | ~100 m | ~$6000 | High-res scans for virtual tours and mapping |
 
@@ -51,18 +51,18 @@ The RPLIDAR C1 is a 360-degree laser scanner that can be used for various applic
 
 ### LiDAR Module Specifications
 
-| **Parameter**             | **Value**                                                                 |
-|--------------------------|---------------------------------------------------------------------------|
-| Ranging Distance         | 0.05–12.0 m (white target, 90% reflectivity) <br> 0.05–6.0 m (black target, 10% reflectivity) |
-| Scanning Frequency       | 5–12 Hz                                                                   |
-| Ranging Frequency        | 4500 Hz                                                                   |
-| Angular Resolution       | 0.45°–1.35°                                                               |
-| Communication Interface  | UART / USB                                                                |
-| Power Supply             | 5 V                                                                       |
-| Operating Current        | <300 mA                                                                   |
-| Operating Temperature    | -10 °C to 40 °C                                                           |
-| Storage Temperature      | -40 °C to 85 °C                                                           |
-| Ranging Accuracy         | ±30 mm                                                                    |
+| **Parameter** | **Value** |
+| ------------------------ | ------------------------------------------------------------------------- |
+| Ranging Distance | 0.05–12.0 m (white target, 90% reflectivity) <br> 0.05–6.0 m (black target, 10% reflectivity) |
+| Scanning Frequency | 5–12 Hz |
+| Ranging Frequency | 4500 Hz |
+| Angular Resolution | 0.45°–1.35° |
+| Communication Interface | UART / USB |
+| Power Supply | 5 V |
+| Operating Current | <300 mA |
+| Operating Temperature | -10 °C to 40 °C |
+| Storage Temperature | -40 °C to 85 °C |
+| Ranging Accuracy | ±30 mm |
 
 ### Safety and Scope
 

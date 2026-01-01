@@ -11,10 +11,10 @@ The `x3plus_setup` project is designed to provide a set of bootstrap scripts for
 The project is structured in the following repositories
 
 | Name | Scope | Description |
-|------|-------|-------------|
+| ---- | ----- | ----------- |
 | [x3plus_setup](https://github.com/cord-burmeister/x3plus_setup) | Setup Scripts | This repository contains the scripts to setup workspace for the different deployment roles |
 | [x3plus](https://github.com/cord-burmeister/x3plus) | Core Logic | This repository contains the packages of the control logic of the robot |
-| [x3plus_pit](https://github.com/cord-burmeister/x3plus_pit) | Cockpit Logic | eleoperations cockpit packages for the robot project |
+| [x3plus_pit](https://github.com/cord-burmeister/x3plus_pit) | Cockpit Logic | teleoperations cockpit packages for the robot project |
 | [x3plus_driver](https://github.com/cord-burmeister/x3plus_driver) | Hardware driver | This repository contains the driver for the robot |
 | [x3plus_bot](https://github.com/cord-burmeister/x3plus_bot) | Hardware wrapper | This repository contains the ROS nodes to wrap the hardware components to the ROS system |
 | [x3plus_gz](https://github.com/cord-burmeister/x3plus_gz) | Gazebo Simulation | This repository contains the ROS and Gazebo simulation nodes to the ROS system |
@@ -82,7 +82,6 @@ rectangle "Setup" <<Setup>> {
 ![repos_structure](images/repos_structure.png)
 
 ## Project structure
-
 
 ![overview](images/overview.png)
 

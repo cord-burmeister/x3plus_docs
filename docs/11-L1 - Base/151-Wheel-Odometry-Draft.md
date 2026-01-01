@@ -31,7 +31,7 @@ The Inverse kinematics is calculated in the *x3plus_wrapper* package.
 
 ### Formula
 
-The formula is based on parameter and the article from [@TaheriQiaoGhaeminehad2015]
+<!-- The formula is based on parameter and the article from [@TaheriQiaoGhaeminehad2015] -->
 
 * $\omega_i$ [rad/s],  wheels angular velocity
 * $l_x$ [m] is the distance from the center robot to the middle of the wheel
@@ -99,7 +99,7 @@ odom.pose.pose.position.z = 0.0
 odom.pose.pose.orientation = Quaternion(x=quat[0], y=quat[1], z=quat[2], w=quat[3])
 
 #  set the velocity
-odom.child_frame_id = "base_link";
+odom.child_frame_id = "base_footprint";
 odom.twist.twist.linear.x =  vx * 1.0
 odom.twist.twist.linear.y = vy * 1.0
 odom.twist.twist.angular.z = angular * 1.0
@@ -107,6 +107,88 @@ odom.twist.twist.angular.z = angular * 1.0
 
 !!! warning TODO
     Check the vx and vy values
+
+### Setting Covariance
+
+!!! warning "Covariances are zero or invalid"
+    The EKF requires non-zero covariance matrices.
+    If your IMU or odom publishes:
+            all zeros or NaNs or extremely small values (e.g., 1e-9)
+    …the EKF will reject the measurement.
+
+When you publish an nav_msgs/Odometry message without a covariance, ROS 2 fills the covariance with all zeros. And for robot_localization, a zero covariance means:
+
+> *“This measurement is perfectly certain.”*
+
+The EKF treats that as invalid and rejects the message.
+If all your inputs have zero covariances, the filter never initializes and therefore never publishes.
+
+robot_localization requires non-zero covariance for every variable you want to fuse:
+
+* position $x,y,z$
+* orientation (roll, pitch, yaw)
+* linear velocity
+* angular velocity
+
+Pose covariance for odom
+Order is: $[x,y,z,roll,pitch,yaw]$
+
+Example (flat indoor floor, wheel odom of decent quality):
+
+Interpretation:
+
+* $x, y: 0.02 \to \text{standard deviation} \approx \sqrt{0.02} \approx 0.14$ m
+* $yaw: 0.05 \to \text{std} \approx 0.22$ rad
+* $z, roll, pitch: 99999 \to$  ignore these, they’re effectively unusable
+
+For an omni base, x and y are similarly accurate, so keep them roughly equal. If you know your lateral odom is worse (e.g., wheel slip sideways), you can inflate $y$ later.
+
+``` python
+        # For an omnidirectional base, you can usually assume similar uncertainty in x and y, and treat z/roll/pitch as “don’t care” with huge covariances.
+        odom.pose.covariance = [
+            0.02, 0.0,    0.0,     0.0,     0.0,     0.0,
+            0.0,    0.02, 0.0,     0.0,     0.0,     0.0,
+            0.0,    0.0,    99999.0, 0.0,     0.0,     0.0,
+            0.0,    0.0,    0.0,     99999.0, 0.0,     0.0,
+            0.0,    0.0,    0.0,     0.0,     99999.0, 0.0,
+            0.0,    0.0,    0.0,     0.0,     0.0,     0.05
+        ]
+
+```
+
+Order is: $[v_x, v_y, v_z, \omega_x, \omega_y, \omega_z]$
+
+For an omni robot, both $v_x$ and $v_y$ are valid; you usually trust planar velocities more than integrated pose:
+
+Interpretation:
+
+* $v_x,v_y:0.01 \to \text{std} \approx 0.1$ m/s
+* $\omega_z : 0.02 \to \text{std} \approx 0.14$ rad/s
+* vertical and roll/pitch rates essentially *ignored*
+
+If your angular velocity estimate is especially good (e.g., fused with an IMU), you can lower 0.02 slightly (e.g., 0.01).
+
+``` python
+
+        # Twist covariance for odom
+        # For an omni robot, both vx and vy velocities more than integrated pose:
+        
+        odom.twist.covariance = [
+            0.01, 0.0,    0.0,     0.0,     0.0,     0.0,
+            0.0,    0.01, 0.0,     0.0,     0.0,     0.0,
+            0.0,    0.0,    99999.0, 0.0,     0.0,     0.0,
+            0.0,    0.0,    0.0,     99999.0, 0.0,     0.0,
+            0.0,    0.0,    0.0,     0.0,     99999.0, 0.0,
+            0.0,    0.0,    0.0,     0.0,     0.0,     0.02
+        ]
+```
+
+#### Tuning strategy for an omni base
+
+* Start conservative: values above are “reasonable” and won’t blow up the filter.
+* If the filtered pose lags your real motion: covariances might be too large → slightly reduce x, y, yaw values.
+* If the filter is noisy / jittery: covariances might be too small → increase them.
+* If lateral drift looks worse than forward motion: increase y pose and twist covariances relative to x.
 
 ### Node structure
 

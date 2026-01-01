@@ -65,23 +65,23 @@ This is a list of topics which will be supported in the mapping.
     This mapping is work in progress
 
 | Description | Gazebo | Hardware | Topic | Direction |
-|-------------|--------|----------|-------|-----------|
+| ----------- | ------ | -------- | ----- | --------- |
 | Drive Commands | ![task](images/task.png) | ![task](images/task.png) | /cmd_vel | In |
 | Odometry | ![ok](images/ok.png) | ![task](images/task.png) | /wheeled/odom | Out |
 | Battery Voltage | ![notok](images/task.png) | ![ok](images/ok.png) | /voltage | Out |
+| Battery State | ![notok](images/task.png) | ![notok](images/task.png) | /battery_state | Out |
 | Imu | ![ok](images/ok.png) | ![ok](images/ok.png) | /imu/data_raw | Out |
 | LIDAR | ![ok](images/ok.png) | ![ok](images/ok.png) | /scan_raw | Out |
 
 <!-- 
-| Velocity | ![notok](images/notok.png) | ![ok](images/ok.png) | /vel_raw | Out |
-| Edition | ![notok](images/notok.png) | ![ok](images/ok.png) | /edition | Out |
-| Buzzer | ![notok](images/notok.png) | ![ok](images/ok.png) | /Buzzer | In |
-| MagneticField | ![notok](images/notok.png) | ![ok](images/ok.png) | /imu/mag | Out | 
+| Velocity | ![To Do](images/notok.png) | ![ok](images/ok.png) | /vel_raw | Out |
+| Edition | ![v](images/notok.png) | ![ok](images/ok.png) | /edition | Out |
+| Buzzer | ![To Do](images/notok.png) | ![ok](images/ok.png) | /Buzzer | In |
+| MagneticField | ![To Do](images/notok.png) | ![ok](images/ok.png) | /imu/mag | Out | 
 -->
-
 
 ![ok](images/ok.png) Topic is integrated
 
 ![task](images/task.png) This has to be done and documented for the final integration
 
-![notok](images/notok.png) Topic can be ignored
+![To Do](images/notok.png) Topic can be ignored

@@ -9,10 +9,10 @@ Here is a structured approach for designing both frequency and QoS parameters.
 Message frequency (the publish rate) is determined by the specific requirements of the sensor or control loop.
 
 | Node Type | Frequency Guidance | Example Topics |
-|-----------|--------------------|----------------|
+| --------- | ------------------ | -------------- |
 | Low-Level Control | High & Consistent (100 Hz+) | /cmd_vel, /odom, /joint_states |
 | Mapping Localization | Moderate (10–30 Hz) | /scan, /camera/image_raw |
-| High-Level Planning | Low/Event-Driven (1–5 Hz) |/global_plan, /goal_pose |
+| High-Level Planning | Low/Event-Driven (1–5 Hz) | /global_plan, /goal_pose |
 | Configuration/Logging | Very Low/On-Demand (<< 1 Hz) | /rosout, /parameter_events |
 
 Key Considerations:
@@ -57,7 +57,7 @@ ROS 2 provides built-in profiles that cover 90% of use cases:
 Use this table as a guide for common topics:
 
 | Topic Example | Frequency | Preferred QoS Profile | Rationale |
-|---------------|-----------|-----------------------|-----------|
+| ------------- | --------- | --------------------- | --------- |
 | /scan, /camera/image | High | SENSOR_DATA | Speed matters more than missing an occasional frame. |
 | /odom, /cmd_vel | High | SENSOR_DATA | Latency is critical for real-time control loops. |
 | /map, /robot_description | Low | TRANSIENT_LOCAL | New nodes need the map/URDF immediately upon startup. |
