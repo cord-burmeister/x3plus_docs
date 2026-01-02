@@ -59,7 +59,7 @@ This section provides an overview of the general topics that are relevant to the
 ## Level 0 Topics
 
 This section provides an overview of the topics that are relevant to the Level 0 autonomy category. These topics are focused on manual control and basic robot operation.
- 
+
 <!---
 
 ```plantuml
