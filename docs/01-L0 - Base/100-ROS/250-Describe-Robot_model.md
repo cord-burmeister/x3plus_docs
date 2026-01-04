@@ -145,3 +145,7 @@ Writing URDFs that involve more than just a few elements can quickly become a pa
 [Tutorial: ROS2 launch files – All you need to know](https://roboticscasual.com/tutorial-ros2-launch-files-all-you-need-to-know/)
 
 [Create and Visualize a Mobile Robot with URDF – ROS 2 Jazzy](https://automaticaddison.com/create-and-visualize-a-mobile-robot-with-urdf-ros-2-jazzy/)
+
+[Robot Operating System: Getting Started with Simulation in ROS2](https://admantium.medium.com/robot-operating-system-getting-started-with-simulation-in-ros2-cd7d64268ba9): This article continues the series with a jumpstart into ROS2 simulation with Gazebo. We will get to know the essential tools for creating a simulation — ROS launch files and Gazebo.
+
+[Coordinate Frame Basics and the Right-Hand Rule of Robotics](https://automaticaddison.com/coordinate-frame-basics-and-the-right-hand-rule-of-robotics/): Understanding 3D coordinate frames is essential for robots to determine their position and navigate the world effectively.
