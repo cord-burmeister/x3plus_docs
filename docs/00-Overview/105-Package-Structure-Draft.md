@@ -1,6 +1,6 @@
 # Package Structure
 
-a dot graph to visualize the dependency hierarchy 
+a dot graph to visualize the dependency hierarchy
 
 ``` bash
 colcon graph --dot | dot -Tpng -o dependency-graph.png
@@ -15,4 +15,3 @@ colcon graph --dot | dot -Tpng -o dependency-graph.png
 [colcon_gephi](https://github.com/maspe36/colcon_gephi): Colcon plugin to generate a rich dependency graph for packages in a ROS 2 workspace.
 
 [ROSDepViz](https://github.com/gdesouza/rosdepviz?tab=readme-ov-file) : ROSDepViz (ROS Dependency Visualizer) is a Python-based tool designed to help developers understand and navigate the dependency tree of ROS (Robot Operating System) packages within a specified source directory.
-
