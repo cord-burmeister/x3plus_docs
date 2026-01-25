@@ -1,6 +1,6 @@
 # Deployment Models
 
-Deployment models refer to the various ways in which software applications can be deployed and made available to users. The deployment models relect the flow of development which move from software to the hardware. Here are some common deployment models:
+Deployment models refer to the various ways in which software applications can be deployed and made available to users. The deployment models reflect the flow of development which move from software to the hardware. Here are some common deployment models:
 
 ## ROS Deployment Models
 
@@ -18,7 +18,7 @@ In simulation deployment, all ROS nodes run on a desktop or server, often using 
 - May not capture all real-world complexities  
 - Performance may differ from real hardware
 
-### 2. Hardware-in-the-loop Deployment (HIL) 
+### 2. Hardware-in-the-loop Deployment (HIL)
 
 Hardware-in-the-loop (HIL) deployment is a hybrid testing and deployment model where parts of the system run on real hardware while other parts are simulated. HIL is commonly used to validate control, interfaces, and safety behavior under realistic timing and sensor/actuator conditions without exposing full production hardware to risk.
 
@@ -83,10 +83,10 @@ These models can be combined or adapted depending on the application requirement
 
 ## Mapping of repositories to deployment models
 
-| Name | Hardware | Environment   | Role                | Repos               |
-|------|----------|---------------|---------------------|---------------------|
-|Sim   | B760     | Native Ubuntu | Development Machine | x3plus </br> x3plus_gz |
-|HIL   | ma3jet   | Native Ubuntu | Robot Controller    | x3plus              |
-|      | B760     | Native Ubuntu | Development Machine | x3plus_gz           |
-| robot | ma3jet | Native Ubuntu | Robot Controller | Totally Autonomous| x3plus </br> x3plus_bot </br> x3plus_driver |
-| cockpit | small-laptop | Native Ubuntu | Remote Cockpit | Teleoperation | x3plus_pit  |
+| Name | Hardware | Environment | Role | Repos |
+| ---- | -------- | ----------- | ---- | ----- |
+| Sim | B760 | Native Ubuntu | Development Machine | x3plus </br> x3plus_gz |
+| HIL | ma3jet | Native Ubuntu | Robot Controller | x3plus |
+| | B760 | Native Ubuntu | Development Machine | x3plus_gz |
+| robot | ma3jet | Native Ubuntu | Robot Controller | x3plus </br> x3plus_bot </br> x3plus_driver |
+| cockpit | small-laptop | Native Ubuntu | Teleoperation | x3plus_pit |

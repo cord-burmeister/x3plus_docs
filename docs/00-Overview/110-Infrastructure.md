@@ -98,11 +98,11 @@ The available hardware can be used with different runtime environments.
 
 ## Target Environments
 
-|Name | Hardware | Environment | Role | Description |
-|-----|----------|-------------|------|----|
-|ma3jet| Robot Controller | Native Ubuntu | Robot Controller | This is the controller on the robot |
-|B760| Desktop | Native Ubuntu | Development Machine | This is the development machine for simulation and backend calculation |
-|W11| Desktop | Native Windows | Development Machine | This is the development machine for simulation  |
-|small-laptop| small-laptop | Native Ubuntu | Remote Cockpit | This is the teleoperation cockpit  |
+| Name | Hardware | Environment | Role | Description |
+| --- | -------- | ----------- | ---- | -- |
+| ma3jet | Robot Controller | Native Ubuntu | Robot Controller | This is the controller on the robot |
+| B760 | Desktop | Native Ubuntu | Development Machine | This is the development machine for simulation and backend calculation |
+| W11 | Desktop | Native Windows | Development Machine | This is the development machine for simulation |
+| small-laptop | small-laptop | Native Ubuntu | Remote Cockpit | This is the teleoperation cockpit |
 
  |
