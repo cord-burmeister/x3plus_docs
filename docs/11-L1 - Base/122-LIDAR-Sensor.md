@@ -436,3 +436,5 @@ This will not call the vendor launch file. We start the node directly, with the 
 [SLAMTEC rplidar data sheet](https://bucket-download.slamtec.com/2d4664be9f9f5c748f3b608f2cf1862962b168eb/SLAMTEC_rplidar_datasheet_C1_v1.1_en.pdf)
 
 [Laser Filter Nodes](https://wiki.ros.org/laser_filters)
+
+[Robust RPLIDAR ROS 2 Driver (Industrial-Grade)](https://github.com/frozenreboot/rplidar_ros2_driver): This is a heavily refactored, fault-tolerant ROS 2 driver for Slamtec RPLIDAR. Designed with a Lifecycle State Machine and Thread-Safe Architecture, ensuring your robot keeps running even under hardware disconnection or permission failures.
