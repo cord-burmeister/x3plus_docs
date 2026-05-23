@@ -23,6 +23,9 @@ We adapt the values of the battery used in the project
 
 In simulation, battery behavior is abstracted to enable realistic testing in a predefined gazebo plugin which simulates a linear battery consumption.
 
+!!! warning "Simulation stops all joint changes when battery is empty"
+    When the battery is empty there is no possible movement more for the model.
+
 !!! Note "Linear Battery Model"
     The linear battery model assumes a constant power draw from the battery, leading to a linear decrease in charge over time. This simplification is suitable for many robotic applications where power consumption remains relatively stable.
 
