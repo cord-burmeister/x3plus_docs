@@ -9,7 +9,7 @@ ROS 2 description of X3 Plus robot
 
 Use the robot base to operate some use cases in the robotics world.
 
-![X3plus](images/rviz2-x3plus.gif)
+![X3plus](images/rviz2-x3plus-explorer.png)
 
 !!! note "Only the vision"
     Be aware that the final robot will grow over time and might look different in the end.
