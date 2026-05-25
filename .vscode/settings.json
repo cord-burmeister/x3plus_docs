@@ -25,6 +25,7 @@
         "connectport",
         "costmap",
         "CUDA",
+        "cyclonedds",
         "datasheet",
         "deadzone",
         "demsg",
