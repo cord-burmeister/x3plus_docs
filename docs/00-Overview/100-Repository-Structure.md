@@ -11,19 +11,19 @@ The `x3plus_setup` project is designed to provide a set of bootstrap scripts for
 The project is structured in the following repositories
 
 | Name | Scope | Description |
-|------|-------|-------------|
+| ---- | ----- | ----------- |
 | [x3plus_setup](https://github.com/cord-burmeister/x3plus_setup) | Setup Scripts | This repository contains the scripts to setup workspace for the different deployment roles |
 | [x3plus](https://github.com/cord-burmeister/x3plus) | Core Logic | This repository contains the packages of the control logic of the robot |
-| [x3plus_pit](https://github.com/cord-burmeister/x3plus_pit) | Cockpit Logic | eleoperations cockpit packages for the robot project |
+| [x3plus_pit](https://github.com/cord-burmeister/x3plus_pit) | Cockpit Logic | teleoperations cockpit packages for the robot project |
 | [x3plus_driver](https://github.com/cord-burmeister/x3plus_driver) | Hardware driver | This repository contains the driver for the robot |
 | [x3plus_bot](https://github.com/cord-burmeister/x3plus_bot) | Hardware wrapper | This repository contains the ROS nodes to wrap the hardware components to the ROS system |
 | [x3plus_gz](https://github.com/cord-burmeister/x3plus_gz) | Gazebo Simulation | This repository contains the ROS and Gazebo simulation nodes to the ROS system |
 | [x3plus_docs](https://github.com/cord-burmeister/x3plus_docs) | Documentation | This is the Website and source for documentation for all aspects of the project |
+| [x3plus_inf](https://github.com/cord-burmeister/x3plus_inf) | Support | This repos contains support tools for the calibration which run on a rasberry pi |
 
 ## Runtime structure
 
-<!--
-
+<!-- 
 ``` plantuml
 
 @startuml images/repos_structure
@@ -35,6 +35,7 @@ skinparam rectangle {
   BackgroundColor<<AbstractDDS>> #FDEBD0
   BackgroundColor<<Simulation>> #FADBD8
   BackgroundColor<<Hardware>> #D5F5E3
+  BackgroundColor<<Support>> #f1f2d8
   BorderColor black
 }
 
@@ -59,6 +60,10 @@ rectangle "Hardware Layer" <<Hardware>> {
   [x3plus_driver]
 }
 
+rectangle "Infrastructure Layer" <<Support>> {
+  [x3plus_inf]
+}
+
 rectangle "Documentation" <<Documentation>> {
   [x3plus_docs]
 }
@@ -74,15 +79,14 @@ rectangle "Setup" <<Setup>> {
 [ROS topics / interfaces] -down-> [x3plus_gz]
 [ROS topics / interfaces] -down-> [x3plus_bot]
 [x3plus_bot] -down-> [x3plus_driver]
+[ROS topics / interfaces] -down-> [x3plus_inf]
 
 @enduml
-```
--->
+``` -->
 
 ![repos_structure](images/repos_structure.png)
 
 ## Project structure
-
 
 ![overview](images/overview.png)
 
@@ -129,6 +133,10 @@ This script sets up the workspace for the X3Plus Gazebo simulation.
 ### `bash/setup-ws-pit.sh`
 
 This script sets up the workspace for the X3Plus development and cockpit environment.
+
+### `bash/setup-ws-inf.sh`
+
+This script sets up the workspace for the X3Plus support environment for the calibration.
 
 To run any of these scripts, use the following command:
 

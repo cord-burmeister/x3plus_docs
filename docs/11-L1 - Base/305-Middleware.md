@@ -43,6 +43,31 @@ Developers can switch between middleware implementations depending on:
 
 Latency in ROS 2 is highly influenced by the DDS middleware you choose. Studies show that default ROS 2 configurations can introduce up to 50% overhead compared to raw DDS communication. So if you're building a distributed system, middleware tuning is just as important as tool selection.
 
+## Configure Cyclone DDS
+
+Setting the Environment variable for the configured middleware.
+
+``` bash
+export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
+```
+
+All setup script contain the logic to set the `export`statement in the .bashrc file.
+
+``` bash
+# Add RMW_IMPLEMENTATION to use cyclonedds as default middleware
+if (grep -q "export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp" /home/$USER/.bashrc ); then
+    echo "RMW_IMPLEMENTATION already set in .bashrc"
+else
+    echo "export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp" >> /home/$USER/.bashrc
+fi
+```
+
+Each bringup package contains the dependcy statement in the package.xml file
+
+``` XML
+  <depend>rmw_cyclonedds_cpp</depend>
+```
+
 ## References
 
 [DDS tuning information](https://docs.ros.org/en/rolling/How-To-Guides/DDS-tuning.html): This page provides some guidance on parameter tunings that were found to address issues faced while using various DDS implementations on Linux in real-world situations

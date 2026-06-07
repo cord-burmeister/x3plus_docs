@@ -20,7 +20,6 @@ To wire the Yahboom X3Plus robot properly, follow these key steps:
   * Connect USB serial lines for voice module and debugging.
   * Use CAN or SBUS interfaces if you're integrating advanced control systems. -->
 
-
 * Final Checks
   * Verify all connections are secure and match the wiring diagram.
   * Power on the robot and check LED indicators for proper initialization.
