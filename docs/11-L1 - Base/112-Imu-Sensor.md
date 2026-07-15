@@ -50,34 +50,22 @@ But the **board designer can rotate the chip arbitrarily**, so this does *not* t
 
 You can identify the board’s IMU orientation in under 2 minutes:
 
-### 1. Run `rostopic echo /transbot/imu` (or `/imu/data_raw`)
+### Run `ros2 topic echo /imu/data_raw`)
 
 Move the robot:
 
-- Tilt **nose up** $\to$ check which axis shows **+Z or -Z** acceleration change
-- Tilt **right side down** $\to$ check which axis shows **+Y or -Y**
-- Push forward $\to$ check which gyro axis increases
+* Tilt **nose up** $\to$ check which axis shows **+Z or -Z** acceleration change
+* Tilt **right side down** $\to$ check which axis shows **+Y or -Y**
+* Push forward $\to$ check which gyro axis increases
 
 This gives you the exact mapping.
 
-### 2. Look for silkscreen markings
+### Look for silkscreen markings
 
 Many Yahboom boards print:
 
-- A small **triangle** on the IMU chip corner  
-- Or **X/Y arrows** on the PCB
-
-If you can send a photo of your board, I can identify the axes precisely.
-
----
-
-##  If you want, I can generate a ROS `imu_link` → `base_link` transform  
-
-Once we know the orientation, I can help you write the correct:
-
-- `robot_localization` config  
-- `imu_filter_madgwick` parameters  
-- TF rotation (`roll/pitch/yaw`) for the IMU frame
+* A small **triangle** on the IMU chip corner  
+* Or **X/Y arrows** on the PCB
 
 ### Adapt to sensor capabilities
 
@@ -154,7 +142,7 @@ The wrapper is reading the IMU data from the hardware driver.
     mx, my, mz = self.car.get_magnetometer_data()
 ```
 
-Then we need to fill the ROS message 
+Then we need to fill the ROS message
 
 ``` python
       # Populate IMU data
@@ -168,9 +156,9 @@ Then we need to fill the ROS message
       imu.angular_velocity.z = gz * 1.0
 ```
 
-The IMU needs covariances - and if they’re zero or missing, the EKF will ignore those measurements just like it did with your custom odom.
+The IMU needs covariances - and if they’re zero or missing, the EKF will ignore those measurements just like it did with the custom odom.
 
-**robot_localization** expects every fused sensor (odom, IMU, etc.) to provide a full 36-element covariance for pose and twist; it uses those to weigh the measurements in the EKF. 
+**robot_localization** expects every fused sensor (odom, IMU, etc.) to provide a full 36-element covariance for pose and twist; it uses those to weigh the measurements in the EKF.
 
 For a typical **sensor_msgs/Imu** on a planar robot, you need:
 
@@ -257,7 +245,7 @@ With adding the IMU we aren't done yet, with the new Gazebo we also have to make
 
 ### IMU noise and covariance
 
-In Gazebo you don’t actually set the covariance matrix directly on the IMU sensor; you set noise parameters in the SDF/URDF, and Gazebo publishes an IMU message whose covariance fields are usually all zeros. Gazebo Sim currently doesn’t provide an API to modify the IMU covariances themselves; the sensor noise is read from the $<imu>$ noise tags in the SDF instead.
+In Gazebo we don’t actually set the covariance matrix directly on the IMU sensor; we set noise parameters in the SDF/URDF, and Gazebo publishes an IMU message whose covariance fields are usually all zeros. Gazebo Sim currently doesn’t provide an API to modify the IMU covariances themselves; the sensor noise is read from the $<imu>$ noise tags in the SDF instead.
 
 MPU-9250 Noise Specs (needed for covariance) From the MPU-9250 datasheet (typical values):
 
@@ -271,11 +259,8 @@ Gyroscope
 * Noise density: $0.005 0^\circ /s/\sqrt{Hz} \approx 8.7e-5 {rad}/s/\sqrt{Hz}$
 * Bias instability: $\sim 0.005 0^\circ/s$
 
-<!-- 
-So you have two layers: -->
-
-**1. Gazebo IMU noise (simulation realism)**
-In your $<sensor type="imu">$ you define Gaussian noise for angular velocity and linear acceleration, e.g.:
+**Gazebo IMU noise (simulation realism)**
+In $<sensor type="imu">$ we define Gaussian noise for angular velocity and linear acceleration, e.g.:
 
 ``` xml
 <sensor name="imu_sensor" type="imu">
@@ -310,11 +295,11 @@ In your $<sensor type="imu">$ you define Gaussian noise for angular velocity and
 </sensor>
 ```
 
-This gives you a very realistic MPU-9250-like IMU.
+This gives a very realistic MPU-9250-like IMU.
 
 <!-- 
 **2. ROS-side IMU covariance (for EKF, filters, etc.)**
-Since Gazebo often publishes zero covariances, you normally override / set the covariance on the ROS side (e.g., in an IMU filter node, a small wrapper node, or in the EKF params). The usual practice:
+Since Gazebo often publishes zero covariances, normally override / set the covariance on the ROS side (e.g., in an IMU filter node, a small wrapper node, or in the EKF params). The usual practice:
 
 * Fill only the diagonal entries of the $3×3$ sub-matrices (orientation, angular velocity, linear acceleration).
 * Use $covariance = \sigma^2$
@@ -341,23 +326,23 @@ IMUs are affected by:
 
 Without calibration, these errors accumulate and degrade performance in all use cases using the IMU sensor.
 
-## When Should You Calibrate an IMU?
+## When Should an IMU be calibrated?
 
 1. First-Time Use
-    * Always calibrate your IMU the first time you power up a new robot or sensor.
-    * Factory calibration may not match your environment or mounting orientation.
+    * Always calibrate  IMU the first time a new robot or sensor will be powered up.
+    * Factory calibration may not match environment or mounting orientation.
 2. After Firmware Updates
     * Firmware changes can reset or alter sensor parameters.
     * Recalibration ensures consistency with the new software.
 3. After Physical Changes
-    * If you:
+    * If:
         * Re-mount the IMU
         * Change the robot’s frame
         * Add new hardware near the IMU
     * These can introduce new biases or magnetic interference.
 4. After Temperature Shifts
     * IMU bias can drift with temperature.
-    * If your robot was calibrated in a warm room but now operates in a cold garage, recalibration helps.
+    * If robot was calibrated in a warm room but now operates in a cold garage, recalibration helps.
 5. After Changing Locations
     * Especially for magnetometer calibration:
         * Moving more than ~50 km
@@ -366,7 +351,7 @@ Without calibration, these errors accumulate and degrade performance in all use 
 6. After a Crash or Shock
     * Sudden impacts can knock sensors out of alignment.
     * Always recalibrate after a fall, collision, or hard landing.
-7. If You Notice Symptoms
+7. If Symptoms are noticed
     Watch for signs like:
     * Robot drifting when stationary
     * Inaccurate heading or orientation
@@ -378,11 +363,11 @@ Without calibration, these errors accumulate and degrade performance in all use 
 ## Types of IMU Calibration
 
 | Calibration Type         | Purpose                                                      |
-|-------------------------|--------------------------------------------------------------|
-| Bias Calibration        | Removes constant offset when sensor is stationary            |
-| Scale Calibration       | Corrects for incorrect sensitivity (e.g., 1g <> 9.81 m/s2)   |
-| Misalignment            | Compensates for non-orthogonal sensor axes                  |
-| Magnetometer Calibration| Removes hard/soft iron distortions in magnetic field readings|
+| ------------------------ | ------------------------------------------------------------ |
+| Bias Calibration         | Removes constant offset when sensor is stationary            |
+| Scale Calibration        | Corrects for incorrect sensitivity (e.g., 1g <> 9.81 m/s2)   |
+| Misalignment             | Compensates for non-orthogonal sensor axes                  |
+| Magnetometer Calibration | Removes hard/soft iron distortions in magnetic field readings|
 
 ## Typical Calibration Workflow
 
@@ -473,8 +458,6 @@ accelerometer:
 
 To use imu_calib, a ROS package for calibrating IMU sensors, you’ll typically follow a two-step process: compute calibration parameters and then apply them. Here's a breakdown of how to do that.
 
-TODO: Check content and source
-
 ### imu_calib
 
 ``` bash
@@ -496,8 +479,6 @@ ros2 run imu_calib do_calib_node --ros-args   -p measurements:=1000   -p referen
 -->
 
 ![imu-calib-output](images/imu-calib-output.png)
-
-!!! warning TODO
 
 ## Simulating an Odometry System using Gazebo
 
