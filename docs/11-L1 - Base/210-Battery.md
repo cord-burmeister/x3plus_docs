@@ -9,7 +9,7 @@ Reliable battery integration is essential for autonomous robotic systems, influe
 
 We adapt the values of the battery used in the project
 
-![battery](images/battery.png)
+![Use Battery in Robot](images/battery.png)
 
 | Parameter | Value |
 | --------- | ----- |
@@ -88,8 +88,6 @@ In the physical robot, battery handling involves:
 
 * **Voltage and Current Monitoring**: Using ADCs or dedicated battery management ICs to track charge levels and detect undervoltage conditions.
 * **Power Distribution**: Isolating high-current loads and protecting sensitive components via fuses, regulators, and soft-start circuits.
-* **Thermal and Safety Management**: Implementing temperature sensors and cutoff logic to prevent overheating or over-discharge.
-* **Charging Interface**: Supporting safe charging protocols (e.g., CC/CV for Li-ion) with status feedback to the control system.
 
 !!! note "Battery Handling"
     The robot's robot battery handling is handled by the ROS robot control board which includes voltage and current sensing capabilities along with safety features.

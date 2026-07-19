@@ -64,14 +64,14 @@ This is a list of topics which will be supported in the mapping.
 !!! note "WIP"
     This mapping is work in progress
 
-| Description | Gazebo | Hardware | Topic | Direction |
+| Description | Gazebo | Hardware | Direction | Topic |
 | ----------- | ------ | -------- | ----- | --------- |
-| Drive Commands | ![task](images/task.png) | ![task](images/task.png) | /cmd_vel | In |
-| Odometry | ![ok](images/ok.png) | ![task](images/task.png) | /wheeled/odom | Out |
-| Battery State | ![notok](images/task.png) | ![notok](images/task.png) | /battery_state | Out |
-| Imu | ![ok](images/ok.png) | ![ok](images/ok.png) | /imu/data_raw | Out |
-| LIDAR | ![ok](images/ok.png) | ![ok](images/ok.png) | /scan_raw | Out |
-| Controlling the PT Unit | ![ok](images/ok.png) | ![ok](images/ok.png) | /pt_yaw_angle <br> /pt_pitch_angle | In |
+| Drive Commands | ![ok](images/ok.png) | ![ok](images/ok.png) | In | /cmd_vel |
+| Odometry | ![ok](images/ok.png) | ![ok](images/ok.png) | Out | /wheeled/odom |
+| Battery State | ![ok](images/ok.png) | ![ok](images/ok.png) | Out |/battery_state |
+| Imu | ![ok](images/ok.png) | ![ok](images/ok.png) | Out | /imu/data_raw |
+| LIDAR | ![ok](images/ok.png) | ![ok](images/ok.png) | Out | /scan_raw |
+<!-- | Controlling the PT Unit | ![ok](images/ok.png) | ![ok](images/ok.png) | In | /pt_yaw_angle <br> /pt_pitch_angle |  -->
 
 <!-- 
 | Velocity | ![To Do](images/notok.png) | ![ok](images/ok.png) | /vel_raw | Out |

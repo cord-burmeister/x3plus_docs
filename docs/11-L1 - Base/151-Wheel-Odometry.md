@@ -1,5 +1,11 @@
 # Kinematic Model of a Four Mecanum Wheeled Mobile Robot
 
+## Wheel Odometry
+
+Wheel odometry is based on the wheel encoders is simple and low-cost but accumulates error over time. It is one data source for localization.
+
+## Derive parameter from hardware
+
 First calculate the encode to length values for the motor and gear setup.
 
 ``` python

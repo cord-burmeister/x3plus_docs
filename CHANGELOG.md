@@ -9,6 +9,8 @@ and this project adheres to [Calendar Versioning](https://calver.org/).
 
 ### Added
 
+- Adding content for the level 1 base booklet.
+
 ### Changed
 
 ### Removed
@@ -19,6 +21,6 @@ and this project adheres to [Calendar Versioning](https://calver.org/).
 
 - Adding book structure and powershell script to generate PDF.
 - Adding support for mkdocs and github pages
-- Adding initial content for the general overview chapter.
-- Adding initial content for the level 0 base chapter.
-- Adding initial content for the teleoperations chapter.
+- Adding initial content for the general overview booklet.
+- Adding initial content for the level 0 base booklet.
+- Adding initial content for the teleoperations booklet.
